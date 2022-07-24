@@ -19,7 +19,7 @@ func IntegerNotIn(values ...int64) IntegerValidator {
 	}
 }
 
-func RangeBetween(min, max int64) IntegerValidator {
+func IntegerBetweenRange(min, max int64) IntegerValidator {
 	return func(v int64, name string) error {
 		if min > v || v > max {
 			return &InvalidArgumentError{

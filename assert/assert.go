@@ -3,6 +3,7 @@ package assert
 import (
 	"encoding/json"
 	"math"
+	"reflect"
 )
 
 func Assert(errs ...error) error {
@@ -93,6 +94,33 @@ func JsonNumber(v json.Number, name string, validators ...FloatValidator) error 
 	for _, validate := range validators {
 		if err := validate(float, name); err != nil {
 			return err
+		}
+	}
+	return nil
+}
+
+func NotNil(v interface{}, name string) error {
+	if v == nil {
+		return &InvalidArgumentError{
+			Name:   name,
+			Reason: ERR_NOT_ARRAY,
+		}
+	}
+	return nil
+}
+
+func NonEmptyArray(v interface{}, name string) error {
+	if reflect.TypeOf(v).Kind() != reflect.Slice {
+		return &InvalidArgumentError{
+			Name:   name,
+			Reason: ERR_EMPTY_ARRAY,
+		}
+	}
+
+	if reflect.ValueOf(v).Len() == 0 {
+		return &InvalidArgumentError{
+			Name:   name,
+			Reason: ERR_EMPTY_ARRAY,
 		}
 	}
 	return nil

@@ -1,6 +1,6 @@
 package assert
 
-func RangeBetweenFloat(min, max float64) FloatValidator {
+func FloatBetweenRange(min, max float64) FloatValidator {
 	return func(v float64, name string) error {
 		if min > v || v > max {
 			return &InvalidArgumentError{
