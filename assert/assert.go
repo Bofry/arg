@@ -103,7 +103,7 @@ func NotNil(v interface{}, name string) error {
 	if v == nil {
 		return &InvalidArgumentError{
 			Name:   name,
-			Reason: ERR_NOT_ARRAY,
+			Reason: ERR_NIL,
 		}
 	}
 	return nil
@@ -113,7 +113,7 @@ func NonEmptyArray(v interface{}, name string) error {
 	if reflect.TypeOf(v).Kind() != reflect.Slice {
 		return &InvalidArgumentError{
 			Name:   name,
-			Reason: ERR_EMPTY_ARRAY,
+			Reason: ERR_NOT_ARRAY,
 		}
 	}
 
