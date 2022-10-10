@@ -1,9 +1,5 @@
 package assert
 
-import (
-	"github.com/Bofry/arg"
-)
-
 // Reason
 const (
 	ERR_OUT_OF_RANGE              = "out of range"
@@ -15,10 +11,6 @@ const (
 	ERR_EMPTY_STRING              = "cannot be an empty string"
 	ERR_NOT_ARRAY                 = "should be an array"
 	ERR_INVALID_INTEGER_ASSERTION = "specified integer %d is invalid"
-)
-
-type (
-	InvalidArgumentError = arg.InvalidArgumentError
 )
 
 type (
