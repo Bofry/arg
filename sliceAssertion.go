@@ -3,14 +3,14 @@ package arg
 import "reflect"
 
 var (
-	_SliceAssertor = SliceAssertor("")
+	_SliceAssertion = SliceAssertion("")
 
-	_ ValueValidator = _SliceAssertor.NonEmpty
+	_ ValueValidator = _SliceAssertion.NonEmpty
 )
 
-type SliceAssertor string
+type SliceAssertion string
 
-func (SliceAssertor) NonEmpty(v interface{}, name string) error {
+func (SliceAssertion) NonEmpty(v interface{}, name string) error {
 	if reflect.TypeOf(v).Kind() != reflect.Slice {
 		return &InvalidArgumentError{
 			Name:   name,

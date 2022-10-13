@@ -5,12 +5,12 @@ import (
 )
 
 const (
-	String     = StringAssertor("")
-	Float      = FloatAssertor("")
-	Int        = IntegerAssertor("")
-	JsonNumber = JsonNumberAssertor("")
-	Slice      = SliceAssertor("")
-	Value      = ValueAssertor("")
+	String     = StringAssertion("")
+	Float      = FloatAssertion("")
+	Int        = IntegerAssertion("")
+	JsonNumber = JsonNumberAssertion("")
+	Slice      = SliceAssertion("")
+	Value      = ValueAssertion("")
 )
 
 type (
