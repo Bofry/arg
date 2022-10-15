@@ -1,4 +1,4 @@
-package arg
+package internal
 
 import (
 	"encoding/json"
@@ -29,10 +29,31 @@ func (JsonNumberAssertion) NonNegativeNumber(v json.Number, name string) error {
 	return FloatValidator(Float.NonNegativeNumber).AssertJsonNumber(v, name)
 }
 
-func (JsonNumberAssertion) NotIn(values ...int64) JsonNumberValidator {
-	return IntegerValidator(Int.NotIn(values...)).AssertJsonNumber
+func (JsonNumberAssertion) NonZero(v json.Number, name string) error {
+	return FloatValidator(Float.NonZero).AssertJsonNumber(v, name)
 }
 
+func (JsonNumberAssertion) NotIn(values ...int64) JsonNumberValidator {
+	return IntValidator(Int.NotIn(values...)).AssertJsonNumber
+}
+
+func (JsonNumberAssertion) Less(comparand float64) JsonNumberValidator {
+	return FloatValidator(Float.Less(comparand)).AssertJsonNumber
+}
+
+func (JsonNumberAssertion) LessOrEqual(comparand float64) JsonNumberValidator {
+	return FloatValidator(Float.LessOrEqual(comparand)).AssertJsonNumber
+}
+
+func (JsonNumberAssertion) Greater(comparand float64) JsonNumberValidator {
+	return FloatValidator(Float.Greater(comparand)).AssertJsonNumber
+}
+
+func (JsonNumberAssertion) GreaterOrEqual(comparand float64) JsonNumberValidator {
+	return FloatValidator(Float.GreaterOrEqual(comparand)).AssertJsonNumber
+}
+
+// check if given value is between the specified minimum and maximum values (both inclusive).
 func (JsonNumberAssertion) BetweenRange(min, max float64) JsonNumberValidator {
 	return FloatValidator(Float.BetweenRange(min, max)).AssertJsonNumber
 }

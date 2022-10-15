@@ -1,4 +1,4 @@
-package arg
+package internal
 
 import "testing"
 
@@ -56,7 +56,7 @@ func TestStringAssertion(t *testing.T) {
 	}
 }
 
-func TestStringAssertion_WithAssertor(t *testing.T) {
+func TestStringAssertor(t *testing.T) {
 	var (
 		emprtyString string = ""
 		fooString    string = "foo"
@@ -128,6 +128,10 @@ func TestStringAssertion_NonEmpty(t *testing.T) {
 		if err == nil {
 			t.Errorf("should get error")
 		}
+		exceptedErrorMsg := "invalid argument 'arg'; cannot be an empty string"
+		if err.Error() != exceptedErrorMsg {
+			t.Errorf("except: %v\ngot: %v", exceptedErrorMsg, err.Error())
+		}
 	}
 }
 
@@ -145,6 +149,10 @@ func TestStringAssertion_In(t *testing.T) {
 		err := validate(arg, "arg")
 		if err == nil {
 			t.Errorf("should get error")
+		}
+		exceptedErrorMsg := "invalid argument 'arg'; specified string 'baz' is invalid"
+		if err.Error() != exceptedErrorMsg {
+			t.Errorf("except: %v\ngot: %v", exceptedErrorMsg, err.Error())
 		}
 	}
 }

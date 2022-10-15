@@ -1,4 +1,4 @@
-package arg
+package internal
 
 var (
 	_ValueAssertion = ValueAssertion("")

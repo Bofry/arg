@@ -1,4 +1,4 @@
-package arg
+package internal
 
 type FloatAssertor struct {
 	v    float64

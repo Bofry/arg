@@ -1,4 +1,4 @@
-package arg
+package internal
 
 type ValueAssertor struct {
 	v    interface{}

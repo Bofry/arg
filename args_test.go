@@ -1,6 +1,9 @@
 package arg
 
-import "testing"
+import (
+	"math"
+	"testing"
+)
 
 func TestString(t *testing.T) {
 	var (
@@ -33,6 +36,37 @@ func TestString(t *testing.T) {
 				String.NonEmpty,
 				String.In("foo", "bar"),
 			)
+		if err == nil {
+			t.Errorf("should get error")
+		}
+	}
+}
+
+func TestFloat(t *testing.T) {
+	var (
+		nanFloat float64 = math.NaN()
+	)
+
+	{
+		err := Float.Assert(nanFloat, "nanFloat",
+			Float.NonNanNorInf,
+			Float.NonNegativeNumber,
+			Float.NonZero,
+			Float.BetweenRange(4.899, 5.001),
+		)
+		if err == nil {
+			t.Errorf("should get error")
+		}
+	}
+
+	// use Assertor
+	{
+		err := Float.Assert(nanFloat, "nanFloat",
+			Float.NonNanNorInf,
+			Float.NonNegativeNumber,
+			Float.NonZero,
+			Float.BetweenRange(4.899, 5.001),
+		)
 		if err == nil {
 			t.Errorf("should get error")
 		}

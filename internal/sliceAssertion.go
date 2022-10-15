@@ -1,4 +1,4 @@
-package arg
+package internal
 
 import "reflect"
 
