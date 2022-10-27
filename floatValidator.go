@@ -1,18 +1,13 @@
-package internal
+package arg
 
 import (
-	"encoding/json"
-
 	"github.com/cstockton/go-conv"
 )
 
-func (fn FloatValidator) AssertJsonNumber(v json.Number, name string) error {
+func (fn FloatValidator) AssertNumber(v Number, name string) error {
 	float, err := v.Float64()
 	if err != nil {
-		return &InvalidArgumentError{
-			Name:   name,
-			Reason: err.Error(),
-		}
+		return err
 	}
 	/* NOTE: normalize the float64. avoid the "-0" be treated as Signbit() carried value
 	 * e.g:
@@ -32,10 +27,7 @@ func (fn FloatValidator) AssertJsonNumber(v json.Number, name string) error {
 func (fn FloatValidator) Assert(v interface{}, name string) error {
 	float, err := conv.Float64(v)
 	if err != nil {
-		return &InvalidArgumentError{
-			Name:   name,
-			Reason: err.Error(),
-		}
+		return err
 	}
 	// NOTE: normalize the float64. avoid the "-0" be treated as Signbit() carried value
 	if float == 0 {

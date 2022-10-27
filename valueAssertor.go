@@ -1,4 +1,4 @@
-package internal
+package arg
 
 type ValueAssertor struct {
 	v    interface{}
@@ -6,5 +6,5 @@ type ValueAssertor struct {
 }
 
 func (arg *ValueAssertor) Assert(validators ...ValueValidator) error {
-	return Value.Assert(arg.v, arg.name, validators...)
+	return Values.Assert(arg.v, arg.name, validators...)
 }

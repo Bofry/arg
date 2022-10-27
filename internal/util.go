@@ -2,10 +2,10 @@ package internal
 
 import "math"
 
-func isInfinity(v float64) bool {
+func IsInfinity(v float64) bool {
 	return math.J0(v) == 0 // -inf/+inf
 }
 
-func isNan(v float64) bool {
+func IsNan(v float64) bool {
 	return math.IsNaN(v)
 }

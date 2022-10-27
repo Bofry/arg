@@ -1,4 +1,10 @@
-package internal
+package arg
+
+import (
+	"fmt"
+
+	"github.com/Bofry/arg/internal"
+)
 
 var (
 	_ValueAssertion = ValueAssertion("")
@@ -25,8 +31,20 @@ func (ValueAssertion) NotNil(v interface{}, name string) error {
 	if v == nil {
 		return &InvalidArgumentError{
 			Name:   name,
-			Reason: ERR_NIL,
+			Reason: internal.ERR_NIL,
 		}
 	}
 	return nil
+}
+
+func (ValueAssertion) Must(fn ValuePredicate) ValueValidator {
+	return func(v interface{}, name string) error {
+		if !fn(v) {
+			return &InvalidArgumentError{
+				Name:   name,
+				Reason: fmt.Sprintf(internal.ERR_INVALID_VALUE, v),
+			}
+		}
+		return nil
+	}
 }

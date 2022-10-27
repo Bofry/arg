@@ -1,4 +1,4 @@
-package internal
+package arg
 
 type IntAssertor struct {
 	v    int64
@@ -6,5 +6,5 @@ type IntAssertor struct {
 }
 
 func (arg *IntAssertor) Assert(validators ...IntValidator) error {
-	return Int.Assert(arg.v, arg.name, validators...)
+	return Ints.Assert(arg.v, arg.name, validators...)
 }

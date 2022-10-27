@@ -1,4 +1,4 @@
-package internal
+package arg
 
 import (
 	"encoding/json"
@@ -7,11 +7,11 @@ import (
 )
 
 var (
-	_ JsonNumberValidator = new(StringValidator).AssertJsonNumber
-	_ ValueValidator      = new(StringValidator).Assert
+	_ NumberValidator = new(StringValidator).AssertNumber
+	_ ValueValidator  = new(StringValidator).Assert
 )
 
-func (fn StringValidator) AssertJsonNumber(v json.Number, name string) error {
+func (fn StringValidator) AssertNumber(v json.Number, name string) error {
 	return fn(v.String(), name)
 }
 

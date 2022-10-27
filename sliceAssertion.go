@@ -1,6 +1,10 @@
-package internal
+package arg
 
-import "reflect"
+import (
+	"reflect"
+
+	"github.com/Bofry/arg/internal"
+)
 
 var (
 	_SliceAssertion = SliceAssertion("")
@@ -14,14 +18,14 @@ func (SliceAssertion) NonEmpty(v interface{}, name string) error {
 	if reflect.TypeOf(v).Kind() != reflect.Slice {
 		return &InvalidArgumentError{
 			Name:   name,
-			Reason: ERR_NOT_ARRAY,
+			Reason: internal.ERR_NOT_ARRAY,
 		}
 	}
 
 	if reflect.ValueOf(v).Len() == 0 {
 		return &InvalidArgumentError{
 			Name:   name,
-			Reason: ERR_EMPTY_ARRAY,
+			Reason: internal.ERR_EMPTY_ARRAY,
 		}
 	}
 	return nil

@@ -11,18 +11,18 @@ func TestString(t *testing.T) {
 		fooString    string = "foo"
 	)
 	{
-		err := String.Assert(emprtyString, "emprtyString",
-			String.NonEmpty,
-			String.In("foo", "bar"),
+		err := Strings.Assert(emprtyString, "emprtyString",
+			Strings.NonEmpty,
+			Strings.In("foo", "bar"),
 		)
 		if err == nil {
 			t.Errorf("should get error")
 		}
 	}
 	{
-		err := String.Assert(fooString, "fooString",
-			String.NonEmpty,
-			String.In("foo", "bar"),
+		err := Strings.Assert(fooString, "fooString",
+			Strings.NonEmpty,
+			Strings.In("foo", "bar"),
 		)
 		if err != nil {
 			t.Errorf("should no error")
@@ -31,10 +31,10 @@ func TestString(t *testing.T) {
 
 	// use Assertor
 	{
-		err := String.Assertor(emprtyString, "emprtyString").
+		err := Strings.Assertor(emprtyString, "emprtyString").
 			Assert(
-				String.NonEmpty,
-				String.In("foo", "bar"),
+				Strings.NonEmpty,
+				Strings.In("foo", "bar"),
 			)
 		if err == nil {
 			t.Errorf("should get error")
@@ -48,11 +48,11 @@ func TestFloat(t *testing.T) {
 	)
 
 	{
-		err := Float.Assert(nanFloat, "nanFloat",
-			Float.NonNanNorInf,
-			Float.NonNegativeNumber,
-			Float.NonZero,
-			Float.BetweenRange(4.899, 5.001),
+		err := Floats.Assert(nanFloat, "nanFloat",
+			Floats.NonNanNorInf,
+			Floats.NonNegativeNumber,
+			Floats.NonZero,
+			Floats.BetweenRange(4.899, 5.001),
 		)
 		if err == nil {
 			t.Errorf("should get error")
@@ -61,11 +61,11 @@ func TestFloat(t *testing.T) {
 
 	// use Assertor
 	{
-		err := Float.Assert(nanFloat, "nanFloat",
-			Float.NonNanNorInf,
-			Float.NonNegativeNumber,
-			Float.NonZero,
-			Float.BetweenRange(4.899, 5.001),
+		err := Floats.Assert(nanFloat, "nanFloat",
+			Floats.NonNanNorInf,
+			Floats.NonNegativeNumber,
+			Floats.NonZero,
+			Floats.BetweenRange(4.899, 5.001),
 		)
 		if err == nil {
 			t.Errorf("should get error")

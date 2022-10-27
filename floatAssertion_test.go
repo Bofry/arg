@@ -1,4 +1,4 @@
-package internal
+package arg
 
 import (
 	"math"
@@ -25,7 +25,7 @@ func TestFloatAssertion(t *testing.T) {
 		if err == nil {
 			t.Errorf("should get error")
 		}
-		exceptedErrorMsg := "invalid argument 'nanFloat'; cannot be -inf, +inf or NaN"
+		exceptedErrorMsg := "invalid argument \"nanFloat\"; cannot be -inf, +inf or NaN"
 		if err.Error() != exceptedErrorMsg {
 			t.Errorf("except: %v\ngot: %v", exceptedErrorMsg, err.Error())
 		}
@@ -40,7 +40,7 @@ func TestFloatAssertion(t *testing.T) {
 		if err == nil {
 			t.Errorf("should get error")
 		}
-		exceptedErrorMsg := "invalid argument 'infFloat'; cannot be -inf, +inf or NaN"
+		exceptedErrorMsg := "invalid argument \"infFloat\"; cannot be -inf, +inf or NaN"
 		if err.Error() != exceptedErrorMsg {
 			t.Errorf("except: %v\ngot: %v", exceptedErrorMsg, err.Error())
 		}
@@ -55,7 +55,7 @@ func TestFloatAssertion(t *testing.T) {
 		if err == nil {
 			t.Errorf("should get error")
 		}
-		exceptedErrorMsg := "invalid argument 'zeroFloat'; should not be zero"
+		exceptedErrorMsg := "invalid argument \"zeroFloat\"; should not be zero"
 		if err.Error() != exceptedErrorMsg {
 			t.Errorf("except: %v\ngot: %v", exceptedErrorMsg, err.Error())
 		}
@@ -70,7 +70,7 @@ func TestFloatAssertion(t *testing.T) {
 		if err == nil {
 			t.Errorf("should get error")
 		}
-		exceptedErrorMsg := "invalid argument 'negateFloat'; should be a non-negative number"
+		exceptedErrorMsg := "invalid argument \"negateFloat\"; should be a non-negative number"
 		if err.Error() != exceptedErrorMsg {
 			t.Errorf("except: %v\ngot: %v", exceptedErrorMsg, err.Error())
 		}
@@ -85,7 +85,7 @@ func TestFloatAssertion(t *testing.T) {
 		if err == nil {
 			t.Errorf("should get error")
 		}
-		exceptedErrorMsg := "invalid argument 'five_sixFloat'; out of range"
+		exceptedErrorMsg := "invalid argument \"five_sixFloat\"; out of range"
 		if err.Error() != exceptedErrorMsg {
 			t.Errorf("except: %v\ngot: %v", exceptedErrorMsg, err.Error())
 		}
@@ -119,7 +119,7 @@ func TestFloatAssertor(t *testing.T) {
 		if err == nil {
 			t.Errorf("should get error")
 		}
-		exceptedErrorMsg := "invalid argument 'nanFloat'; cannot be -inf, +inf or NaN"
+		exceptedErrorMsg := "invalid argument \"nanFloat\"; cannot be -inf, +inf or NaN"
 		if err.Error() != exceptedErrorMsg {
 			t.Errorf("except: %v\ngot: %v", exceptedErrorMsg, err.Error())
 		}
@@ -140,7 +140,7 @@ func TestFloatAssertion_NonNanNorInf(t *testing.T) {
 		if err == nil {
 			t.Errorf("should get error")
 		}
-		exceptedErrorMsg := "invalid argument 'arg'; cannot be -inf, +inf or NaN"
+		exceptedErrorMsg := "invalid argument \"arg\"; cannot be -inf, +inf or NaN"
 		if err.Error() != exceptedErrorMsg {
 			t.Errorf("except: %v\ngot: %v", exceptedErrorMsg, err.Error())
 		}
@@ -151,7 +151,7 @@ func TestFloatAssertion_NonNanNorInf(t *testing.T) {
 		if err == nil {
 			t.Errorf("should get error")
 		}
-		exceptedErrorMsg := "invalid argument 'arg'; cannot be -inf, +inf or NaN"
+		exceptedErrorMsg := "invalid argument \"arg\"; cannot be -inf, +inf or NaN"
 		if err.Error() != exceptedErrorMsg {
 			t.Errorf("except: %v\ngot: %v", exceptedErrorMsg, err.Error())
 		}
@@ -179,7 +179,7 @@ func TestFloatAssertion_NonNegativeNumber(t *testing.T) {
 		if err == nil {
 			t.Errorf("should get error")
 		}
-		exceptedErrorMsg := "invalid argument 'arg'; should be a non-negative number"
+		exceptedErrorMsg := "invalid argument \"arg\"; should be a non-negative number"
 		if err.Error() != exceptedErrorMsg {
 			t.Errorf("except: %v\ngot: %v", exceptedErrorMsg, err.Error())
 		}
@@ -207,9 +207,42 @@ func TestFloatAssertion_NonZero(t *testing.T) {
 		if err == nil {
 			t.Errorf("should get error")
 		}
-		exceptedErrorMsg := "invalid argument 'arg'; should not be zero"
+		exceptedErrorMsg := "invalid argument \"arg\"; should not be zero"
 		if err.Error() != exceptedErrorMsg {
 			t.Errorf("except: %v\ngot: %v", exceptedErrorMsg, err.Error())
+		}
+	}
+}
+
+func TestFloatAssertion_Must(t *testing.T) {
+	var validate FloatValidator = _FloatAssertion.Must(
+		func(v float64) bool {
+			return math.Round(v) == 5
+		})
+
+	{
+		var arg float64 = -0.0001
+		err := validate(arg, "arg")
+		if err == nil {
+			t.Errorf("should get error")
+		}
+		exceptedErrorMsg := "invalid argument \"arg\"; specified number -0.0001 is invalid"
+		if err.Error() != exceptedErrorMsg {
+			t.Errorf("except: %v\ngot: %v", exceptedErrorMsg, err.Error())
+		}
+	}
+	{
+		var arg float64 = 4.9001
+		err := validate(arg, "arg")
+		if err != nil {
+			t.Errorf("should not error")
+		}
+	}
+	{
+		var arg float64 = 5.0001
+		err := validate(arg, "arg")
+		if err != nil {
+			t.Errorf("should not error")
 		}
 	}
 }
@@ -230,7 +263,7 @@ func TestFloatAssertion_Less(t *testing.T) {
 		if err == nil {
 			t.Errorf("should get error")
 		}
-		exceptedErrorMsg := "invalid argument 'arg'; out of range"
+		exceptedErrorMsg := "invalid argument \"arg\"; out of range"
 		if err.Error() != exceptedErrorMsg {
 			t.Errorf("except: %v\ngot: %v", exceptedErrorMsg, err.Error())
 		}
@@ -241,7 +274,7 @@ func TestFloatAssertion_Less(t *testing.T) {
 		if err == nil {
 			t.Errorf("should get error")
 		}
-		exceptedErrorMsg := "invalid argument 'arg'; out of range"
+		exceptedErrorMsg := "invalid argument \"arg\"; out of range"
 		if err.Error() != exceptedErrorMsg {
 			t.Errorf("except: %v\ngot: %v", exceptedErrorMsg, err.Error())
 		}
@@ -271,7 +304,7 @@ func TestFloatAssertion_LessOrEqual(t *testing.T) {
 		if err == nil {
 			t.Errorf("should get error")
 		}
-		exceptedErrorMsg := "invalid argument 'arg'; out of range"
+		exceptedErrorMsg := "invalid argument \"arg\"; out of range"
 		if err.Error() != exceptedErrorMsg {
 			t.Errorf("except: %v\ngot: %v", exceptedErrorMsg, err.Error())
 		}
@@ -294,7 +327,7 @@ func TestFloatAssertion_Greater(t *testing.T) {
 		if err == nil {
 			t.Errorf("should get error")
 		}
-		exceptedErrorMsg := "invalid argument 'arg'; out of range"
+		exceptedErrorMsg := "invalid argument \"arg\"; out of range"
 		if err.Error() != exceptedErrorMsg {
 			t.Errorf("except: %v\ngot: %v", exceptedErrorMsg, err.Error())
 		}
@@ -305,7 +338,7 @@ func TestFloatAssertion_Greater(t *testing.T) {
 		if err == nil {
 			t.Errorf("should get error")
 		}
-		exceptedErrorMsg := "invalid argument 'arg'; out of range"
+		exceptedErrorMsg := "invalid argument \"arg\"; out of range"
 		if err.Error() != exceptedErrorMsg {
 			t.Errorf("except: %v\ngot: %v", exceptedErrorMsg, err.Error())
 		}
@@ -335,7 +368,7 @@ func TestFloatAssertion_GreaterOrEqual(t *testing.T) {
 		if err == nil {
 			t.Errorf("should get error")
 		}
-		exceptedErrorMsg := "invalid argument 'arg'; out of range"
+		exceptedErrorMsg := "invalid argument \"arg\"; out of range"
 		if err.Error() != exceptedErrorMsg {
 			t.Errorf("except: %v\ngot: %v", exceptedErrorMsg, err.Error())
 		}
@@ -379,7 +412,7 @@ func TestFloatAssertion_BetweenRange(t *testing.T) {
 		if err == nil {
 			t.Errorf("should get error")
 		}
-		exceptedErrorMsg := "invalid argument 'arg'; out of range"
+		exceptedErrorMsg := "invalid argument \"arg\"; out of range"
 		if err.Error() != exceptedErrorMsg {
 			t.Errorf("except: %v\ngot: %v", exceptedErrorMsg, err.Error())
 		}
@@ -390,7 +423,7 @@ func TestFloatAssertion_BetweenRange(t *testing.T) {
 		if err == nil {
 			t.Errorf("should get error")
 		}
-		exceptedErrorMsg := "invalid argument 'arg'; out of range"
+		exceptedErrorMsg := "invalid argument \"arg\"; out of range"
 		if err.Error() != exceptedErrorMsg {
 			t.Errorf("except: %v\ngot: %v", exceptedErrorMsg, err.Error())
 		}
@@ -401,7 +434,7 @@ func TestFloatAssertion_BetweenRange(t *testing.T) {
 		if err == nil {
 			t.Errorf("should get error")
 		}
-		exceptedErrorMsg := "invalid argument 'arg'; out of range"
+		exceptedErrorMsg := "invalid argument \"arg\"; out of range"
 		if err.Error() != exceptedErrorMsg {
 			t.Errorf("except: %v\ngot: %v", exceptedErrorMsg, err.Error())
 		}

@@ -1,4 +1,4 @@
-package internal
+package arg
 
 type StringAssertor struct {
 	v    string
@@ -6,5 +6,5 @@ type StringAssertor struct {
 }
 
 func (arg *StringAssertor) Assert(validators ...StringValidator) error {
-	return String.Assert(arg.v, arg.name, validators...)
+	return Strings.Assert(arg.v, arg.name, validators...)
 }

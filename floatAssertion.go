@@ -1,6 +1,11 @@
-package internal
+package arg
 
-import "math"
+import (
+	"fmt"
+	"math"
+
+	"github.com/Bofry/arg/internal"
+)
 
 var (
 	_FloatAssertion = FloatAssertion("")
@@ -26,10 +31,10 @@ func (FloatAssertion) Assertor(v float64, name string) *FloatAssertor {
 }
 
 func (FloatAssertion) NonNanNorInf(v float64, name string) error {
-	if isInfinity(v) || isNan(v) {
+	if internal.IsInfinity(v) || internal.IsNan(v) {
 		return &InvalidArgumentError{
 			Name:   name,
-			Reason: ERR_NAN_OR_INFINITY,
+			Reason: internal.ERR_NAN_OR_INFINITY,
 		}
 	}
 	return nil
@@ -39,7 +44,7 @@ func (FloatAssertion) NonNegativeNumber(v float64, name string) error {
 	if math.Signbit(v) {
 		return &InvalidArgumentError{
 			Name:   name,
-			Reason: ERR_NON_NEGATIVE_NUMBER,
+			Reason: internal.ERR_NON_NEGATIVE_NUMBER,
 		}
 	}
 	return nil
@@ -49,14 +54,26 @@ func (FloatAssertion) NonZero(v float64, name string) error {
 	if v == 0 {
 		return &InvalidArgumentError{
 			Name:   name,
-			Reason: ERR_NON_ZERO,
+			Reason: internal.ERR_NON_ZERO,
 		}
 	}
 	return nil
 }
 
+func (FloatAssertion) Must(fn FloatPredicate) FloatValidator {
+	return func(v float64, name string) error {
+		if !fn(v) {
+			return &InvalidArgumentError{
+				Name:   name,
+				Reason: fmt.Sprintf(internal.ERR_INVALID_FLOAT, v),
+			}
+		}
+		return nil
+	}
+}
+
 func (FloatAssertion) Less(comparand float64) FloatValidator {
-	if isInfinity(comparand) || isNan(comparand) {
+	if internal.IsInfinity(comparand) || internal.IsNan(comparand) {
 		panic("specified arguemnt 'comparand' cannot be NaN or Infinity")
 	}
 
@@ -64,7 +81,7 @@ func (FloatAssertion) Less(comparand float64) FloatValidator {
 		if comparand <= v {
 			return &InvalidArgumentError{
 				Name:   name,
-				Reason: ERR_OUT_OF_RANGE,
+				Reason: internal.ERR_OUT_OF_RANGE,
 			}
 		}
 		return nil
@@ -72,7 +89,7 @@ func (FloatAssertion) Less(comparand float64) FloatValidator {
 }
 
 func (FloatAssertion) LessOrEqual(comparand float64) FloatValidator {
-	if isInfinity(comparand) || isNan(comparand) {
+	if internal.IsInfinity(comparand) || internal.IsNan(comparand) {
 		panic("specified arguemnt 'comparand' cannot be NaN or Infinity")
 	}
 
@@ -80,7 +97,7 @@ func (FloatAssertion) LessOrEqual(comparand float64) FloatValidator {
 		if comparand < v {
 			return &InvalidArgumentError{
 				Name:   name,
-				Reason: ERR_OUT_OF_RANGE,
+				Reason: internal.ERR_OUT_OF_RANGE,
 			}
 		}
 		return nil
@@ -88,7 +105,7 @@ func (FloatAssertion) LessOrEqual(comparand float64) FloatValidator {
 }
 
 func (FloatAssertion) Greater(comparand float64) FloatValidator {
-	if isInfinity(comparand) || isNan(comparand) {
+	if internal.IsInfinity(comparand) || internal.IsNan(comparand) {
 		panic("specified arguemnt 'comparand' cannot be NaN or Infinity")
 	}
 
@@ -96,7 +113,7 @@ func (FloatAssertion) Greater(comparand float64) FloatValidator {
 		if comparand >= v {
 			return &InvalidArgumentError{
 				Name:   name,
-				Reason: ERR_OUT_OF_RANGE,
+				Reason: internal.ERR_OUT_OF_RANGE,
 			}
 		}
 		return nil
@@ -104,7 +121,7 @@ func (FloatAssertion) Greater(comparand float64) FloatValidator {
 }
 
 func (FloatAssertion) GreaterOrEqual(comparand float64) FloatValidator {
-	if isInfinity(comparand) || isNan(comparand) {
+	if internal.IsInfinity(comparand) || internal.IsNan(comparand) {
 		panic("specified arguemnt 'comparand' cannot be NaN or Infinity")
 	}
 
@@ -112,19 +129,19 @@ func (FloatAssertion) GreaterOrEqual(comparand float64) FloatValidator {
 		if comparand > v {
 			return &InvalidArgumentError{
 				Name:   name,
-				Reason: ERR_OUT_OF_RANGE,
+				Reason: internal.ERR_OUT_OF_RANGE,
 			}
 		}
 		return nil
 	}
 }
 
-// check if given value is between the specified minimum and maximum values (both inclusive).
+// BetweenRange check if given value is between the specified minimum and maximum values (both inclusive).
 func (FloatAssertion) BetweenRange(min, max float64) FloatValidator {
-	if isInfinity(min) || isNan(min) {
+	if internal.IsInfinity(min) || internal.IsNan(min) {
 		panic("specified arguemnt 'min' cannot be NaN or Infinity")
 	}
-	if isInfinity(max) || isNan(max) {
+	if internal.IsInfinity(max) || internal.IsNan(max) {
 		panic("specified arguemnt 'max' cannot be NaN or Infinity")
 	}
 
@@ -132,7 +149,7 @@ func (FloatAssertion) BetweenRange(min, max float64) FloatValidator {
 		if min > v || v > max {
 			return &InvalidArgumentError{
 				Name:   name,
-				Reason: ERR_OUT_OF_RANGE,
+				Reason: internal.ERR_OUT_OF_RANGE,
 			}
 		}
 		return nil

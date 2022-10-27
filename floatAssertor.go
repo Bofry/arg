@@ -1,4 +1,4 @@
-package internal
+package arg
 
 type FloatAssertor struct {
 	v    float64
@@ -6,5 +6,5 @@ type FloatAssertor struct {
 }
 
 func (arg *FloatAssertor) Assert(validators ...FloatValidator) error {
-	return Float.Assert(arg.v, arg.name, validators...)
+	return Floats.Assert(arg.v, arg.name, validators...)
 }

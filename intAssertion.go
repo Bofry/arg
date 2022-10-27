@@ -1,8 +1,10 @@
-package internal
+package arg
 
 import (
 	"fmt"
 	"sort"
+
+	"github.com/Bofry/arg/internal"
 )
 
 var (
@@ -31,7 +33,7 @@ func (IntAssertion) NonNegativeInteger(v int64, name string) error {
 	if v < 0 {
 		return &InvalidArgumentError{
 			Name:   name,
-			Reason: ERR_NON_NEGATIVE_INTENGER,
+			Reason: internal.ERR_NON_NEGATIVE_INTENGER,
 		}
 	}
 	return nil
@@ -41,7 +43,7 @@ func (IntAssertion) NonZero(v int64, name string) error {
 	if v == 0 {
 		return &InvalidArgumentError{
 			Name:   name,
-			Reason: ERR_NON_ZERO,
+			Reason: internal.ERR_NON_ZERO,
 		}
 	}
 	return nil
@@ -54,7 +56,33 @@ func (IntAssertion) NotIn(values ...int64) IntValidator {
 		if i < len(values) && values[i] == v {
 			return &InvalidArgumentError{
 				Name:   name,
-				Reason: fmt.Sprintf(ERR_INVALID_INTEGER, v),
+				Reason: fmt.Sprintf(internal.ERR_INVALID_INTEGER, v),
+			}
+		}
+		return nil
+	}
+}
+
+func (IntAssertion) In(values ...int64) IntValidator {
+	sort.Slice(values, func(i, j int) bool { return values[i] < values[j] })
+	return func(v int64, name string) error {
+		i := sort.Search(len(values), func(i int) bool { return values[i] >= v })
+		if i > len(values) || values[i] != v {
+			return &InvalidArgumentError{
+				Name:   name,
+				Reason: fmt.Sprintf(internal.ERR_INVALID_INTEGER, v),
+			}
+		}
+		return nil
+	}
+}
+
+func (IntAssertion) Must(fn IntPredicate) IntValidator {
+	return func(v int64, name string) error {
+		if !fn(v) {
+			return &InvalidArgumentError{
+				Name:   name,
+				Reason: fmt.Sprintf(internal.ERR_INVALID_INTEGER, v),
 			}
 		}
 		return nil
@@ -66,7 +94,7 @@ func (IntAssertion) LessOrEqual(boundary int64) IntValidator {
 		if boundary < v {
 			return &InvalidArgumentError{
 				Name:   name,
-				Reason: ERR_OUT_OF_RANGE,
+				Reason: internal.ERR_OUT_OF_RANGE,
 			}
 		}
 		return nil
@@ -78,20 +106,20 @@ func (IntAssertion) GreaterOrEqual(boundary int64) IntValidator {
 		if boundary > v {
 			return &InvalidArgumentError{
 				Name:   name,
-				Reason: ERR_OUT_OF_RANGE,
+				Reason: internal.ERR_OUT_OF_RANGE,
 			}
 		}
 		return nil
 	}
 }
 
-// check if given value is between the specified minimum and maximum values (both inclusive).
+// BetweenRange check if given value is between the specified minimum and maximum values (both inclusive).
 func (IntAssertion) BetweenRange(min, max int64) IntValidator {
 	return func(v int64, name string) error {
 		if min > v || v > max {
 			return &InvalidArgumentError{
 				Name:   name,
-				Reason: ERR_OUT_OF_RANGE,
+				Reason: internal.ERR_OUT_OF_RANGE,
 			}
 		}
 		return nil

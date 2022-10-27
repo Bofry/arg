@@ -1,4 +1,4 @@
-package internal
+package arg
 
 import "testing"
 
@@ -19,7 +19,7 @@ func TestIntAssertion(t *testing.T) {
 		if err == nil {
 			t.Errorf("should get error")
 		}
-		exceptedErrorMsg := "invalid argument 'zeroInt'; should not be zero"
+		exceptedErrorMsg := "invalid argument \"zeroInt\"; should not be zero"
 		if err.Error() != exceptedErrorMsg {
 			t.Errorf("except: %v\ngot: %v", exceptedErrorMsg, err.Error())
 		}
@@ -34,7 +34,7 @@ func TestIntAssertion(t *testing.T) {
 		if err == nil {
 			t.Errorf("should get error")
 		}
-		exceptedErrorMsg := "invalid argument 'negateOneInt'; should be a non-negative integer"
+		exceptedErrorMsg := "invalid argument \"negateOneInt\"; should be a non-negative integer"
 		if err.Error() != exceptedErrorMsg {
 			t.Errorf("except: %v\ngot: %v", exceptedErrorMsg, err.Error())
 		}
@@ -49,7 +49,7 @@ func TestIntAssertion(t *testing.T) {
 		if err == nil {
 			t.Errorf("should get error")
 		}
-		exceptedErrorMsg := "invalid argument 'sixInt'; out of range"
+		exceptedErrorMsg := "invalid argument \"sixInt\"; out of range"
 		if err.Error() != exceptedErrorMsg {
 			t.Errorf("except: %v\ngot: %v", exceptedErrorMsg, err.Error())
 		}
@@ -72,12 +72,11 @@ func TestIntAssertor(t *testing.T) {
 		if err == nil {
 			t.Errorf("should get error")
 		}
-		exceptedErrorMsg := "invalid argument 'zeroInt'; should not be zero"
+		exceptedErrorMsg := "invalid argument \"zeroInt\"; should not be zero"
 		if err.Error() != exceptedErrorMsg {
 			t.Errorf("except: %v\ngot: %v", exceptedErrorMsg, err.Error())
 		}
 	}
-
 }
 
 func TestIntAssertion_NonNegativeInteger(t *testing.T) {
@@ -101,7 +100,7 @@ func TestIntAssertion_NonNegativeInteger(t *testing.T) {
 		if err == nil {
 			t.Errorf("should get error")
 		}
-		exceptedErrorMsg := "invalid argument 'arg'; should be a non-negative integer"
+		exceptedErrorMsg := "invalid argument \"arg\"; should be a non-negative integer"
 		if err.Error() != exceptedErrorMsg {
 			t.Errorf("except: %v\ngot: %v", exceptedErrorMsg, err.Error())
 		}
@@ -129,7 +128,7 @@ func TestIntAssertion_NonZero(t *testing.T) {
 		if err == nil {
 			t.Errorf("should get error")
 		}
-		exceptedErrorMsg := "invalid argument 'arg'; should not be zero"
+		exceptedErrorMsg := "invalid argument \"arg\"; should not be zero"
 		if err.Error() != exceptedErrorMsg {
 			t.Errorf("except: %v\ngot: %v", exceptedErrorMsg, err.Error())
 		}
@@ -151,7 +150,7 @@ func TestIntAssertion_NotIn(t *testing.T) {
 		if err == nil {
 			t.Errorf("should get error")
 		}
-		exceptedErrorMsg := "invalid argument 'arg'; specified integer 6 is invalid"
+		exceptedErrorMsg := "invalid argument \"arg\"; specified integer 6 is invalid"
 		if err.Error() != exceptedErrorMsg {
 			t.Errorf("except: %v\ngot: %v", exceptedErrorMsg, err.Error())
 		}
@@ -162,12 +161,77 @@ func TestIntAssertion_NotIn(t *testing.T) {
 		if err == nil {
 			t.Errorf("should get error")
 		}
-		exceptedErrorMsg := "invalid argument 'arg'; specified integer 3 is invalid"
+		exceptedErrorMsg := "invalid argument \"arg\"; specified integer 3 is invalid"
 		if err.Error() != exceptedErrorMsg {
 			t.Errorf("except: %v\ngot: %v", exceptedErrorMsg, err.Error())
 		}
 	}
+}
 
+func TestIntAssertion_In(t *testing.T) {
+	var validate IntValidator = _IntAssertion.In(3, 6)
+	{
+		var arg int64 = 1
+		err := validate(arg, "arg")
+		if err == nil {
+			t.Errorf("should get error")
+		}
+		exceptedErrorMsg := "invalid argument \"arg\"; specified integer 1 is invalid"
+		if err.Error() != exceptedErrorMsg {
+			t.Errorf("except: %v\ngot: %v", exceptedErrorMsg, err.Error())
+		}
+	}
+	{
+		var arg int64 = 6
+		err := validate(arg, "arg")
+		if err != nil {
+			t.Errorf("should not error")
+		}
+	}
+	{
+		var arg int64 = 3
+		err := validate(arg, "arg")
+		if err != nil {
+			t.Errorf("should not error")
+		}
+	}
+}
+
+func TestIntAssertion_Must(t *testing.T) {
+	var validate IntValidator = _IntAssertion.Must(
+		func(v int64) bool {
+			return (v & 0x01) == 0
+		})
+
+	{
+		var arg int64 = 1
+		err := validate(arg, "arg")
+		if err == nil {
+			t.Errorf("should get error")
+		}
+		exceptedErrorMsg := "invalid argument \"arg\"; specified integer 1 is invalid"
+		if err.Error() != exceptedErrorMsg {
+			t.Errorf("except: %v\ngot: %v", exceptedErrorMsg, err.Error())
+		}
+	}
+	{
+		var arg int64 = 6
+		err := validate(arg, "arg")
+		if err != nil {
+			t.Errorf("should not error")
+		}
+	}
+	{
+		var arg int64 = 3
+		err := validate(arg, "arg")
+		if err == nil {
+			t.Errorf("should get error")
+		}
+		exceptedErrorMsg := "invalid argument \"arg\"; specified integer 3 is invalid"
+		if err.Error() != exceptedErrorMsg {
+			t.Errorf("except: %v\ngot: %v", exceptedErrorMsg, err.Error())
+		}
+	}
 }
 
 func TestIntAssertion_LessOrEqual(t *testing.T) {
@@ -193,7 +257,7 @@ func TestIntAssertion_LessOrEqual(t *testing.T) {
 		if err == nil {
 			t.Errorf("should get error")
 		}
-		exceptedErrorMsg := "invalid argument 'arg'; out of range"
+		exceptedErrorMsg := "invalid argument \"arg\"; out of range"
 		if err.Error() != exceptedErrorMsg {
 			t.Errorf("except: %v\ngot: %v", exceptedErrorMsg, err.Error())
 		}
@@ -223,7 +287,7 @@ func TestIntAssertion_GreaterOrEqual(t *testing.T) {
 		if err == nil {
 			t.Errorf("should get error")
 		}
-		exceptedErrorMsg := "invalid argument 'arg'; out of range"
+		exceptedErrorMsg := "invalid argument \"arg\"; out of range"
 		if err.Error() != exceptedErrorMsg {
 			t.Errorf("except: %v\ngot: %v", exceptedErrorMsg, err.Error())
 		}
@@ -260,7 +324,7 @@ func TestIntAssertion_BetweenRange(t *testing.T) {
 		if err == nil {
 			t.Errorf("should get error")
 		}
-		exceptedErrorMsg := "invalid argument 'arg'; out of range"
+		exceptedErrorMsg := "invalid argument \"arg\"; out of range"
 		if err.Error() != exceptedErrorMsg {
 			t.Errorf("except: %v\ngot: %v", exceptedErrorMsg, err.Error())
 		}
@@ -271,7 +335,7 @@ func TestIntAssertion_BetweenRange(t *testing.T) {
 		if err == nil {
 			t.Errorf("should get error")
 		}
-		exceptedErrorMsg := "invalid argument 'arg'; out of range"
+		exceptedErrorMsg := "invalid argument \"arg\"; out of range"
 		if err.Error() != exceptedErrorMsg {
 			t.Errorf("except: %v\ngot: %v", exceptedErrorMsg, err.Error())
 		}
