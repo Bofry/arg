@@ -232,8 +232,8 @@ func TestStringAssertion_MinLength(t *testing.T) {
 	}
 }
 
-func TestStringAssertion_Regexp(t *testing.T) {
-	var validate StringValidator = _StringAssertion.Regexp("[a-z]+@[a-z]+\\.[a-z]+")
+func TestStringAssertion_MatchAny(t *testing.T) {
+	var validate StringValidator = _StringAssertion.MatchAny(`[a-z]+@[a-z]+\.[a-z]+`)
 
 	{
 		var arg string = "foo@bar.mail"

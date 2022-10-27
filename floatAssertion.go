@@ -136,7 +136,7 @@ func (FloatAssertion) GreaterOrEqual(comparand float64) FloatValidator {
 	}
 }
 
-// BetweenRange check if given value is between the specified minimum and maximum values (both inclusive).
+// BetweenRange check if given number is between the specified minimum and maximum values (both inclusive).
 func (FloatAssertion) BetweenRange(min, max float64) FloatValidator {
 	if internal.IsInfinity(min) || internal.IsNan(min) {
 		panic("specified arguemnt 'min' cannot be NaN or Infinity")

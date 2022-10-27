@@ -113,7 +113,7 @@ func (IntAssertion) GreaterOrEqual(boundary int64) IntValidator {
 	}
 }
 
-// BetweenRange check if given value is between the specified minimum and maximum values (both inclusive).
+// BetweenRange check if given integer is between the specified minimum and maximum values (both inclusive).
 func (IntAssertion) BetweenRange(min, max int64) IntValidator {
 	return func(v int64, name string) error {
 		if min > v || v > max {

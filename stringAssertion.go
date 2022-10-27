@@ -92,18 +92,25 @@ func (StringAssertion) MinLength(size int) StringValidator {
 	}
 }
 
-func (StringAssertion) Regexp(pattern string) StringValidator {
-	regex, err := regexp.Compile(pattern)
-	if err != nil {
-		panic(fmt.Sprintf(internal.ERR_INVALID_REGEX_PATTERN, pattern))
+// MatchAny check if given string match any one from specified patterns.
+func (StringAssertion) MatchAny(patterns ...string) StringValidator {
+	var regex []*regexp.Regexp
+	for _, pattern := range patterns {
+		r, err := regexp.Compile(pattern)
+		if err != nil {
+			panic(fmt.Sprintf(internal.ERR_INVALID_REGEX_PATTERN, pattern))
+		}
+		regex = append(regex, r)
 	}
 	return func(v, name string) error {
-		if !regex.MatchString(v) {
-			return &InvalidArgumentError{
-				Name:   name,
-				Reason: fmt.Sprintf(internal.ERR_INVALID_STRING, v),
+		for _, pattern := range regex {
+			if pattern.MatchString(v) {
+				return nil
 			}
 		}
-		return nil
+		return &InvalidArgumentError{
+			Name:   name,
+			Reason: fmt.Sprintf(internal.ERR_INVALID_STRING, v),
+		}
 	}
 }
