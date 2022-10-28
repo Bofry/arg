@@ -1,6 +1,6 @@
-Arg
+arg
 ========
-Arg implements functions to validate arguments
+Package implements functions to validate arguments
 
 ## Synopsis
 ```go
