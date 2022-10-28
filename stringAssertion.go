@@ -56,6 +56,7 @@ func (StringAssertion) In(values ...string) StringValidator {
 	}
 }
 
+// Must check if the given string is evaluated to true by specified predicate.
 func (StringAssertion) Must(fn StringPredicate) StringValidator {
 	return func(v, name string) error {
 		if !fn(v) {

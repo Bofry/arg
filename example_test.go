@@ -86,3 +86,15 @@ func ExampleStringAssertion_Must() {
 	fmt.Println(err)
 	// Output: <nil>
 }
+
+func ExampleStringAssertion_MatchAny() {
+	var v string = "demo@mail.com"
+	err := arg.Strings.Assert(v, "v",
+		arg.Strings.MatchAny(
+			arg.EmailPattern,
+		),
+	)
+
+	fmt.Println(err)
+	// Output: <nil>
+}

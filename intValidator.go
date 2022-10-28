@@ -1,12 +1,10 @@
 package arg
 
 import (
-	"encoding/json"
-
 	"github.com/cstockton/go-conv"
 )
 
-func (fn IntValidator) AssertNumber(v json.Number, name string) error {
+func (fn IntValidator) AssertNumber(v Number, name string) error {
 	integer, err := v.Int64()
 	if err != nil {
 		return err

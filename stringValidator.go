@@ -1,8 +1,6 @@
 package arg
 
 import (
-	"encoding/json"
-
 	"github.com/cstockton/go-conv"
 )
 
@@ -11,7 +9,7 @@ var (
 	_ ValueValidator  = new(StringValidator).Assert
 )
 
-func (fn StringValidator) AssertNumber(v json.Number, name string) error {
+func (fn StringValidator) AssertNumber(v Number, name string) error {
 	return fn(v.String(), name)
 }
 
