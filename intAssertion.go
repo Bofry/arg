@@ -67,7 +67,7 @@ func (IntAssertion) In(values ...int64) IntValidator {
 	sort.Slice(values, func(i, j int) bool { return values[i] < values[j] })
 	return func(v int64, name string) error {
 		i := sort.Search(len(values), func(i int) bool { return values[i] >= v })
-		if i > len(values) || values[i] != v {
+		if i >= len(values) || values[i] != v {
 			return &InvalidArgumentError{
 				Name:   name,
 				Reason: fmt.Sprintf(internal.ERR_INVALID_INTEGER, v),
