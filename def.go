@@ -33,5 +33,5 @@ type (
 	StringPredicate func(v string) bool
 	NumberPredicate func(v Number) bool
 	ValuePredicate  func(v interface{}) bool
-	IPPredicate     func(v net.IP) error
+	IPPredicate     func(v net.IP) bool
 )

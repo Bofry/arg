@@ -58,7 +58,6 @@ func TestIPAssertor(t *testing.T) {
 			t.Errorf("except: %v\ngot: %v", exceptedErrorMsg, err.Error())
 		}
 	}
-
 }
 
 func TestIPAssertion_IsValid(t *testing.T) {
@@ -738,6 +737,35 @@ func TestIPAssertion_NotUnspecified(t *testing.T) {
 		err := _IPAssertion.NotUnspecified(arg, "arg")
 		if err != nil {
 			t.Errorf("should not error")
+		}
+	}
+}
+
+func TestIPAssertion_Must(t *testing.T) {
+	var validate IPValidator = _IPAssertion.Must(
+		func(v net.IP) bool {
+			if v.To4() == nil {
+				return false
+			}
+			return v.String() == "127.1.1.1"
+		})
+
+	{
+		var arg net.IP = net.ParseIP("127.1.1.1")
+		err := validate(arg, "arg")
+		if err != nil {
+			t.Errorf("should not error")
+		}
+	}
+	{
+		var arg net.IP = net.ParseIP("10.10.20.5")
+		err := validate(arg, "arg")
+		if err == nil {
+			t.Errorf("should get error")
+		}
+		exceptedErrorMsg := "invalid argument \"arg\"; specified ip address 10.10.20.5 is invalid"
+		if err.Error() != exceptedErrorMsg {
+			t.Errorf("except: %v\ngot: %v", exceptedErrorMsg, err.Error())
 		}
 	}
 }

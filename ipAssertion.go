@@ -228,6 +228,18 @@ func (IPAssertion) NotUnspecified(v net.IP, name string) error {
 	return nil
 }
 
+func (IPAssertion) Must(fn IPPredicate) IPValidator {
+	return func(v net.IP, name string) error {
+		if !fn(v) {
+			return &InvalidArgumentError{
+				Name:   name,
+				Reason: fmt.Sprintf(internal.ERR_INVALID_IP_ADDR, v),
+			}
+		}
+		return nil
+	}
+}
+
 // BelongTo checks whether the ip is belong to the specified networks.
 func (IPAssertion) BelongToAny(cidrs ...string) IPValidator {
 	var ipnets []*net.IPNet
