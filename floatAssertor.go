@@ -5,6 +5,6 @@ type FloatAssertor struct {
 	name string
 }
 
-func (arg *FloatAssertor) Assert(validators ...FloatValidator) error {
-	return Floats.Assert(arg.v, arg.name, validators...)
+func (asr *FloatAssertor) Assert(validators ...FloatValidator) error {
+	return Floats.Assert(asr.v, asr.name, validators...)
 }

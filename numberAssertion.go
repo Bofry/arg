@@ -126,7 +126,7 @@ func (NumberAssertion) GreaterOrEqual(comparand float64) NumberValidator {
 	)
 }
 
-// BetweenRange check if given number is between the specified minimum and maximum values (both inclusive).
+// BetweenRange checks if given number is between the specified minimum and maximum values (both inclusive).
 func (NumberAssertion) BetweenRange(min, max float64) NumberValidator {
 	return _NumberAssertion.warpFloatValidator(
 		Floats.BetweenRange(min, max), true,

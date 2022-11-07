@@ -5,6 +5,6 @@ type IntAssertor struct {
 	name string
 }
 
-func (arg *IntAssertor) Assert(validators ...IntValidator) error {
-	return Ints.Assert(arg.v, arg.name, validators...)
+func (asr *IntAssertor) Assert(validators ...IntValidator) error {
+	return Ints.Assert(asr.v, asr.name, validators...)
 }

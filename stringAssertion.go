@@ -56,7 +56,7 @@ func (StringAssertion) In(values ...string) StringValidator {
 	}
 }
 
-// Must check if the given string is evaluated to true by specified predicate.
+// Must checks if the given string is evaluated to true by specified predicate.
 func (StringAssertion) Must(fn StringPredicate) StringValidator {
 	return func(v, name string) error {
 		if !fn(v) {
@@ -93,7 +93,7 @@ func (StringAssertion) MinLength(size int) StringValidator {
 	}
 }
 
-// MatchAny check if given string match any one from specified patterns.
+// MatchAny checks if given string match any one from specified patterns.
 func (StringAssertion) MatchAny(patterns ...string) StringValidator {
 	var regex []*regexp.Regexp
 	for _, pattern := range patterns {
