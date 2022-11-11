@@ -24,7 +24,7 @@ func (fn FloatValidator) AssertNumber(v Number, name string) error {
 	return fn(float, name)
 }
 
-func (fn FloatValidator) Assert(v interface{}, name string) error {
+func (fn FloatValidator) AssertValue(v interface{}, name string) error {
 	float, err := conv.Float64(v)
 	if err != nil {
 		return err

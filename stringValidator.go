@@ -6,14 +6,14 @@ import (
 
 var (
 	_ NumberValidator = new(StringValidator).AssertNumber
-	_ ValueValidator  = new(StringValidator).Assert
+	_ ValueValidator  = new(StringValidator).AssertValue
 )
 
 func (fn StringValidator) AssertNumber(v Number, name string) error {
 	return fn(v.String(), name)
 }
 
-func (fn StringValidator) Assert(v interface{}, name string) error {
+func (fn StringValidator) AssertValue(v interface{}, name string) error {
 	str, err := conv.String(v)
 	if err != nil {
 		return &InvalidArgumentError{

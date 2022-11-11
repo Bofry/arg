@@ -24,9 +24,9 @@ func TestNumberAssertion(t *testing.T) {
 		if err == nil {
 			t.Errorf("should get error")
 		}
-		exceptedErrorMsg := "invalid argument \"nonNumber\"; specified number \"unknown\" is invalid"
-		if err.Error() != exceptedErrorMsg {
-			t.Errorf("except: %v\ngot: %v", exceptedErrorMsg, err.Error())
+		expectedErrorMsg := "invalid argument \"nonNumber\"; specified number \"unknown\" is invalid"
+		if err.Error() != expectedErrorMsg {
+			t.Errorf("except: %v\ngot: %v", expectedErrorMsg, err.Error())
 		}
 	}
 	{
@@ -39,9 +39,9 @@ func TestNumberAssertion(t *testing.T) {
 		if err == nil {
 			t.Errorf("should get error")
 		}
-		exceptedErrorMsg := "invalid argument \"nanNumber\"; cannot be -inf, +inf or NaN"
-		if err.Error() != exceptedErrorMsg {
-			t.Errorf("except: %v\ngot: %v", exceptedErrorMsg, err.Error())
+		expectedErrorMsg := "invalid argument \"nanNumber\"; cannot be -inf, +inf or NaN"
+		if err.Error() != expectedErrorMsg {
+			t.Errorf("except: %v\ngot: %v", expectedErrorMsg, err.Error())
 		}
 	}
 	{
@@ -54,9 +54,9 @@ func TestNumberAssertion(t *testing.T) {
 		if err == nil {
 			t.Errorf("should get error")
 		}
-		exceptedErrorMsg := "invalid argument \"zeroNumber\"; should not be zero"
-		if err.Error() != exceptedErrorMsg {
-			t.Errorf("except: %v\ngot: %v", exceptedErrorMsg, err.Error())
+		expectedErrorMsg := "invalid argument \"zeroNumber\"; should not be zero"
+		if err.Error() != expectedErrorMsg {
+			t.Errorf("except: %v\ngot: %v", expectedErrorMsg, err.Error())
 		}
 	}
 	{
@@ -69,9 +69,9 @@ func TestNumberAssertion(t *testing.T) {
 		if err == nil {
 			t.Errorf("should get error")
 		}
-		exceptedErrorMsg := "invalid argument \"negateNumber\"; should be a non-negative number"
-		if err.Error() != exceptedErrorMsg {
-			t.Errorf("except: %v\ngot: %v", exceptedErrorMsg, err.Error())
+		expectedErrorMsg := "invalid argument \"negateNumber\"; should be a non-negative number"
+		if err.Error() != expectedErrorMsg {
+			t.Errorf("except: %v\ngot: %v", expectedErrorMsg, err.Error())
 		}
 	}
 	{
@@ -103,9 +103,9 @@ func TestNumberAssertor(t *testing.T) {
 		if err == nil {
 			t.Errorf("should get error")
 		}
-		exceptedErrorMsg := "invalid argument \"nanNumber\"; cannot be -inf, +inf or NaN"
-		if err.Error() != exceptedErrorMsg {
-			t.Errorf("except: %v\ngot: %v", exceptedErrorMsg, err.Error())
+		expectedErrorMsg := "invalid argument \"nanNumber\"; cannot be -inf, +inf or NaN"
+		if err.Error() != expectedErrorMsg {
+			t.Errorf("except: %v\ngot: %v", expectedErrorMsg, err.Error())
 		}
 	}
 }
@@ -158,9 +158,9 @@ func TestNumberAssertion_IsNumber(t *testing.T) {
 		if err == nil {
 			t.Errorf("should get error")
 		}
-		exceptedErrorMsg := "invalid argument \"arg\"; specified number \"unknown\" is invalid"
-		if err.Error() != exceptedErrorMsg {
-			t.Errorf("except: %v\ngot: %v", exceptedErrorMsg, err.Error())
+		expectedErrorMsg := "invalid argument \"arg\"; specified number \"unknown\" is invalid"
+		if err.Error() != expectedErrorMsg {
+			t.Errorf("except: %v\ngot: %v", expectedErrorMsg, err.Error())
 		}
 	}
 }
@@ -200,9 +200,9 @@ func TestNumberAssertion_NonNegativeNumber(t *testing.T) {
 		if err == nil {
 			t.Errorf("should get error")
 		}
-		exceptedErrorMsg := "invalid argument \"arg\"; should be a non-negative number"
-		if err.Error() != exceptedErrorMsg {
-			t.Errorf("except: %v\ngot: %v", exceptedErrorMsg, err.Error())
+		expectedErrorMsg := "invalid argument \"arg\"; should be a non-negative number"
+		if err.Error() != expectedErrorMsg {
+			t.Errorf("except: %v\ngot: %v", expectedErrorMsg, err.Error())
 		}
 	}
 	{
@@ -211,9 +211,9 @@ func TestNumberAssertion_NonNegativeNumber(t *testing.T) {
 		if err == nil {
 			t.Errorf("should get error")
 		}
-		exceptedErrorMsg := "invalid argument \"arg\"; should be a non-negative number"
-		if err.Error() != exceptedErrorMsg {
-			t.Errorf("except: %v\ngot: %v", exceptedErrorMsg, err.Error())
+		expectedErrorMsg := "invalid argument \"arg\"; should be a non-negative number"
+		if err.Error() != expectedErrorMsg {
+			t.Errorf("except: %v\ngot: %v", expectedErrorMsg, err.Error())
 		}
 	}
 }
@@ -239,9 +239,9 @@ func TestNumberAssertion_NonZero(t *testing.T) {
 		if err == nil {
 			t.Errorf("should get error")
 		}
-		exceptedErrorMsg := "invalid argument \"arg\"; specified number \"unknown\" is invalid"
-		if err.Error() != exceptedErrorMsg {
-			t.Errorf("except: %v\ngot: %v", exceptedErrorMsg, err.Error())
+		expectedErrorMsg := "invalid argument \"arg\"; specified number \"unknown\" is invalid"
+		if err.Error() != expectedErrorMsg {
+			t.Errorf("except: %v\ngot: %v", expectedErrorMsg, err.Error())
 		}
 	}
 
@@ -251,9 +251,9 @@ func TestNumberAssertion_NonZero(t *testing.T) {
 		if err == nil {
 			t.Errorf("should get error")
 		}
-		exceptedErrorMsg := "invalid argument \"arg\"; should not be zero"
-		if err.Error() != exceptedErrorMsg {
-			t.Errorf("except: %v\ngot: %v", exceptedErrorMsg, err.Error())
+		expectedErrorMsg := "invalid argument \"arg\"; should not be zero"
+		if err.Error() != expectedErrorMsg {
+			t.Errorf("except: %v\ngot: %v", expectedErrorMsg, err.Error())
 		}
 	}
 }
@@ -279,9 +279,9 @@ func TestNumberAssertion_NonNanNorInf(t *testing.T) {
 		if err == nil {
 			t.Errorf("should get error")
 		}
-		exceptedErrorMsg := "invalid argument \"arg\"; specified number \"unknown\" is invalid"
-		if err.Error() != exceptedErrorMsg {
-			t.Errorf("except: %v\ngot: %v", exceptedErrorMsg, err.Error())
+		expectedErrorMsg := "invalid argument \"arg\"; specified number \"unknown\" is invalid"
+		if err.Error() != expectedErrorMsg {
+			t.Errorf("except: %v\ngot: %v", expectedErrorMsg, err.Error())
 		}
 	}
 	{
@@ -290,9 +290,9 @@ func TestNumberAssertion_NonNanNorInf(t *testing.T) {
 		if err == nil {
 			t.Errorf("should get error")
 		}
-		exceptedErrorMsg := "invalid argument \"arg\"; cannot be -inf, +inf or NaN"
-		if err.Error() != exceptedErrorMsg {
-			t.Errorf("except: %v\ngot: %v", exceptedErrorMsg, err.Error())
+		expectedErrorMsg := "invalid argument \"arg\"; cannot be -inf, +inf or NaN"
+		if err.Error() != expectedErrorMsg {
+			t.Errorf("except: %v\ngot: %v", expectedErrorMsg, err.Error())
 		}
 	}
 	{
@@ -301,9 +301,9 @@ func TestNumberAssertion_NonNanNorInf(t *testing.T) {
 		if err == nil {
 			t.Errorf("should get error")
 		}
-		exceptedErrorMsg := "invalid argument \"arg\"; cannot be -inf, +inf or NaN"
-		if err.Error() != exceptedErrorMsg {
-			t.Errorf("except: %v\ngot: %v", exceptedErrorMsg, err.Error())
+		expectedErrorMsg := "invalid argument \"arg\"; cannot be -inf, +inf or NaN"
+		if err.Error() != expectedErrorMsg {
+			t.Errorf("except: %v\ngot: %v", expectedErrorMsg, err.Error())
 		}
 	}
 	{
@@ -312,9 +312,9 @@ func TestNumberAssertion_NonNanNorInf(t *testing.T) {
 		if err == nil {
 			t.Errorf("should get error")
 		}
-		exceptedErrorMsg := "invalid argument \"arg\"; cannot be -inf, +inf or NaN"
-		if err.Error() != exceptedErrorMsg {
-			t.Errorf("except: %v\ngot: %v", exceptedErrorMsg, err.Error())
+		expectedErrorMsg := "invalid argument \"arg\"; cannot be -inf, +inf or NaN"
+		if err.Error() != expectedErrorMsg {
+			t.Errorf("except: %v\ngot: %v", expectedErrorMsg, err.Error())
 		}
 	}
 }
@@ -341,9 +341,9 @@ func TestNumberAssertion_NotIn(t *testing.T) {
 		if err == nil {
 			t.Errorf("should get error")
 		}
-		exceptedErrorMsg := "invalid argument \"arg\"; specified number \"6\" is invalid"
-		if err.Error() != exceptedErrorMsg {
-			t.Errorf("except: %v\ngot: %v", exceptedErrorMsg, err.Error())
+		expectedErrorMsg := "invalid argument \"arg\"; specified number \"6\" is invalid"
+		if err.Error() != expectedErrorMsg {
+			t.Errorf("except: %v\ngot: %v", expectedErrorMsg, err.Error())
 		}
 	}
 	{
@@ -352,9 +352,9 @@ func TestNumberAssertion_NotIn(t *testing.T) {
 		if err == nil {
 			t.Errorf("should get error")
 		}
-		exceptedErrorMsg := "invalid argument \"arg\"; specified number \"3\" is invalid"
-		if err.Error() != exceptedErrorMsg {
-			t.Errorf("except: %v\ngot: %v", exceptedErrorMsg, err.Error())
+		expectedErrorMsg := "invalid argument \"arg\"; specified number \"3\" is invalid"
+		if err.Error() != expectedErrorMsg {
+			t.Errorf("except: %v\ngot: %v", expectedErrorMsg, err.Error())
 		}
 	}
 }
@@ -388,9 +388,9 @@ func TestNumberAssertion_Must(t *testing.T) {
 		if err == nil {
 			t.Errorf("should get error")
 		}
-		exceptedErrorMsg := "invalid argument \"arg\"; specified number \"-1\" is invalid"
-		if err.Error() != exceptedErrorMsg {
-			t.Errorf("except: %v\ngot: %v", exceptedErrorMsg, err.Error())
+		expectedErrorMsg := "invalid argument \"arg\"; specified number \"-1\" is invalid"
+		if err.Error() != expectedErrorMsg {
+			t.Errorf("except: %v\ngot: %v", expectedErrorMsg, err.Error())
 		}
 	}
 	{
@@ -399,9 +399,9 @@ func TestNumberAssertion_Must(t *testing.T) {
 		if err == nil {
 			t.Errorf("should get error")
 		}
-		exceptedErrorMsg := "invalid argument \"arg\"; specified number \"-1.003\" is invalid"
-		if err.Error() != exceptedErrorMsg {
-			t.Errorf("except: %v\ngot: %v", exceptedErrorMsg, err.Error())
+		expectedErrorMsg := "invalid argument \"arg\"; specified number \"-1.003\" is invalid"
+		if err.Error() != expectedErrorMsg {
+			t.Errorf("except: %v\ngot: %v", expectedErrorMsg, err.Error())
 		}
 	}
 }
@@ -418,9 +418,9 @@ func TestNumberAssertion_MustInt(t *testing.T) {
 		if err == nil {
 			t.Errorf("should get error")
 		}
-		exceptedErrorMsg := "invalid argument \"arg\"; specified number \"1\" is invalid"
-		if err.Error() != exceptedErrorMsg {
-			t.Errorf("except: %v\ngot: %v", exceptedErrorMsg, err.Error())
+		expectedErrorMsg := "invalid argument \"arg\"; specified number \"1\" is invalid"
+		if err.Error() != expectedErrorMsg {
+			t.Errorf("except: %v\ngot: %v", expectedErrorMsg, err.Error())
 		}
 	}
 	{
@@ -436,9 +436,9 @@ func TestNumberAssertion_MustInt(t *testing.T) {
 		if err == nil {
 			t.Errorf("should get error")
 		}
-		exceptedErrorMsg := "invalid argument \"arg\"; specified number \"3\" is invalid"
-		if err.Error() != exceptedErrorMsg {
-			t.Errorf("except: %v\ngot: %v", exceptedErrorMsg, err.Error())
+		expectedErrorMsg := "invalid argument \"arg\"; specified number \"3\" is invalid"
+		if err.Error() != expectedErrorMsg {
+			t.Errorf("except: %v\ngot: %v", expectedErrorMsg, err.Error())
 		}
 	}
 }
@@ -455,9 +455,9 @@ func TestNumberAssertion_MustFloat(t *testing.T) {
 		if err == nil {
 			t.Errorf("should get error")
 		}
-		exceptedErrorMsg := "invalid argument \"arg\"; specified number \"-0.0001\" is invalid"
-		if err.Error() != exceptedErrorMsg {
-			t.Errorf("except: %v\ngot: %v", exceptedErrorMsg, err.Error())
+		expectedErrorMsg := "invalid argument \"arg\"; specified number \"-0.0001\" is invalid"
+		if err.Error() != expectedErrorMsg {
+			t.Errorf("except: %v\ngot: %v", expectedErrorMsg, err.Error())
 		}
 	}
 	{
@@ -492,9 +492,9 @@ func TestNumberAssertion_Less(t *testing.T) {
 		if err == nil {
 			t.Errorf("should get error")
 		}
-		exceptedErrorMsg := "invalid argument \"arg\"; out of range"
-		if err.Error() != exceptedErrorMsg {
-			t.Errorf("except: %v\ngot: %v", exceptedErrorMsg, err.Error())
+		expectedErrorMsg := "invalid argument \"arg\"; out of range"
+		if err.Error() != expectedErrorMsg {
+			t.Errorf("except: %v\ngot: %v", expectedErrorMsg, err.Error())
 		}
 	}
 	{
@@ -503,9 +503,9 @@ func TestNumberAssertion_Less(t *testing.T) {
 		if err == nil {
 			t.Errorf("should get error")
 		}
-		exceptedErrorMsg := "invalid argument \"arg\"; out of range"
-		if err.Error() != exceptedErrorMsg {
-			t.Errorf("except: %v\ngot: %v", exceptedErrorMsg, err.Error())
+		expectedErrorMsg := "invalid argument \"arg\"; out of range"
+		if err.Error() != expectedErrorMsg {
+			t.Errorf("except: %v\ngot: %v", expectedErrorMsg, err.Error())
 		}
 	}
 }
@@ -533,9 +533,9 @@ func TestNumberAssertion_LessOrEqual(t *testing.T) {
 		if err == nil {
 			t.Errorf("should get error")
 		}
-		exceptedErrorMsg := "invalid argument \"arg\"; out of range"
-		if err.Error() != exceptedErrorMsg {
-			t.Errorf("except: %v\ngot: %v", exceptedErrorMsg, err.Error())
+		expectedErrorMsg := "invalid argument \"arg\"; out of range"
+		if err.Error() != expectedErrorMsg {
+			t.Errorf("except: %v\ngot: %v", expectedErrorMsg, err.Error())
 		}
 	}
 }
@@ -556,9 +556,9 @@ func TestNumberAssertion_Greater(t *testing.T) {
 		if err == nil {
 			t.Errorf("should get error")
 		}
-		exceptedErrorMsg := "invalid argument \"arg\"; out of range"
-		if err.Error() != exceptedErrorMsg {
-			t.Errorf("except: %v\ngot: %v", exceptedErrorMsg, err.Error())
+		expectedErrorMsg := "invalid argument \"arg\"; out of range"
+		if err.Error() != expectedErrorMsg {
+			t.Errorf("except: %v\ngot: %v", expectedErrorMsg, err.Error())
 		}
 	}
 	{
@@ -567,9 +567,9 @@ func TestNumberAssertion_Greater(t *testing.T) {
 		if err == nil {
 			t.Errorf("should get error")
 		}
-		exceptedErrorMsg := "invalid argument \"arg\"; out of range"
-		if err.Error() != exceptedErrorMsg {
-			t.Errorf("except: %v\ngot: %v", exceptedErrorMsg, err.Error())
+		expectedErrorMsg := "invalid argument \"arg\"; out of range"
+		if err.Error() != expectedErrorMsg {
+			t.Errorf("except: %v\ngot: %v", expectedErrorMsg, err.Error())
 		}
 	}
 }
@@ -597,9 +597,9 @@ func TestNumberAssertion_GreaterOrEqual(t *testing.T) {
 		if err == nil {
 			t.Errorf("should get error")
 		}
-		exceptedErrorMsg := "invalid argument \"arg\"; out of range"
-		if err.Error() != exceptedErrorMsg {
-			t.Errorf("except: %v\ngot: %v", exceptedErrorMsg, err.Error())
+		expectedErrorMsg := "invalid argument \"arg\"; out of range"
+		if err.Error() != expectedErrorMsg {
+			t.Errorf("except: %v\ngot: %v", expectedErrorMsg, err.Error())
 		}
 	}
 }
@@ -641,9 +641,9 @@ func TestNumberAssertion_BetweenRange(t *testing.T) {
 		if err == nil {
 			t.Errorf("should get error")
 		}
-		exceptedErrorMsg := "invalid argument \"arg\"; out of range"
-		if err.Error() != exceptedErrorMsg {
-			t.Errorf("except: %v\ngot: %v", exceptedErrorMsg, err.Error())
+		expectedErrorMsg := "invalid argument \"arg\"; out of range"
+		if err.Error() != expectedErrorMsg {
+			t.Errorf("except: %v\ngot: %v", expectedErrorMsg, err.Error())
 		}
 	}
 	{
@@ -652,9 +652,9 @@ func TestNumberAssertion_BetweenRange(t *testing.T) {
 		if err == nil {
 			t.Errorf("should get error")
 		}
-		exceptedErrorMsg := "invalid argument \"arg\"; out of range"
-		if err.Error() != exceptedErrorMsg {
-			t.Errorf("except: %v\ngot: %v", exceptedErrorMsg, err.Error())
+		expectedErrorMsg := "invalid argument \"arg\"; out of range"
+		if err.Error() != expectedErrorMsg {
+			t.Errorf("except: %v\ngot: %v", expectedErrorMsg, err.Error())
 		}
 	}
 	{
@@ -663,9 +663,9 @@ func TestNumberAssertion_BetweenRange(t *testing.T) {
 		if err == nil {
 			t.Errorf("should get error")
 		}
-		exceptedErrorMsg := "invalid argument \"arg\"; out of range"
-		if err.Error() != exceptedErrorMsg {
-			t.Errorf("except: %v\ngot: %v", exceptedErrorMsg, err.Error())
+		expectedErrorMsg := "invalid argument \"arg\"; out of range"
+		if err.Error() != expectedErrorMsg {
+			t.Errorf("except: %v\ngot: %v", expectedErrorMsg, err.Error())
 		}
 	}
 }

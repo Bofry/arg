@@ -8,10 +8,10 @@ import (
 )
 
 func (fn IPValidator) AssertString(v string, name string) error {
-	return fn.Assert(v, name)
+	return fn.AssertValue(v, name)
 }
 
-func (fn IPValidator) Assert(v interface{}, name string) error {
+func (fn IPValidator) AssertValue(v interface{}, name string) error {
 	var ip net.IP
 
 	switch v.(type) {

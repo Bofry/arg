@@ -12,7 +12,7 @@ func (fn IntValidator) AssertNumber(v Number, name string) error {
 	return fn(integer, name)
 }
 
-func (fn IntValidator) Assert(v interface{}, name string) error {
+func (fn IntValidator) AssertValue(v interface{}, name string) error {
 	integer, err := conv.Int64(v)
 	if err != nil {
 		return err

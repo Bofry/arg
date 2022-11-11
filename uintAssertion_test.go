@@ -2,19 +2,18 @@ package arg
 
 import "testing"
 
-func TestIntAssertion(t *testing.T) {
+func TestUIntAssertion(t *testing.T) {
 	var (
-		zeroInt      int64 = 0
-		negateOneInt int64 = -1
-		sixInt       int64 = 6
+		zeroInt      uint64 = 0
+		negateOneInt uint64 = 1
+		sixInt       uint64 = 6
 	)
 
 	{
-		err := _IntAssertion.Assert(zeroInt, "zeroInt",
-			_IntAssertion.NonNegativeInteger,
-			_IntAssertion.NonZero,
-			_IntAssertion.LessOrEqual(3),
-			_IntAssertion.BetweenRange(-2, 4),
+		err := _UIntAssertion.Assert(zeroInt, "zeroInt",
+			_UIntAssertion.NonZero,
+			_UIntAssertion.LessOrEqual(3),
+			_UIntAssertion.BetweenRange(2, 4),
 		)
 		if err == nil {
 			t.Errorf("should get error")
@@ -25,26 +24,24 @@ func TestIntAssertion(t *testing.T) {
 		}
 	}
 	{
-		err := _IntAssertion.Assert(negateOneInt, "negateOneInt",
-			_IntAssertion.NonNegativeInteger,
-			_IntAssertion.NonZero,
-			_IntAssertion.LessOrEqual(3),
-			_IntAssertion.BetweenRange(-2, 4),
+		err := _UIntAssertion.Assert(negateOneInt, "negateOneInt",
+			_UIntAssertion.NonZero,
+			_UIntAssertion.LessOrEqual(3),
+			_UIntAssertion.BetweenRange(2, 4),
 		)
 		if err == nil {
 			t.Errorf("should get error")
 		}
-		expectedErrorMsg := "invalid argument \"negateOneInt\"; should be a non-negative integer"
+		expectedErrorMsg := "invalid argument \"negateOneInt\"; out of range"
 		if err.Error() != expectedErrorMsg {
 			t.Errorf("except: %v\ngot: %v", expectedErrorMsg, err.Error())
 		}
 	}
 	{
-		err := _IntAssertion.Assert(sixInt, "sixInt",
-			_IntAssertion.NonNegativeInteger,
-			_IntAssertion.NonZero,
-			_IntAssertion.LessOrEqual(3),
-			_IntAssertion.BetweenRange(-2, 4),
+		err := _UIntAssertion.Assert(sixInt, "sixInt",
+			_UIntAssertion.NonZero,
+			_UIntAssertion.LessOrEqual(3),
+			_UIntAssertion.BetweenRange(2, 4),
 		)
 		if err == nil {
 			t.Errorf("should get error")
@@ -56,18 +53,17 @@ func TestIntAssertion(t *testing.T) {
 	}
 }
 
-func TestIntAssertor(t *testing.T) {
+func TestUIntAssertor(t *testing.T) {
 	var (
-		zeroInt int64 = 0
+		zeroInt uint64 = 0
 	)
 
 	{
-		err := _IntAssertion.Assertor(zeroInt, "zeroInt").
+		err := _UIntAssertion.Assertor(zeroInt, "zeroInt").
 			Assert(
-				_IntAssertion.NonNegativeInteger,
-				_IntAssertion.NonZero,
-				_IntAssertion.LessOrEqual(3),
-				_IntAssertion.BetweenRange(-2, 4),
+				_UIntAssertion.NonZero,
+				_UIntAssertion.LessOrEqual(3),
+				_UIntAssertion.BetweenRange(2, 4),
 			)
 		if err == nil {
 			t.Errorf("should get error")
@@ -79,52 +75,24 @@ func TestIntAssertor(t *testing.T) {
 	}
 }
 
-func TestIntAssertion_NonNegativeInteger(t *testing.T) {
+func TestUIntAssertion_NonZero(t *testing.T) {
 	{
-		var arg int64 = 0
-		err := _IntAssertion.NonNegativeInteger(arg, "arg")
+		var arg uint64 = 5
+		err := _UIntAssertion.NonZero(arg, "arg")
 		if err != nil {
 			t.Errorf("should not error")
 		}
 	}
 	{
-		var arg int64 = 1
-		err := _IntAssertion.NonNegativeInteger(arg, "arg")
+		var arg uint64 = 1
+		err := _UIntAssertion.NonZero(arg, "arg")
 		if err != nil {
 			t.Errorf("should not error")
 		}
 	}
 	{
-		var arg int64 = -1
-		err := _IntAssertion.NonNegativeInteger(arg, "arg")
-		if err == nil {
-			t.Errorf("should get error")
-		}
-		expectedErrorMsg := "invalid argument \"arg\"; should be a non-negative integer"
-		if err.Error() != expectedErrorMsg {
-			t.Errorf("except: %v\ngot: %v", expectedErrorMsg, err.Error())
-		}
-	}
-}
-
-func TestIntAssertion_NonZero(t *testing.T) {
-	{
-		var arg int64 = -1
-		err := _IntAssertion.NonZero(arg, "arg")
-		if err != nil {
-			t.Errorf("should not error")
-		}
-	}
-	{
-		var arg int64 = 1
-		err := _IntAssertion.NonZero(arg, "arg")
-		if err != nil {
-			t.Errorf("should not error")
-		}
-	}
-	{
-		var arg int64 = 0
-		err := _IntAssertion.NonZero(arg, "arg")
+		var arg uint64 = 0
+		err := _UIntAssertion.NonZero(arg, "arg")
 		if err == nil {
 			t.Errorf("should get error")
 		}
@@ -135,17 +103,17 @@ func TestIntAssertion_NonZero(t *testing.T) {
 	}
 }
 
-func TestIntAssertion_NotIn(t *testing.T) {
-	var validate IntValidator = _IntAssertion.NotIn(3, 6)
+func TestUIntAssertion_NotIn(t *testing.T) {
+	var validate UIntValidator = _UIntAssertion.NotIn(3, 6)
 	{
-		var arg int64 = -1
+		var arg uint64 = 1
 		err := validate(arg, "arg")
 		if err != nil {
 			t.Errorf("should not error")
 		}
 	}
 	{
-		var arg int64 = 6
+		var arg uint64 = 6
 		err := validate(arg, "arg")
 		if err == nil {
 			t.Errorf("should get error")
@@ -156,7 +124,7 @@ func TestIntAssertion_NotIn(t *testing.T) {
 		}
 	}
 	{
-		var arg int64 = 3
+		var arg uint64 = 3
 		err := validate(arg, "arg")
 		if err == nil {
 			t.Errorf("should get error")
@@ -168,10 +136,10 @@ func TestIntAssertion_NotIn(t *testing.T) {
 	}
 }
 
-func TestIntAssertion_In(t *testing.T) {
-	var validate IntValidator = _IntAssertion.In(3, 6)
+func TestUIntAssertion_In(t *testing.T) {
+	var validate UIntValidator = _UIntAssertion.In(3, 6)
 	{
-		var arg int64 = 1
+		var arg uint64 = 1
 		err := validate(arg, "arg")
 		if err == nil {
 			t.Errorf("should get error")
@@ -182,14 +150,14 @@ func TestIntAssertion_In(t *testing.T) {
 		}
 	}
 	{
-		var arg int64 = 6
+		var arg uint64 = 6
 		err := validate(arg, "arg")
 		if err != nil {
 			t.Errorf("should not error")
 		}
 	}
 	{
-		var arg int64 = 3
+		var arg uint64 = 3
 		err := validate(arg, "arg")
 		if err != nil {
 			t.Errorf("should not error")
@@ -197,14 +165,14 @@ func TestIntAssertion_In(t *testing.T) {
 	}
 }
 
-func TestIntAssertion_Must(t *testing.T) {
-	var validate IntValidator = _IntAssertion.Must(
-		func(v int64) bool {
+func TestUIntAssertion_Must(t *testing.T) {
+	var validate UIntValidator = _UIntAssertion.Must(
+		func(v uint64) bool {
 			return (v & 0x01) == 0
 		})
 
 	{
-		var arg int64 = 1
+		var arg uint64 = 1
 		err := validate(arg, "arg")
 		if err == nil {
 			t.Errorf("should get error")
@@ -215,14 +183,14 @@ func TestIntAssertion_Must(t *testing.T) {
 		}
 	}
 	{
-		var arg int64 = 6
+		var arg uint64 = 6
 		err := validate(arg, "arg")
 		if err != nil {
 			t.Errorf("should not error")
 		}
 	}
 	{
-		var arg int64 = 3
+		var arg uint64 = 3
 		err := validate(arg, "arg")
 		if err == nil {
 			t.Errorf("should get error")
@@ -234,25 +202,25 @@ func TestIntAssertion_Must(t *testing.T) {
 	}
 }
 
-func TestIntAssertion_LessOrEqual(t *testing.T) {
-	var validate IntValidator = _IntAssertion.LessOrEqual(5)
+func TestUIntAssertion_LessOrEqual(t *testing.T) {
+	var validate UIntValidator = _UIntAssertion.LessOrEqual(5)
 
 	{
-		var arg int64 = 5
+		var arg uint64 = 5
 		err := validate(arg, "arg")
 		if err != nil {
 			t.Errorf("should not error")
 		}
 	}
 	{
-		var arg int64 = 4
+		var arg uint64 = 4
 		err := validate(arg, "arg")
 		if err != nil {
 			t.Errorf("should not error")
 		}
 	}
 	{
-		var arg int64 = 6
+		var arg uint64 = 6
 		err := validate(arg, "arg")
 		if err == nil {
 			t.Errorf("should get error")
@@ -264,25 +232,25 @@ func TestIntAssertion_LessOrEqual(t *testing.T) {
 	}
 }
 
-func TestIntAssertion_GreaterOrEqual(t *testing.T) {
-	var validate IntValidator = _IntAssertion.GreaterOrEqual(5)
+func TestUIntAssertion_GreaterOrEqual(t *testing.T) {
+	var validate UIntValidator = _UIntAssertion.GreaterOrEqual(5)
 
 	{
-		var arg int64 = 5
+		var arg uint64 = 5
 		err := validate(arg, "arg")
 		if err != nil {
 			t.Errorf("should not error")
 		}
 	}
 	{
-		var arg int64 = 6
+		var arg uint64 = 6
 		err := validate(arg, "arg")
 		if err != nil {
 			t.Errorf("should not error")
 		}
 	}
 	{
-		var arg int64 = 4
+		var arg uint64 = 4
 		err := validate(arg, "arg")
 		if err == nil {
 			t.Errorf("should get error")
@@ -294,32 +262,25 @@ func TestIntAssertion_GreaterOrEqual(t *testing.T) {
 	}
 }
 
-func TestIntAssertion_BetweenRange(t *testing.T) {
-	var validate IntValidator = _IntAssertion.BetweenRange(-2, 4)
+func TestUIntAssertion_BetweenRange(t *testing.T) {
+	var validate UIntValidator = _UIntAssertion.BetweenRange(2, 4)
 
 	{
-		var arg int64 = 4
+		var arg uint64 = 4
 		err := validate(arg, "arg")
 		if err != nil {
 			t.Errorf("should not error")
 		}
 	}
 	{
-		var arg int64 = -2
+		var arg uint64 = 2
 		err := validate(arg, "arg")
 		if err != nil {
 			t.Errorf("should not error")
 		}
 	}
 	{
-		var arg int64 = 0
-		err := validate(arg, "arg")
-		if err != nil {
-			t.Errorf("should not error")
-		}
-	}
-	{
-		var arg int64 = -3
+		var arg uint64 = 1
 		err := validate(arg, "arg")
 		if err == nil {
 			t.Errorf("should get error")
@@ -330,7 +291,7 @@ func TestIntAssertion_BetweenRange(t *testing.T) {
 		}
 	}
 	{
-		var arg int64 = 5
+		var arg uint64 = 5
 		err := validate(arg, "arg")
 		if err == nil {
 			t.Errorf("should get error")

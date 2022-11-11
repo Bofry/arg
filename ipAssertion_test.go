@@ -19,9 +19,9 @@ func TestIPAssertion(t *testing.T) {
 		if err == nil {
 			t.Errorf("should get error")
 		}
-		exceptedErrorMsg := "invalid argument \"invalidIP\"; specified ip address ?00 is invalid"
-		if err.Error() != exceptedErrorMsg {
-			t.Errorf("except: %v\ngot: %v", exceptedErrorMsg, err.Error())
+		expectedErrorMsg := "invalid argument \"invalidIP\"; specified ip address ?00 is invalid"
+		if err.Error() != expectedErrorMsg {
+			t.Errorf("except: %v\ngot: %v", expectedErrorMsg, err.Error())
 		}
 	}
 	{
@@ -32,9 +32,9 @@ func TestIPAssertion(t *testing.T) {
 		if err == nil {
 			t.Errorf("should get error")
 		}
-		exceptedErrorMsg := "invalid argument \"ip128_0_0_1\"; specified ip address 128.0.0.1 is invalid"
-		if err.Error() != exceptedErrorMsg {
-			t.Errorf("except: %v\ngot: %v", exceptedErrorMsg, err.Error())
+		expectedErrorMsg := "invalid argument \"ip128_0_0_1\"; specified ip address 128.0.0.1 is invalid"
+		if err.Error() != expectedErrorMsg {
+			t.Errorf("except: %v\ngot: %v", expectedErrorMsg, err.Error())
 		}
 	}
 }
@@ -53,9 +53,9 @@ func TestIPAssertor(t *testing.T) {
 		if err == nil {
 			t.Errorf("should get error")
 		}
-		exceptedErrorMsg := "invalid argument \"invalidIP\"; specified ip address ?00 is invalid"
-		if err.Error() != exceptedErrorMsg {
-			t.Errorf("except: %v\ngot: %v", exceptedErrorMsg, err.Error())
+		expectedErrorMsg := "invalid argument \"invalidIP\"; specified ip address ?00 is invalid"
+		if err.Error() != expectedErrorMsg {
+			t.Errorf("except: %v\ngot: %v", expectedErrorMsg, err.Error())
 		}
 	}
 }
@@ -74,9 +74,9 @@ func TestIPAssertion_IsValid(t *testing.T) {
 		if err == nil {
 			t.Errorf("should get error")
 		}
-		exceptedErrorMsg := "invalid argument \"arg\"; specified ip address ?030506070809 is invalid"
-		if err.Error() != exceptedErrorMsg {
-			t.Errorf("except: %v\ngot: %v", exceptedErrorMsg, err.Error())
+		expectedErrorMsg := "invalid argument \"arg\"; specified ip address ?030506070809 is invalid"
+		if err.Error() != expectedErrorMsg {
+			t.Errorf("except: %v\ngot: %v", expectedErrorMsg, err.Error())
 		}
 	}
 }
@@ -95,9 +95,9 @@ func TestIPAssertion_GlobalUnicast(t *testing.T) {
 		if err == nil {
 			t.Errorf("should get error")
 		}
-		exceptedErrorMsg := "invalid argument \"arg\"; specified ip address ff00:: is invalid"
-		if err.Error() != exceptedErrorMsg {
-			t.Errorf("except: %v\ngot: %v", exceptedErrorMsg, err.Error())
+		expectedErrorMsg := "invalid argument \"arg\"; specified ip address ff00:: is invalid"
+		if err.Error() != expectedErrorMsg {
+			t.Errorf("except: %v\ngot: %v", expectedErrorMsg, err.Error())
 		}
 	}
 	{
@@ -120,9 +120,9 @@ func TestIPAssertion_GlobalUnicast(t *testing.T) {
 		if err == nil {
 			t.Errorf("should get error")
 		}
-		exceptedErrorMsg := "invalid argument \"arg\"; specified ip address 255.255.255.255 is invalid"
-		if err.Error() != exceptedErrorMsg {
-			t.Errorf("except: %v\ngot: %v", exceptedErrorMsg, err.Error())
+		expectedErrorMsg := "invalid argument \"arg\"; specified ip address 255.255.255.255 is invalid"
+		if err.Error() != expectedErrorMsg {
+			t.Errorf("except: %v\ngot: %v", expectedErrorMsg, err.Error())
 		}
 	}
 }
@@ -141,9 +141,9 @@ func TestIPAssertion_InterfaceLocalMulticast(t *testing.T) {
 		if err == nil {
 			t.Errorf("should get error")
 		}
-		exceptedErrorMsg := "invalid argument \"arg\"; specified ip address 2000:: is invalid"
-		if err.Error() != exceptedErrorMsg {
-			t.Errorf("except: %v\ngot: %v", exceptedErrorMsg, err.Error())
+		expectedErrorMsg := "invalid argument \"arg\"; specified ip address 2000:: is invalid"
+		if err.Error() != expectedErrorMsg {
+			t.Errorf("except: %v\ngot: %v", expectedErrorMsg, err.Error())
 		}
 	}
 	{
@@ -152,9 +152,9 @@ func TestIPAssertion_InterfaceLocalMulticast(t *testing.T) {
 		if err == nil {
 			t.Errorf("should get error")
 		}
-		exceptedErrorMsg := "invalid argument \"arg\"; specified ip address 255.0.0.0 is invalid"
-		if err.Error() != exceptedErrorMsg {
-			t.Errorf("except: %v\ngot: %v", exceptedErrorMsg, err.Error())
+		expectedErrorMsg := "invalid argument \"arg\"; specified ip address 255.0.0.0 is invalid"
+		if err.Error() != expectedErrorMsg {
+			t.Errorf("except: %v\ngot: %v", expectedErrorMsg, err.Error())
 		}
 	}
 }
@@ -173,9 +173,9 @@ func TestIPAssertion_LinkLocalMulticast(t *testing.T) {
 		if err == nil {
 			t.Errorf("should get error")
 		}
-		exceptedErrorMsg := "invalid argument \"arg\"; specified ip address fe80:: is invalid"
-		if err.Error() != exceptedErrorMsg {
-			t.Errorf("except: %v\ngot: %v", exceptedErrorMsg, err.Error())
+		expectedErrorMsg := "invalid argument \"arg\"; specified ip address fe80:: is invalid"
+		if err.Error() != expectedErrorMsg {
+			t.Errorf("except: %v\ngot: %v", expectedErrorMsg, err.Error())
 		}
 	}
 	{
@@ -191,9 +191,9 @@ func TestIPAssertion_LinkLocalMulticast(t *testing.T) {
 		if err == nil {
 			t.Errorf("should get error")
 		}
-		exceptedErrorMsg := "invalid argument \"arg\"; specified ip address 169.254.0.0 is invalid"
-		if err.Error() != exceptedErrorMsg {
-			t.Errorf("except: %v\ngot: %v", exceptedErrorMsg, err.Error())
+		expectedErrorMsg := "invalid argument \"arg\"; specified ip address 169.254.0.0 is invalid"
+		if err.Error() != expectedErrorMsg {
+			t.Errorf("except: %v\ngot: %v", expectedErrorMsg, err.Error())
 		}
 	}
 }
@@ -212,9 +212,9 @@ func TestIPAssertion_LinkLocalUnicast(t *testing.T) {
 		if err == nil {
 			t.Errorf("should get error")
 		}
-		exceptedErrorMsg := "invalid argument \"arg\"; specified ip address 2000:: is invalid"
-		if err.Error() != exceptedErrorMsg {
-			t.Errorf("except: %v\ngot: %v", exceptedErrorMsg, err.Error())
+		expectedErrorMsg := "invalid argument \"arg\"; specified ip address 2000:: is invalid"
+		if err.Error() != expectedErrorMsg {
+			t.Errorf("except: %v\ngot: %v", expectedErrorMsg, err.Error())
 		}
 	}
 	{
@@ -230,9 +230,9 @@ func TestIPAssertion_LinkLocalUnicast(t *testing.T) {
 		if err == nil {
 			t.Errorf("should get error")
 		}
-		exceptedErrorMsg := "invalid argument \"arg\"; specified ip address 224.0.0.0 is invalid"
-		if err.Error() != exceptedErrorMsg {
-			t.Errorf("except: %v\ngot: %v", exceptedErrorMsg, err.Error())
+		expectedErrorMsg := "invalid argument \"arg\"; specified ip address 224.0.0.0 is invalid"
+		if err.Error() != expectedErrorMsg {
+			t.Errorf("except: %v\ngot: %v", expectedErrorMsg, err.Error())
 		}
 	}
 }
@@ -251,9 +251,9 @@ func TestIPAssertion_Loopback(t *testing.T) {
 		if err == nil {
 			t.Errorf("should get error")
 		}
-		exceptedErrorMsg := "invalid argument \"arg\"; specified ip address ff02::1 is invalid"
-		if err.Error() != exceptedErrorMsg {
-			t.Errorf("except: %v\ngot: %v", exceptedErrorMsg, err.Error())
+		expectedErrorMsg := "invalid argument \"arg\"; specified ip address ff02::1 is invalid"
+		if err.Error() != expectedErrorMsg {
+			t.Errorf("except: %v\ngot: %v", expectedErrorMsg, err.Error())
 		}
 	}
 	{
@@ -269,9 +269,9 @@ func TestIPAssertion_Loopback(t *testing.T) {
 		if err == nil {
 			t.Errorf("should get error")
 		}
-		exceptedErrorMsg := "invalid argument \"arg\"; specified ip address 128.0.0.0 is invalid"
-		if err.Error() != exceptedErrorMsg {
-			t.Errorf("except: %v\ngot: %v", exceptedErrorMsg, err.Error())
+		expectedErrorMsg := "invalid argument \"arg\"; specified ip address 128.0.0.0 is invalid"
+		if err.Error() != expectedErrorMsg {
+			t.Errorf("except: %v\ngot: %v", expectedErrorMsg, err.Error())
 		}
 	}
 }
@@ -297,9 +297,9 @@ func TestIPAssertion_Multicast(t *testing.T) {
 		if err == nil {
 			t.Errorf("should get error")
 		}
-		exceptedErrorMsg := "invalid argument \"arg\"; specified ip address ::1 is invalid"
-		if err.Error() != exceptedErrorMsg {
-			t.Errorf("except: %v\ngot: %v", exceptedErrorMsg, err.Error())
+		expectedErrorMsg := "invalid argument \"arg\"; specified ip address ::1 is invalid"
+		if err.Error() != expectedErrorMsg {
+			t.Errorf("except: %v\ngot: %v", expectedErrorMsg, err.Error())
 		}
 	}
 	{
@@ -322,9 +322,9 @@ func TestIPAssertion_Multicast(t *testing.T) {
 		if err == nil {
 			t.Errorf("should get error")
 		}
-		exceptedErrorMsg := "invalid argument \"arg\"; specified ip address 127.0.0.0 is invalid"
-		if err.Error() != exceptedErrorMsg {
-			t.Errorf("except: %v\ngot: %v", exceptedErrorMsg, err.Error())
+		expectedErrorMsg := "invalid argument \"arg\"; specified ip address 127.0.0.0 is invalid"
+		if err.Error() != expectedErrorMsg {
+			t.Errorf("except: %v\ngot: %v", expectedErrorMsg, err.Error())
 		}
 	}
 }
@@ -343,9 +343,9 @@ func TestIPAssertion_Private(t *testing.T) {
 		if err == nil {
 			t.Errorf("should get error")
 		}
-		exceptedErrorMsg := "invalid argument \"arg\"; specified ip address fe00:: is invalid"
-		if err.Error() != exceptedErrorMsg {
-			t.Errorf("except: %v\ngot: %v", exceptedErrorMsg, err.Error())
+		expectedErrorMsg := "invalid argument \"arg\"; specified ip address fe00:: is invalid"
+		if err.Error() != expectedErrorMsg {
+			t.Errorf("except: %v\ngot: %v", expectedErrorMsg, err.Error())
 		}
 	}
 	{
@@ -361,9 +361,9 @@ func TestIPAssertion_Private(t *testing.T) {
 		if err == nil {
 			t.Errorf("should get error")
 		}
-		exceptedErrorMsg := "invalid argument \"arg\"; specified ip address 11.0.0.0 is invalid"
-		if err.Error() != exceptedErrorMsg {
-			t.Errorf("except: %v\ngot: %v", exceptedErrorMsg, err.Error())
+		expectedErrorMsg := "invalid argument \"arg\"; specified ip address 11.0.0.0 is invalid"
+		if err.Error() != expectedErrorMsg {
+			t.Errorf("except: %v\ngot: %v", expectedErrorMsg, err.Error())
 		}
 	}
 }
@@ -382,9 +382,9 @@ func TestIPAssertion_Unspecified(t *testing.T) {
 		if err == nil {
 			t.Errorf("should get error")
 		}
-		exceptedErrorMsg := "invalid argument \"arg\"; specified ip address fe00:: is invalid"
-		if err.Error() != exceptedErrorMsg {
-			t.Errorf("except: %v\ngot: %v", exceptedErrorMsg, err.Error())
+		expectedErrorMsg := "invalid argument \"arg\"; specified ip address fe00:: is invalid"
+		if err.Error() != expectedErrorMsg {
+			t.Errorf("except: %v\ngot: %v", expectedErrorMsg, err.Error())
 		}
 	}
 	{
@@ -400,9 +400,9 @@ func TestIPAssertion_Unspecified(t *testing.T) {
 		if err == nil {
 			t.Errorf("should get error")
 		}
-		exceptedErrorMsg := "invalid argument \"arg\"; specified ip address 8.8.8.8 is invalid"
-		if err.Error() != exceptedErrorMsg {
-			t.Errorf("except: %v\ngot: %v", exceptedErrorMsg, err.Error())
+		expectedErrorMsg := "invalid argument \"arg\"; specified ip address 8.8.8.8 is invalid"
+		if err.Error() != expectedErrorMsg {
+			t.Errorf("except: %v\ngot: %v", expectedErrorMsg, err.Error())
 		}
 	}
 }
@@ -414,9 +414,9 @@ func TestIPAssertion_NonGlobalUnicast(t *testing.T) {
 		if err == nil {
 			t.Errorf("should get error")
 		}
-		exceptedErrorMsg := "invalid argument \"arg\"; specified ip address 2000:: is invalid"
-		if err.Error() != exceptedErrorMsg {
-			t.Errorf("except: %v\ngot: %v", exceptedErrorMsg, err.Error())
+		expectedErrorMsg := "invalid argument \"arg\"; specified ip address 2000:: is invalid"
+		if err.Error() != expectedErrorMsg {
+			t.Errorf("except: %v\ngot: %v", expectedErrorMsg, err.Error())
 		}
 	}
 	{
@@ -432,9 +432,9 @@ func TestIPAssertion_NonGlobalUnicast(t *testing.T) {
 		if err == nil {
 			t.Errorf("should get error")
 		}
-		exceptedErrorMsg := "invalid argument \"arg\"; specified ip address 10.255.0.0 is invalid"
-		if err.Error() != exceptedErrorMsg {
-			t.Errorf("except: %v\ngot: %v", exceptedErrorMsg, err.Error())
+		expectedErrorMsg := "invalid argument \"arg\"; specified ip address 10.255.0.0 is invalid"
+		if err.Error() != expectedErrorMsg {
+			t.Errorf("except: %v\ngot: %v", expectedErrorMsg, err.Error())
 		}
 	}
 	{
@@ -443,9 +443,9 @@ func TestIPAssertion_NonGlobalUnicast(t *testing.T) {
 		if err == nil {
 			t.Errorf("should get error")
 		}
-		exceptedErrorMsg := "invalid argument \"arg\"; specified ip address 8.8.8.8 is invalid"
-		if err.Error() != exceptedErrorMsg {
-			t.Errorf("except: %v\ngot: %v", exceptedErrorMsg, err.Error())
+		expectedErrorMsg := "invalid argument \"arg\"; specified ip address 8.8.8.8 is invalid"
+		if err.Error() != expectedErrorMsg {
+			t.Errorf("except: %v\ngot: %v", expectedErrorMsg, err.Error())
 		}
 	}
 	{
@@ -464,9 +464,9 @@ func TestIPAssertion_NonInterfaceLocalMulticast(t *testing.T) {
 		if err == nil {
 			t.Errorf("should get error")
 		}
-		exceptedErrorMsg := "invalid argument \"arg\"; specified ip address ff01::1 is invalid"
-		if err.Error() != exceptedErrorMsg {
-			t.Errorf("except: %v\ngot: %v", exceptedErrorMsg, err.Error())
+		expectedErrorMsg := "invalid argument \"arg\"; specified ip address ff01::1 is invalid"
+		if err.Error() != expectedErrorMsg {
+			t.Errorf("except: %v\ngot: %v", expectedErrorMsg, err.Error())
 		}
 	}
 	{
@@ -492,9 +492,9 @@ func TestIPAssertion_NotLinkLocalMulticast(t *testing.T) {
 		if err == nil {
 			t.Errorf("should get error")
 		}
-		exceptedErrorMsg := "invalid argument \"arg\"; specified ip address ff02::2 is invalid"
-		if err.Error() != exceptedErrorMsg {
-			t.Errorf("except: %v\ngot: %v", exceptedErrorMsg, err.Error())
+		expectedErrorMsg := "invalid argument \"arg\"; specified ip address ff02::2 is invalid"
+		if err.Error() != expectedErrorMsg {
+			t.Errorf("except: %v\ngot: %v", expectedErrorMsg, err.Error())
 		}
 	}
 	{
@@ -510,9 +510,9 @@ func TestIPAssertion_NotLinkLocalMulticast(t *testing.T) {
 		if err == nil {
 			t.Errorf("should get error")
 		}
-		exceptedErrorMsg := "invalid argument \"arg\"; specified ip address 224.0.0.0 is invalid"
-		if err.Error() != exceptedErrorMsg {
-			t.Errorf("except: %v\ngot: %v", exceptedErrorMsg, err.Error())
+		expectedErrorMsg := "invalid argument \"arg\"; specified ip address 224.0.0.0 is invalid"
+		if err.Error() != expectedErrorMsg {
+			t.Errorf("except: %v\ngot: %v", expectedErrorMsg, err.Error())
 		}
 	}
 	{
@@ -531,9 +531,9 @@ func TestIPAssertion_NotLinkLocalUnicast(t *testing.T) {
 		if err == nil {
 			t.Errorf("should get error")
 		}
-		exceptedErrorMsg := "invalid argument \"arg\"; specified ip address fe80:: is invalid"
-		if err.Error() != exceptedErrorMsg {
-			t.Errorf("except: %v\ngot: %v", exceptedErrorMsg, err.Error())
+		expectedErrorMsg := "invalid argument \"arg\"; specified ip address fe80:: is invalid"
+		if err.Error() != expectedErrorMsg {
+			t.Errorf("except: %v\ngot: %v", expectedErrorMsg, err.Error())
 		}
 	}
 	{
@@ -549,9 +549,9 @@ func TestIPAssertion_NotLinkLocalUnicast(t *testing.T) {
 		if err == nil {
 			t.Errorf("should get error")
 		}
-		exceptedErrorMsg := "invalid argument \"arg\"; specified ip address 169.254.0.0 is invalid"
-		if err.Error() != exceptedErrorMsg {
-			t.Errorf("except: %v\ngot: %v", exceptedErrorMsg, err.Error())
+		expectedErrorMsg := "invalid argument \"arg\"; specified ip address 169.254.0.0 is invalid"
+		if err.Error() != expectedErrorMsg {
+			t.Errorf("except: %v\ngot: %v", expectedErrorMsg, err.Error())
 		}
 	}
 	{
@@ -570,9 +570,9 @@ func TestIPAssertion_NotLoopback(t *testing.T) {
 		if err == nil {
 			t.Errorf("should get error")
 		}
-		exceptedErrorMsg := "invalid argument \"arg\"; specified ip address ::1 is invalid"
-		if err.Error() != exceptedErrorMsg {
-			t.Errorf("except: %v\ngot: %v", exceptedErrorMsg, err.Error())
+		expectedErrorMsg := "invalid argument \"arg\"; specified ip address ::1 is invalid"
+		if err.Error() != expectedErrorMsg {
+			t.Errorf("except: %v\ngot: %v", expectedErrorMsg, err.Error())
 		}
 	}
 	{
@@ -588,9 +588,9 @@ func TestIPAssertion_NotLoopback(t *testing.T) {
 		if err == nil {
 			t.Errorf("should get error")
 		}
-		exceptedErrorMsg := "invalid argument \"arg\"; specified ip address 127.0.0.0 is invalid"
-		if err.Error() != exceptedErrorMsg {
-			t.Errorf("except: %v\ngot: %v", exceptedErrorMsg, err.Error())
+		expectedErrorMsg := "invalid argument \"arg\"; specified ip address 127.0.0.0 is invalid"
+		if err.Error() != expectedErrorMsg {
+			t.Errorf("except: %v\ngot: %v", expectedErrorMsg, err.Error())
 		}
 	}
 	{
@@ -609,9 +609,9 @@ func TestIPAssertion_NotMulticast(t *testing.T) {
 		if err == nil {
 			t.Errorf("should get error")
 		}
-		exceptedErrorMsg := "invalid argument \"arg\"; specified ip address ff00:: is invalid"
-		if err.Error() != exceptedErrorMsg {
-			t.Errorf("except: %v\ngot: %v", exceptedErrorMsg, err.Error())
+		expectedErrorMsg := "invalid argument \"arg\"; specified ip address ff00:: is invalid"
+		if err.Error() != expectedErrorMsg {
+			t.Errorf("except: %v\ngot: %v", expectedErrorMsg, err.Error())
 		}
 	}
 	{
@@ -620,9 +620,9 @@ func TestIPAssertion_NotMulticast(t *testing.T) {
 		if err == nil {
 			t.Errorf("should get error")
 		}
-		exceptedErrorMsg := "invalid argument \"arg\"; specified ip address ff02::1 is invalid"
-		if err.Error() != exceptedErrorMsg {
-			t.Errorf("except: %v\ngot: %v", exceptedErrorMsg, err.Error())
+		expectedErrorMsg := "invalid argument \"arg\"; specified ip address ff02::1 is invalid"
+		if err.Error() != expectedErrorMsg {
+			t.Errorf("except: %v\ngot: %v", expectedErrorMsg, err.Error())
 		}
 	}
 	{
@@ -638,9 +638,9 @@ func TestIPAssertion_NotMulticast(t *testing.T) {
 		if err == nil {
 			t.Errorf("should get error")
 		}
-		exceptedErrorMsg := "invalid argument \"arg\"; specified ip address 239.0.0.0 is invalid"
-		if err.Error() != exceptedErrorMsg {
-			t.Errorf("except: %v\ngot: %v", exceptedErrorMsg, err.Error())
+		expectedErrorMsg := "invalid argument \"arg\"; specified ip address 239.0.0.0 is invalid"
+		if err.Error() != expectedErrorMsg {
+			t.Errorf("except: %v\ngot: %v", expectedErrorMsg, err.Error())
 		}
 	}
 	{
@@ -649,9 +649,9 @@ func TestIPAssertion_NotMulticast(t *testing.T) {
 		if err == nil {
 			t.Errorf("should get error")
 		}
-		exceptedErrorMsg := "invalid argument \"arg\"; specified ip address 224.0.0.0 is invalid"
-		if err.Error() != exceptedErrorMsg {
-			t.Errorf("except: %v\ngot: %v", exceptedErrorMsg, err.Error())
+		expectedErrorMsg := "invalid argument \"arg\"; specified ip address 224.0.0.0 is invalid"
+		if err.Error() != expectedErrorMsg {
+			t.Errorf("except: %v\ngot: %v", expectedErrorMsg, err.Error())
 		}
 	}
 	{
@@ -670,9 +670,9 @@ func TestIPAssertion_NotPrivate(t *testing.T) {
 		if err == nil {
 			t.Errorf("should get error")
 		}
-		exceptedErrorMsg := "invalid argument \"arg\"; specified ip address fc00:: is invalid"
-		if err.Error() != exceptedErrorMsg {
-			t.Errorf("except: %v\ngot: %v", exceptedErrorMsg, err.Error())
+		expectedErrorMsg := "invalid argument \"arg\"; specified ip address fc00:: is invalid"
+		if err.Error() != expectedErrorMsg {
+			t.Errorf("except: %v\ngot: %v", expectedErrorMsg, err.Error())
 		}
 	}
 	{
@@ -688,9 +688,9 @@ func TestIPAssertion_NotPrivate(t *testing.T) {
 		if err == nil {
 			t.Errorf("should get error")
 		}
-		exceptedErrorMsg := "invalid argument \"arg\"; specified ip address 10.255.0.0 is invalid"
-		if err.Error() != exceptedErrorMsg {
-			t.Errorf("except: %v\ngot: %v", exceptedErrorMsg, err.Error())
+		expectedErrorMsg := "invalid argument \"arg\"; specified ip address 10.255.0.0 is invalid"
+		if err.Error() != expectedErrorMsg {
+			t.Errorf("except: %v\ngot: %v", expectedErrorMsg, err.Error())
 		}
 	}
 	{
@@ -709,9 +709,9 @@ func TestIPAssertion_NotUnspecified(t *testing.T) {
 		if err == nil {
 			t.Errorf("should get error")
 		}
-		exceptedErrorMsg := "invalid argument \"arg\"; specified ip address :: is invalid"
-		if err.Error() != exceptedErrorMsg {
-			t.Errorf("except: %v\ngot: %v", exceptedErrorMsg, err.Error())
+		expectedErrorMsg := "invalid argument \"arg\"; specified ip address :: is invalid"
+		if err.Error() != expectedErrorMsg {
+			t.Errorf("except: %v\ngot: %v", expectedErrorMsg, err.Error())
 		}
 	}
 	{
@@ -727,9 +727,9 @@ func TestIPAssertion_NotUnspecified(t *testing.T) {
 		if err == nil {
 			t.Errorf("should get error")
 		}
-		exceptedErrorMsg := "invalid argument \"arg\"; specified ip address 0.0.0.0 is invalid"
-		if err.Error() != exceptedErrorMsg {
-			t.Errorf("except: %v\ngot: %v", exceptedErrorMsg, err.Error())
+		expectedErrorMsg := "invalid argument \"arg\"; specified ip address 0.0.0.0 is invalid"
+		if err.Error() != expectedErrorMsg {
+			t.Errorf("except: %v\ngot: %v", expectedErrorMsg, err.Error())
 		}
 	}
 	{
@@ -763,85 +763,93 @@ func TestIPAssertion_Must(t *testing.T) {
 		if err == nil {
 			t.Errorf("should get error")
 		}
-		exceptedErrorMsg := "invalid argument \"arg\"; specified ip address 10.10.20.5 is invalid"
-		if err.Error() != exceptedErrorMsg {
-			t.Errorf("except: %v\ngot: %v", exceptedErrorMsg, err.Error())
+		expectedErrorMsg := "invalid argument \"arg\"; specified ip address 10.10.20.5 is invalid"
+		if err.Error() != expectedErrorMsg {
+			t.Errorf("except: %v\ngot: %v", expectedErrorMsg, err.Error())
 		}
 	}
 }
 
 func TestIPAssertion_BelongToAny(t *testing.T) {
 	{
+		var validate = _IPAssertion.BelongToAny("10.10.20.0/30")
 		var arg net.IP = net.ParseIP("10.10.20.3")
-		err := _IPAssertion.BelongToAny("10.10.20.0/30").Assert(arg, "arg")
+		err := validate(arg, "arg")
 		if err != nil {
 			t.Errorf("should not error")
 		}
 	}
 	{
+		var validate = _IPAssertion.BelongToAny("10.10.20.0/30")
 		var arg net.IP = net.ParseIP("10.10.20.5")
-		err := _IPAssertion.BelongToAny("10.10.20.0/30").Assert(arg, "arg")
+		err := validate(arg, "arg")
 		if err == nil {
 			t.Errorf("should get error")
 		}
-		exceptedErrorMsg := "invalid argument \"arg\"; specified ip address 10.10.20.5 is invalid"
-		if err.Error() != exceptedErrorMsg {
-			t.Errorf("except: %v\ngot: %v", exceptedErrorMsg, err.Error())
+		expectedErrorMsg := "invalid argument \"arg\"; specified ip address 10.10.20.5 is invalid"
+		if err.Error() != expectedErrorMsg {
+			t.Errorf("except: %v\ngot: %v", expectedErrorMsg, err.Error())
 		}
 	}
 	{
+		var validate = _IPAssertion.BelongToAny("1::/64")
 		var arg net.IP = net.ParseIP("1::1")
-		err := _IPAssertion.BelongToAny("1::/64").Assert(arg, "arg")
+		err := validate(arg, "arg")
 		if err != nil {
 			t.Errorf("should not error")
 		}
 	}
 	{
+		var validate = _IPAssertion.BelongToAny("1::/64")
 		var arg net.IP = net.ParseIP("2::1")
-		err := _IPAssertion.BelongToAny("1::/64").Assert(arg, "arg")
+		err := validate(arg, "arg")
 		if err == nil {
 			t.Errorf("should get error")
 		}
-		exceptedErrorMsg := "invalid argument \"arg\"; specified ip address 2::1 is invalid"
-		if err.Error() != exceptedErrorMsg {
-			t.Errorf("except: %v\ngot: %v", exceptedErrorMsg, err.Error())
+		expectedErrorMsg := "invalid argument \"arg\"; specified ip address 2::1 is invalid"
+		if err.Error() != expectedErrorMsg {
+			t.Errorf("except: %v\ngot: %v", expectedErrorMsg, err.Error())
 		}
 	}
 }
 
 func TestIPAssertion_NotBelongToAny(t *testing.T) {
 	{
+		var validate = _IPAssertion.NotBelongToAny("10.10.20.0/30")
 		var arg net.IP = net.ParseIP("10.10.20.3")
-		err := _IPAssertion.NotBelongToAny("10.10.20.0/30").Assert(arg, "arg")
+		err := validate(arg, "arg")
 		if err == nil {
 			t.Errorf("should get error")
 		}
-		exceptedErrorMsg := "invalid argument \"arg\"; specified ip address 10.10.20.3 is invalid"
-		if err.Error() != exceptedErrorMsg {
-			t.Errorf("except: %v\ngot: %v", exceptedErrorMsg, err.Error())
+		expectedErrorMsg := "invalid argument \"arg\"; specified ip address 10.10.20.3 is invalid"
+		if err.Error() != expectedErrorMsg {
+			t.Errorf("except: %v\ngot: %v", expectedErrorMsg, err.Error())
 		}
 	}
 	{
+		var validate = _IPAssertion.NotBelongToAny("10.10.20.0/30")
 		var arg net.IP = net.ParseIP("10.10.20.5")
-		err := _IPAssertion.NotBelongToAny("10.10.20.0/30").Assert(arg, "arg")
+		err := validate(arg, "arg")
 		if err != nil {
 			t.Errorf("should not error")
 		}
 	}
 	{
+		var validate = _IPAssertion.NotBelongToAny("1::/64")
 		var arg net.IP = net.ParseIP("1::1")
-		err := _IPAssertion.NotBelongToAny("1::/64").Assert(arg, "arg")
+		err := validate(arg, "arg")
 		if err == nil {
 			t.Errorf("should get error")
 		}
-		exceptedErrorMsg := "invalid argument \"arg\"; specified ip address 1::1 is invalid"
-		if err.Error() != exceptedErrorMsg {
-			t.Errorf("except: %v\ngot: %v", exceptedErrorMsg, err.Error())
+		expectedErrorMsg := "invalid argument \"arg\"; specified ip address 1::1 is invalid"
+		if err.Error() != expectedErrorMsg {
+			t.Errorf("except: %v\ngot: %v", expectedErrorMsg, err.Error())
 		}
 	}
 	{
+		var validate = _IPAssertion.NotBelongToAny("1::/64")
 		var arg net.IP = net.ParseIP("2::1")
-		err := _IPAssertion.NotBelongToAny("1::/64").Assert(arg, "arg")
+		err := validate(arg, "arg")
 		if err != nil {
 			t.Errorf("should not error")
 		}

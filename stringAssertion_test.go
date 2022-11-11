@@ -21,9 +21,9 @@ func TestStringAssertion(t *testing.T) {
 		if err == nil {
 			t.Errorf("should get error")
 		}
-		exceptedErrorMsg := "invalid argument \"emprtyString\"; cannot be an empty string"
-		if err.Error() != exceptedErrorMsg {
-			t.Errorf("except: %v\ngot: %v", exceptedErrorMsg, err.Error())
+		expectedErrorMsg := "invalid argument \"emprtyString\"; cannot be an empty string"
+		if err.Error() != expectedErrorMsg {
+			t.Errorf("except: %v\ngot: %v", expectedErrorMsg, err.Error())
 		}
 	}
 	{
@@ -52,9 +52,9 @@ func TestStringAssertion(t *testing.T) {
 		if err == nil {
 			t.Errorf("should get error")
 		}
-		exceptedErrorMsg := "invalid argument \"bazString\"; specified string \"baz\" is invalid"
-		if err.Error() != exceptedErrorMsg {
-			t.Errorf("except: %v\ngot: %v", exceptedErrorMsg, err.Error())
+		expectedErrorMsg := "invalid argument \"bazString\"; specified string \"baz\" is invalid"
+		if err.Error() != expectedErrorMsg {
+			t.Errorf("except: %v\ngot: %v", expectedErrorMsg, err.Error())
 		}
 	}
 }
@@ -76,9 +76,9 @@ func TestStringAssertor(t *testing.T) {
 		if err == nil {
 			t.Errorf("should get error")
 		}
-		exceptedErrorMsg := "invalid argument \"emprtyString\"; cannot be an empty string"
-		if err.Error() != exceptedErrorMsg {
-			t.Errorf("except: %v\ngot: %v", exceptedErrorMsg, err.Error())
+		expectedErrorMsg := "invalid argument \"emprtyString\"; cannot be an empty string"
+		if err.Error() != expectedErrorMsg {
+			t.Errorf("except: %v\ngot: %v", expectedErrorMsg, err.Error())
 		}
 	}
 	{
@@ -110,9 +110,9 @@ func TestStringAssertor(t *testing.T) {
 		if err == nil {
 			t.Errorf("should get error")
 		}
-		exceptedErrorMsg := "invalid argument \"bazString\"; specified string \"baz\" is invalid"
-		if err.Error() != exceptedErrorMsg {
-			t.Errorf("except: %v\ngot: %v", exceptedErrorMsg, err.Error())
+		expectedErrorMsg := "invalid argument \"bazString\"; specified string \"baz\" is invalid"
+		if err.Error() != expectedErrorMsg {
+			t.Errorf("except: %v\ngot: %v", expectedErrorMsg, err.Error())
 		}
 	}
 }
@@ -131,9 +131,9 @@ func TestStringAssertion_NonEmpty(t *testing.T) {
 		if err == nil {
 			t.Errorf("should get error")
 		}
-		exceptedErrorMsg := "invalid argument \"arg\"; cannot be an empty string"
-		if err.Error() != exceptedErrorMsg {
-			t.Errorf("except: %v\ngot: %v", exceptedErrorMsg, err.Error())
+		expectedErrorMsg := "invalid argument \"arg\"; cannot be an empty string"
+		if err.Error() != expectedErrorMsg {
+			t.Errorf("except: %v\ngot: %v", expectedErrorMsg, err.Error())
 		}
 	}
 }
@@ -153,9 +153,9 @@ func TestStringAssertion_In(t *testing.T) {
 		if err == nil {
 			t.Errorf("should get error")
 		}
-		exceptedErrorMsg := "invalid argument \"arg\"; specified string \"baz\" is invalid"
-		if err.Error() != exceptedErrorMsg {
-			t.Errorf("except: %v\ngot: %v", exceptedErrorMsg, err.Error())
+		expectedErrorMsg := "invalid argument \"arg\"; specified string \"baz\" is invalid"
+		if err.Error() != expectedErrorMsg {
+			t.Errorf("except: %v\ngot: %v", expectedErrorMsg, err.Error())
 		}
 	}
 }
@@ -179,9 +179,9 @@ func TestStringAssertion_Must(t *testing.T) {
 		if err == nil {
 			t.Errorf("should get error")
 		}
-		exceptedErrorMsg := "invalid argument \"arg\"; specified string \"baz\" is invalid"
-		if err.Error() != exceptedErrorMsg {
-			t.Errorf("except: %v\ngot: %v", exceptedErrorMsg, err.Error())
+		expectedErrorMsg := "invalid argument \"arg\"; specified string \"baz\" is invalid"
+		if err.Error() != expectedErrorMsg {
+			t.Errorf("except: %v\ngot: %v", expectedErrorMsg, err.Error())
 		}
 	}
 }
@@ -202,9 +202,9 @@ func TestStringAssertion_MaxLength(t *testing.T) {
 		if err == nil {
 			t.Errorf("should get error")
 		}
-		exceptedErrorMsg := "invalid argument \"arg\"; specified string is too long"
-		if err.Error() != exceptedErrorMsg {
-			t.Errorf("except: %v\ngot: %v", exceptedErrorMsg, err.Error())
+		expectedErrorMsg := "invalid argument \"arg\"; specified string is too long"
+		if err.Error() != expectedErrorMsg {
+			t.Errorf("except: %v\ngot: %v", expectedErrorMsg, err.Error())
 		}
 	}
 }
@@ -225,9 +225,9 @@ func TestStringAssertion_MinLength(t *testing.T) {
 		if err == nil {
 			t.Errorf("should get error")
 		}
-		exceptedErrorMsg := "invalid argument \"arg\"; specified string is too short"
-		if err.Error() != exceptedErrorMsg {
-			t.Errorf("except: %v\ngot: %v", exceptedErrorMsg, err.Error())
+		expectedErrorMsg := "invalid argument \"arg\"; specified string is too short"
+		if err.Error() != expectedErrorMsg {
+			t.Errorf("except: %v\ngot: %v", expectedErrorMsg, err.Error())
 		}
 	}
 }
@@ -248,9 +248,9 @@ func TestStringAssertion_MatchAny(t *testing.T) {
 		if err == nil {
 			t.Errorf("should get error")
 		}
-		exceptedErrorMsg := "invalid argument \"arg\"; specified string \"foo\" is invalid"
-		if err.Error() != exceptedErrorMsg {
-			t.Errorf("except: %v\ngot: %v", exceptedErrorMsg, err.Error())
+		expectedErrorMsg := "invalid argument \"arg\"; specified string \"foo\" is invalid"
+		if err.Error() != expectedErrorMsg {
+			t.Errorf("except: %v\ngot: %v", expectedErrorMsg, err.Error())
 		}
 	}
 }
