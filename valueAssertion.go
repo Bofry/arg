@@ -2,6 +2,7 @@ package arg
 
 import (
 	"fmt"
+	"reflect"
 
 	"github.com/Bofry/arg/internal"
 )
@@ -28,7 +29,7 @@ func (ValueAssertion) Assertor(v interface{}, name string) *ValueAssertor {
 }
 
 func (ValueAssertion) NotNil(v interface{}, name string) error {
-	if v == nil {
+	if v == nil || reflect.ValueOf(v).IsNil() {
 		return &InvalidArgumentError{
 			Name:   name,
 			Reason: internal.ERR_NIL,
