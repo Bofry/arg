@@ -5,9 +5,17 @@ import (
 )
 
 var (
-	_ NumberValidator = new(StringValidator).AssertNumber
-	_ ValueValidator  = new(StringValidator).AssertValue
+	_ StringPtrValidator = new(StringValidator).AssertPtr
+	_ NumberValidator    = new(StringValidator).AssertNumber
+	_ ValueValidator     = new(StringValidator).AssertValue
 )
+
+func (fn StringValidator) AssertPtr(v *string, name string) error {
+	if v != nil {
+		return fn(*v, name)
+	}
+	return nil
+}
 
 func (fn StringValidator) AssertNumber(v Number, name string) error {
 	return fn(v.String(), name)

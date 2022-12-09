@@ -14,6 +14,8 @@ const (
 	Slices  = SliceAssertion("")
 	Values  = ValueAssertion("")
 	IPs     = IPAssertion("")
+
+	StringPtr = StringPtrAssertion("")
 )
 
 type (
@@ -30,6 +32,8 @@ type (
 	ValueValidator  func(v interface{}, name string) error
 	IPValidator     func(v net.IP, name string) error
 
+	StringPtrValidator func(v *string, name string) error
+
 	IntPredicate    func(v int64) bool
 	UIntPredicate   func(v uint64) bool
 	FloatPredicate  func(v float64) bool
@@ -37,4 +41,6 @@ type (
 	NumberPredicate func(v Number) bool
 	ValuePredicate  func(v interface{}) bool
 	IPPredicate     func(v net.IP) bool
+
+	StringPtrPredicate func(v *string) bool
 )
