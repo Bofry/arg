@@ -184,3 +184,28 @@ func TestStringPtrAssertor(t *testing.T) {
 		}
 	}
 }
+
+func TestStringPtrAssertion_NotNil(t *testing.T) {
+	var NewString = func(v string) *string {
+		return &v
+	}
+
+	{
+		var arg *string = NewString("foo")
+		err := _StringPtrAssertion.NotNil(arg, "arg")
+		if err != nil {
+			t.Errorf("should not error")
+		}
+	}
+	{
+		var arg *string = nil
+		err := _StringPtrAssertion.NotNil(arg, "arg")
+		if err == nil {
+			t.Errorf("should get error")
+		}
+		expectedErrorMsg := "invalid argument \"arg\"; cannot be nil"
+		if err.Error() != expectedErrorMsg {
+			t.Errorf("except: %v\ngot: %v", expectedErrorMsg, err.Error())
+		}
+	}
+}

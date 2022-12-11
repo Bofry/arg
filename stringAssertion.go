@@ -42,11 +42,10 @@ func (StringAssertion) NonEmpty(v string, name string) error {
 	return nil
 }
 
-func (StringAssertion) In(values ...string) StringValidator {
-	sort.Slice(values, func(i, j int) bool { return values[i] < values[j] })
+// Must checks if the given string is evaluated to true by specified predicate.
+func (StringAssertion) Must(fn StringPredicate) StringValidator {
 	return func(v, name string) error {
-		i := sort.Search(len(values), func(i int) bool { return values[i] >= v })
-		if i >= len(values) || values[i] != v {
+		if !fn(v) {
 			return &InvalidArgumentError{
 				Name:   name,
 				Reason: fmt.Sprintf(internal.ERR_INVALID_STRING, v),
@@ -56,10 +55,11 @@ func (StringAssertion) In(values ...string) StringValidator {
 	}
 }
 
-// Must checks if the given string is evaluated to true by specified predicate.
-func (StringAssertion) Must(fn StringPredicate) StringValidator {
+func (StringAssertion) In(values ...string) StringValidator {
+	sort.Slice(values, func(i, j int) bool { return values[i] < values[j] })
 	return func(v, name string) error {
-		if !fn(v) {
+		i := sort.Search(len(values), func(i int) bool { return values[i] >= v })
+		if i >= len(values) || values[i] != v {
 			return &InvalidArgumentError{
 				Name:   name,
 				Reason: fmt.Sprintf(internal.ERR_INVALID_STRING, v),

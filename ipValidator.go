@@ -12,16 +12,16 @@ func (fn IPValidator) AssertString(v string, name string) error {
 }
 
 func (fn IPValidator) AssertValue(v interface{}, name string) error {
-	var ip net.IP
+	var ip IP
 
 	switch v.(type) {
-	case net.IP:
+	case IP:
 		{
-			ip = v.(net.IP)
+			ip = v.(IP)
 		}
 	case []byte:
 		{
-			ip = net.IP(v.([]byte))
+			ip = IP(v.([]byte))
 		}
 	case string:
 		{

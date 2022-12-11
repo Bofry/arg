@@ -72,12 +72,6 @@ func (NumberAssertion) NonNanNorInf(v Number, name string) error {
 	return validate(v, name)
 }
 
-func (NumberAssertion) NotIn(values ...int64) NumberValidator {
-	return _NumberAssertion.warpIntValidator(
-		Ints.NotIn(values...), false,
-	)
-}
-
 func (NumberAssertion) Must(fn NumberPredicate) NumberValidator {
 	return func(v Number, name string) error {
 		if !fn(v) {
@@ -99,6 +93,12 @@ func (NumberAssertion) MustInt(fn IntPredicate) NumberValidator {
 func (NumberAssertion) MustFloat(fn FloatPredicate) NumberValidator {
 	return _NumberAssertion.warpFloatValidator(
 		Floats.Must(fn), false,
+	)
+}
+
+func (NumberAssertion) NotIn(values ...int64) NumberValidator {
+	return _NumberAssertion.warpIntValidator(
+		Ints.NotIn(values...), false,
 	)
 }
 

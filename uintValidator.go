@@ -6,6 +6,19 @@ import (
 	"github.com/cstockton/go-conv"
 )
 
+var (
+	_ UIntPtrValidator = new(UIntValidator).AssertPtr
+	_ NumberValidator  = new(UIntValidator).AssertNumber
+	_ ValueValidator   = new(UIntValidator).AssertValue
+)
+
+func (fn UIntValidator) AssertPtr(v *uint64, name string) error {
+	if v != nil {
+		return fn(*v, name)
+	}
+	return nil
+}
+
 func (fn UIntValidator) AssertNumber(v Number, name string) error {
 	integer, err := strconv.ParseUint(v.String(), 10, 64)
 	if err != nil {

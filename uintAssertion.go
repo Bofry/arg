@@ -38,6 +38,18 @@ func (UIntAssertion) NonZero(v uint64, name string) error {
 	return nil
 }
 
+func (UIntAssertion) Must(fn UIntPredicate) UIntValidator {
+	return func(v uint64, name string) error {
+		if !fn(v) {
+			return &InvalidArgumentError{
+				Name:   name,
+				Reason: fmt.Sprintf(internal.ERR_INVALID_INTEGER, v),
+			}
+		}
+		return nil
+	}
+}
+
 func (UIntAssertion) NotIn(values ...uint64) UIntValidator {
 	sort.Slice(values, func(i, j int) bool { return values[i] < values[j] })
 	return func(v uint64, name string) error {
@@ -57,18 +69,6 @@ func (UIntAssertion) In(values ...uint64) UIntValidator {
 	return func(v uint64, name string) error {
 		i := sort.Search(len(values), func(i int) bool { return values[i] >= v })
 		if i >= len(values) || values[i] != v {
-			return &InvalidArgumentError{
-				Name:   name,
-				Reason: fmt.Sprintf(internal.ERR_INVALID_INTEGER, v),
-			}
-		}
-		return nil
-	}
-}
-
-func (UIntAssertion) Must(fn UIntPredicate) UIntValidator {
-	return func(v uint64, name string) error {
-		if !fn(v) {
 			return &InvalidArgumentError{
 				Name:   name,
 				Reason: fmt.Sprintf(internal.ERR_INVALID_INTEGER, v),

@@ -4,6 +4,19 @@ import (
 	"github.com/cstockton/go-conv"
 )
 
+var (
+	_ FloatPtrValidator = new(FloatValidator).AssertPtr
+	_ NumberValidator    = new(FloatValidator).AssertNumber
+	_ ValueValidator     = new(FloatValidator).AssertValue
+)
+
+func (fn FloatValidator) AssertPtr(v *float64, name string) error {
+	if v != nil {
+		return fn(*v, name)
+	}
+	return nil
+}
+
 func (fn FloatValidator) AssertNumber(v Number, name string) error {
 	float, err := v.Float64()
 	if err != nil {

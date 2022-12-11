@@ -31,7 +31,7 @@ var (
 
 type IPAssertion string
 
-func (IPAssertion) Assert(v net.IP, name string, validators ...IPValidator) error {
+func (IPAssertion) Assert(v IP, name string, validators ...IPValidator) error {
 	for _, validate := range validators {
 		if err := validate(v, name); err != nil {
 			return err
@@ -40,11 +40,11 @@ func (IPAssertion) Assert(v net.IP, name string, validators ...IPValidator) erro
 	return nil
 }
 
-func (IPAssertion) Assertor(v net.IP, name string) *IPAssertor {
+func (IPAssertion) Assertor(v IP, name string) *IPAssertor {
 	return &IPAssertor{v, name}
 }
 
-func (IPAssertion) IsValid(v net.IP, name string) error {
+func (IPAssertion) IsValid(v IP, name string) error {
 	if v.To16() == nil {
 		return &InvalidArgumentError{
 			Name:   name,
@@ -61,7 +61,7 @@ func (IPAssertion) IsValid(v net.IP, name string) error {
 // the exception of IPv4 directed broadcast addresses.
 // It returns true even if ip is in IPv4 private address space or
 // local IPv6 unicast address space.
-func (IPAssertion) GlobalUnicast(v net.IP, name string) error {
+func (IPAssertion) GlobalUnicast(v IP, name string) error {
 	if !v.IsGlobalUnicast() {
 		return &InvalidArgumentError{
 			Name:   name,
@@ -72,7 +72,7 @@ func (IPAssertion) GlobalUnicast(v net.IP, name string) error {
 }
 
 // InterfaceLocalMulticast checks whether ip is an interface-local multicast address.
-func (IPAssertion) InterfaceLocalMulticast(v net.IP, name string) error {
+func (IPAssertion) InterfaceLocalMulticast(v IP, name string) error {
 	if !v.IsInterfaceLocalMulticast() {
 		return &InvalidArgumentError{
 			Name:   name,
@@ -83,7 +83,7 @@ func (IPAssertion) InterfaceLocalMulticast(v net.IP, name string) error {
 }
 
 // LinkLocalMulticast checks whether ip is a link-local multicast address.
-func (IPAssertion) LinkLocalMulticast(v net.IP, name string) error {
+func (IPAssertion) LinkLocalMulticast(v IP, name string) error {
 	if !v.IsLinkLocalMulticast() {
 		return &InvalidArgumentError{
 			Name:   name,
@@ -94,7 +94,7 @@ func (IPAssertion) LinkLocalMulticast(v net.IP, name string) error {
 }
 
 // LinkLocalUnicast checks whether ip is a link-local unicast address.
-func (IPAssertion) LinkLocalUnicast(v net.IP, name string) error {
+func (IPAssertion) LinkLocalUnicast(v IP, name string) error {
 	if !v.IsLinkLocalUnicast() {
 		return &InvalidArgumentError{
 			Name:   name,
@@ -105,7 +105,7 @@ func (IPAssertion) LinkLocalUnicast(v net.IP, name string) error {
 }
 
 // Loopback checks whether ip is a loopback address.
-func (IPAssertion) Loopback(v net.IP, name string) error {
+func (IPAssertion) Loopback(v IP, name string) error {
 	if !v.IsLoopback() {
 		return &InvalidArgumentError{
 			Name:   name,
@@ -116,7 +116,7 @@ func (IPAssertion) Loopback(v net.IP, name string) error {
 }
 
 // Multicast checks whether ip is a multicast address.
-func (IPAssertion) Multicast(v net.IP, name string) error {
+func (IPAssertion) Multicast(v IP, name string) error {
 	if !v.IsMulticast() {
 		return &InvalidArgumentError{
 			Name:   name,
@@ -127,7 +127,7 @@ func (IPAssertion) Multicast(v net.IP, name string) error {
 }
 
 // Private checks whether ip is a private address, according to RFC 1918 (IPv4 addresses) and RFC 4193 (IPv6 addresses).
-func (IPAssertion) Private(v net.IP, name string) error {
+func (IPAssertion) Private(v IP, name string) error {
 	if !v.IsPrivate() {
 		return &InvalidArgumentError{
 			Name:   name,
@@ -138,7 +138,7 @@ func (IPAssertion) Private(v net.IP, name string) error {
 }
 
 // Unspecified checks whether ip is an unspecified address, either the IPv4 address "0.0.0.0" or the IPv6 address "::".
-func (IPAssertion) Unspecified(v net.IP, name string) error {
+func (IPAssertion) Unspecified(v IP, name string) error {
 	if !v.IsUnspecified() {
 		return &InvalidArgumentError{
 			Name:   name,
@@ -148,7 +148,7 @@ func (IPAssertion) Unspecified(v net.IP, name string) error {
 	return nil
 }
 
-func (IPAssertion) NotGlobalUnicast(v net.IP, name string) error {
+func (IPAssertion) NotGlobalUnicast(v IP, name string) error {
 	if v.IsGlobalUnicast() {
 		return &InvalidArgumentError{
 			Name:   name,
@@ -158,7 +158,7 @@ func (IPAssertion) NotGlobalUnicast(v net.IP, name string) error {
 	return nil
 }
 
-func (IPAssertion) NotInterfaceLocalMulticast(v net.IP, name string) error {
+func (IPAssertion) NotInterfaceLocalMulticast(v IP, name string) error {
 	if v.IsInterfaceLocalMulticast() {
 		return &InvalidArgumentError{
 			Name:   name,
@@ -168,7 +168,7 @@ func (IPAssertion) NotInterfaceLocalMulticast(v net.IP, name string) error {
 	return nil
 }
 
-func (IPAssertion) NotLinkLocalMulticast(v net.IP, name string) error {
+func (IPAssertion) NotLinkLocalMulticast(v IP, name string) error {
 	if v.IsLinkLocalMulticast() {
 		return &InvalidArgumentError{
 			Name:   name,
@@ -178,7 +178,7 @@ func (IPAssertion) NotLinkLocalMulticast(v net.IP, name string) error {
 	return nil
 }
 
-func (IPAssertion) NotLinkLocalUnicast(v net.IP, name string) error {
+func (IPAssertion) NotLinkLocalUnicast(v IP, name string) error {
 	if v.IsLinkLocalUnicast() {
 		return &InvalidArgumentError{
 			Name:   name,
@@ -188,7 +188,7 @@ func (IPAssertion) NotLinkLocalUnicast(v net.IP, name string) error {
 	return nil
 }
 
-func (IPAssertion) NotLoopback(v net.IP, name string) error {
+func (IPAssertion) NotLoopback(v IP, name string) error {
 	if v.IsLoopback() {
 		return &InvalidArgumentError{
 			Name:   name,
@@ -198,7 +198,7 @@ func (IPAssertion) NotLoopback(v net.IP, name string) error {
 	return nil
 }
 
-func (IPAssertion) NotMulticast(v net.IP, name string) error {
+func (IPAssertion) NotMulticast(v IP, name string) error {
 	if v.IsMulticast() {
 		return &InvalidArgumentError{
 			Name:   name,
@@ -208,7 +208,7 @@ func (IPAssertion) NotMulticast(v net.IP, name string) error {
 	return nil
 }
 
-func (IPAssertion) NotPrivate(v net.IP, name string) error {
+func (IPAssertion) NotPrivate(v IP, name string) error {
 	if v.IsPrivate() {
 		return &InvalidArgumentError{
 			Name:   name,
@@ -218,7 +218,7 @@ func (IPAssertion) NotPrivate(v net.IP, name string) error {
 	return nil
 }
 
-func (IPAssertion) NotUnspecified(v net.IP, name string) error {
+func (IPAssertion) NotUnspecified(v IP, name string) error {
 	if v.IsUnspecified() {
 		return &InvalidArgumentError{
 			Name:   name,
@@ -229,7 +229,7 @@ func (IPAssertion) NotUnspecified(v net.IP, name string) error {
 }
 
 func (IPAssertion) Must(fn IPPredicate) IPValidator {
-	return func(v net.IP, name string) error {
+	return func(v IP, name string) error {
 		if !fn(v) {
 			return &InvalidArgumentError{
 				Name:   name,
@@ -252,7 +252,7 @@ func (IPAssertion) BelongToAny(cidrs ...string) IPValidator {
 		}
 		ipnets = append(ipnets, ipnet)
 	}
-	return func(v net.IP, name string) error {
+	return func(v IP, name string) error {
 		for _, ipnet := range ipnets {
 			if ipnet.Contains(v) {
 				return nil
@@ -276,7 +276,7 @@ func (IPAssertion) NotBelongToAny(cidrs ...string) IPValidator {
 		}
 		ipnets = append(ipnets, ipnet)
 	}
-	return func(v net.IP, name string) error {
+	return func(v IP, name string) error {
 		for _, ipnet := range ipnets {
 			if ipnet.Contains(v) {
 				return &InvalidArgumentError{

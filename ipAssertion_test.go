@@ -7,8 +7,8 @@ import (
 
 func TestIPAssertion(t *testing.T) {
 	var (
-		invalidIP   net.IP = []byte{0}
-		ip128_0_0_1 net.IP = net.ParseIP("128.0.0.1")
+		invalidIP   IP = []byte{0}
+		ip128_0_0_1 IP = net.ParseIP("128.0.0.1")
 	)
 
 	{
@@ -41,7 +41,7 @@ func TestIPAssertion(t *testing.T) {
 
 func TestIPAssertor(t *testing.T) {
 	var (
-		invalidIP net.IP = []byte{0}
+		invalidIP IP = []byte{0}
 	)
 
 	{
@@ -62,14 +62,14 @@ func TestIPAssertor(t *testing.T) {
 
 func TestIPAssertion_IsValid(t *testing.T) {
 	{
-		var arg net.IP = []byte{1, 1, 1, 1}
+		var arg IP = []byte{1, 1, 1, 1}
 		err := _IPAssertion.IsValid(arg, "arg")
 		if err != nil {
 			t.Errorf("should not error")
 		}
 	}
 	{
-		var arg net.IP = []byte{3, 5, 6, 7, 8, 9}
+		var arg IP = []byte{3, 5, 6, 7, 8, 9}
 		err := _IPAssertion.IsValid(arg, "arg")
 		if err == nil {
 			t.Errorf("should get error")
@@ -83,14 +83,14 @@ func TestIPAssertion_IsValid(t *testing.T) {
 
 func TestIPAssertion_GlobalUnicast(t *testing.T) {
 	{
-		var arg net.IP = net.ParseIP("2000::")
+		var arg IP = net.ParseIP("2000::")
 		err := _IPAssertion.GlobalUnicast(arg, "arg")
 		if err != nil {
 			t.Errorf("should not error")
 		}
 	}
 	{
-		var arg net.IP = net.ParseIP("FF00::")
+		var arg IP = net.ParseIP("FF00::")
 		err := _IPAssertion.GlobalUnicast(arg, "arg")
 		if err == nil {
 			t.Errorf("should get error")
@@ -101,21 +101,21 @@ func TestIPAssertion_GlobalUnicast(t *testing.T) {
 		}
 	}
 	{
-		var arg net.IP = net.ParseIP("10.255.0.0")
+		var arg IP = net.ParseIP("10.255.0.0")
 		err := _IPAssertion.GlobalUnicast(arg, "arg")
 		if err != nil {
 			t.Errorf("should not error")
 		}
 	}
 	{
-		var arg net.IP = net.ParseIP("8.8.8.8")
+		var arg IP = net.ParseIP("8.8.8.8")
 		err := _IPAssertion.GlobalUnicast(arg, "arg")
 		if err != nil {
 			t.Errorf("should not error")
 		}
 	}
 	{
-		var arg net.IP = net.ParseIP("255.255.255.255")
+		var arg IP = net.ParseIP("255.255.255.255")
 		err := _IPAssertion.GlobalUnicast(arg, "arg")
 		if err == nil {
 			t.Errorf("should get error")
@@ -129,14 +129,14 @@ func TestIPAssertion_GlobalUnicast(t *testing.T) {
 
 func TestIPAssertion_InterfaceLocalMulticast(t *testing.T) {
 	{
-		var arg net.IP = net.ParseIP("ff01::1")
+		var arg IP = net.ParseIP("ff01::1")
 		err := _IPAssertion.InterfaceLocalMulticast(arg, "arg")
 		if err != nil {
 			t.Errorf("should not error")
 		}
 	}
 	{
-		var arg net.IP = net.ParseIP("2000::")
+		var arg IP = net.ParseIP("2000::")
 		err := _IPAssertion.InterfaceLocalMulticast(arg, "arg")
 		if err == nil {
 			t.Errorf("should get error")
@@ -147,7 +147,7 @@ func TestIPAssertion_InterfaceLocalMulticast(t *testing.T) {
 		}
 	}
 	{
-		var arg net.IP = net.ParseIP("255.0.0.0")
+		var arg IP = net.ParseIP("255.0.0.0")
 		err := _IPAssertion.InterfaceLocalMulticast(arg, "arg")
 		if err == nil {
 			t.Errorf("should get error")
@@ -161,14 +161,14 @@ func TestIPAssertion_InterfaceLocalMulticast(t *testing.T) {
 
 func TestIPAssertion_LinkLocalMulticast(t *testing.T) {
 	{
-		var arg net.IP = net.ParseIP("ff02::2")
+		var arg IP = net.ParseIP("ff02::2")
 		err := _IPAssertion.LinkLocalMulticast(arg, "arg")
 		if err != nil {
 			t.Errorf("should not error")
 		}
 	}
 	{
-		var arg net.IP = net.ParseIP("fe80::")
+		var arg IP = net.ParseIP("fe80::")
 		err := _IPAssertion.LinkLocalMulticast(arg, "arg")
 		if err == nil {
 			t.Errorf("should get error")
@@ -179,14 +179,14 @@ func TestIPAssertion_LinkLocalMulticast(t *testing.T) {
 		}
 	}
 	{
-		var arg net.IP = net.ParseIP("224.0.0.0")
+		var arg IP = net.ParseIP("224.0.0.0")
 		err := _IPAssertion.LinkLocalMulticast(arg, "arg")
 		if err != nil {
 			t.Errorf("should not error")
 		}
 	}
 	{
-		var arg net.IP = net.ParseIP("169.254.0.0")
+		var arg IP = net.ParseIP("169.254.0.0")
 		err := _IPAssertion.LinkLocalMulticast(arg, "arg")
 		if err == nil {
 			t.Errorf("should get error")
@@ -200,14 +200,14 @@ func TestIPAssertion_LinkLocalMulticast(t *testing.T) {
 
 func TestIPAssertion_LinkLocalUnicast(t *testing.T) {
 	{
-		var arg net.IP = net.ParseIP("fe80::")
+		var arg IP = net.ParseIP("fe80::")
 		err := _IPAssertion.LinkLocalUnicast(arg, "arg")
 		if err != nil {
 			t.Errorf("should not error")
 		}
 	}
 	{
-		var arg net.IP = net.ParseIP("2000::")
+		var arg IP = net.ParseIP("2000::")
 		err := _IPAssertion.LinkLocalUnicast(arg, "arg")
 		if err == nil {
 			t.Errorf("should get error")
@@ -218,14 +218,14 @@ func TestIPAssertion_LinkLocalUnicast(t *testing.T) {
 		}
 	}
 	{
-		var arg net.IP = net.ParseIP("169.254.0.0")
+		var arg IP = net.ParseIP("169.254.0.0")
 		err := _IPAssertion.LinkLocalUnicast(arg, "arg")
 		if err != nil {
 			t.Errorf("should not error")
 		}
 	}
 	{
-		var arg net.IP = net.ParseIP("224.0.0.0")
+		var arg IP = net.ParseIP("224.0.0.0")
 		err := _IPAssertion.LinkLocalUnicast(arg, "arg")
 		if err == nil {
 			t.Errorf("should get error")
@@ -239,14 +239,14 @@ func TestIPAssertion_LinkLocalUnicast(t *testing.T) {
 
 func TestIPAssertion_Loopback(t *testing.T) {
 	{
-		var arg net.IP = net.ParseIP("::1")
+		var arg IP = net.ParseIP("::1")
 		err := _IPAssertion.Loopback(arg, "arg")
 		if err != nil {
 			t.Errorf("should not error")
 		}
 	}
 	{
-		var arg net.IP = net.ParseIP("ff02::1")
+		var arg IP = net.ParseIP("ff02::1")
 		err := _IPAssertion.Loopback(arg, "arg")
 		if err == nil {
 			t.Errorf("should get error")
@@ -257,14 +257,14 @@ func TestIPAssertion_Loopback(t *testing.T) {
 		}
 	}
 	{
-		var arg net.IP = net.ParseIP("127.0.0.0")
+		var arg IP = net.ParseIP("127.0.0.0")
 		err := _IPAssertion.Loopback(arg, "arg")
 		if err != nil {
 			t.Errorf("should not error")
 		}
 	}
 	{
-		var arg net.IP = net.ParseIP("128.0.0.0")
+		var arg IP = net.ParseIP("128.0.0.0")
 		err := _IPAssertion.Loopback(arg, "arg")
 		if err == nil {
 			t.Errorf("should get error")
@@ -278,21 +278,21 @@ func TestIPAssertion_Loopback(t *testing.T) {
 
 func TestIPAssertion_Multicast(t *testing.T) {
 	{
-		var arg net.IP = net.ParseIP("FF00::")
+		var arg IP = net.ParseIP("FF00::")
 		err := _IPAssertion.Multicast(arg, "arg")
 		if err != nil {
 			t.Errorf("should not error")
 		}
 	}
 	{
-		var arg net.IP = net.ParseIP("ff02::1")
+		var arg IP = net.ParseIP("ff02::1")
 		err := _IPAssertion.Multicast(arg, "arg")
 		if err != nil {
 			t.Errorf("should not error")
 		}
 	}
 	{
-		var arg net.IP = net.ParseIP("::1")
+		var arg IP = net.ParseIP("::1")
 		err := _IPAssertion.Multicast(arg, "arg")
 		if err == nil {
 			t.Errorf("should get error")
@@ -303,21 +303,21 @@ func TestIPAssertion_Multicast(t *testing.T) {
 		}
 	}
 	{
-		var arg net.IP = net.ParseIP("239.0.0.0")
+		var arg IP = net.ParseIP("239.0.0.0")
 		err := _IPAssertion.Multicast(arg, "arg")
 		if err != nil {
 			t.Errorf("should not error")
 		}
 	}
 	{
-		var arg net.IP = net.ParseIP("224.0.0.0")
+		var arg IP = net.ParseIP("224.0.0.0")
 		err := _IPAssertion.Multicast(arg, "arg")
 		if err != nil {
 			t.Errorf("should not error")
 		}
 	}
 	{
-		var arg net.IP = net.ParseIP("127.0.0.0")
+		var arg IP = net.ParseIP("127.0.0.0")
 		err := _IPAssertion.Multicast(arg, "arg")
 		if err == nil {
 			t.Errorf("should get error")
@@ -331,14 +331,14 @@ func TestIPAssertion_Multicast(t *testing.T) {
 
 func TestIPAssertion_Private(t *testing.T) {
 	{
-		var arg net.IP = net.ParseIP("fc00::")
+		var arg IP = net.ParseIP("fc00::")
 		err := _IPAssertion.Private(arg, "arg")
 		if err != nil {
 			t.Errorf("should not error")
 		}
 	}
 	{
-		var arg net.IP = net.ParseIP("fe00::")
+		var arg IP = net.ParseIP("fe00::")
 		err := _IPAssertion.Private(arg, "arg")
 		if err == nil {
 			t.Errorf("should get error")
@@ -349,14 +349,14 @@ func TestIPAssertion_Private(t *testing.T) {
 		}
 	}
 	{
-		var arg net.IP = net.ParseIP("10.255.0.0")
+		var arg IP = net.ParseIP("10.255.0.0")
 		err := _IPAssertion.Private(arg, "arg")
 		if err != nil {
 			t.Errorf("should not error")
 		}
 	}
 	{
-		var arg net.IP = net.ParseIP("11.0.0.0")
+		var arg IP = net.ParseIP("11.0.0.0")
 		err := _IPAssertion.Private(arg, "arg")
 		if err == nil {
 			t.Errorf("should get error")
@@ -370,14 +370,14 @@ func TestIPAssertion_Private(t *testing.T) {
 
 func TestIPAssertion_Unspecified(t *testing.T) {
 	{
-		var arg net.IP = net.ParseIP("::")
+		var arg IP = net.ParseIP("::")
 		err := _IPAssertion.Unspecified(arg, "arg")
 		if err != nil {
 			t.Errorf("should not error")
 		}
 	}
 	{
-		var arg net.IP = net.ParseIP("fe00::")
+		var arg IP = net.ParseIP("fe00::")
 		err := _IPAssertion.Unspecified(arg, "arg")
 		if err == nil {
 			t.Errorf("should get error")
@@ -388,14 +388,14 @@ func TestIPAssertion_Unspecified(t *testing.T) {
 		}
 	}
 	{
-		var arg net.IP = net.ParseIP("0.0.0.0")
+		var arg IP = net.ParseIP("0.0.0.0")
 		err := _IPAssertion.Unspecified(arg, "arg")
 		if err != nil {
 			t.Errorf("should not error")
 		}
 	}
 	{
-		var arg net.IP = net.ParseIP("8.8.8.8")
+		var arg IP = net.ParseIP("8.8.8.8")
 		err := _IPAssertion.Unspecified(arg, "arg")
 		if err == nil {
 			t.Errorf("should get error")
@@ -409,7 +409,7 @@ func TestIPAssertion_Unspecified(t *testing.T) {
 
 func TestIPAssertion_NonGlobalUnicast(t *testing.T) {
 	{
-		var arg net.IP = net.ParseIP("2000::")
+		var arg IP = net.ParseIP("2000::")
 		err := _IPAssertion.NotGlobalUnicast(arg, "arg")
 		if err == nil {
 			t.Errorf("should get error")
@@ -420,14 +420,14 @@ func TestIPAssertion_NonGlobalUnicast(t *testing.T) {
 		}
 	}
 	{
-		var arg net.IP = net.ParseIP("FF00::")
+		var arg IP = net.ParseIP("FF00::")
 		err := _IPAssertion.NotGlobalUnicast(arg, "arg")
 		if err != nil {
 			t.Errorf("should not error")
 		}
 	}
 	{
-		var arg net.IP = net.ParseIP("10.255.0.0")
+		var arg IP = net.ParseIP("10.255.0.0")
 		err := _IPAssertion.NotGlobalUnicast(arg, "arg")
 		if err == nil {
 			t.Errorf("should get error")
@@ -438,7 +438,7 @@ func TestIPAssertion_NonGlobalUnicast(t *testing.T) {
 		}
 	}
 	{
-		var arg net.IP = net.ParseIP("8.8.8.8")
+		var arg IP = net.ParseIP("8.8.8.8")
 		err := _IPAssertion.NotGlobalUnicast(arg, "arg")
 		if err == nil {
 			t.Errorf("should get error")
@@ -449,7 +449,7 @@ func TestIPAssertion_NonGlobalUnicast(t *testing.T) {
 		}
 	}
 	{
-		var arg net.IP = net.ParseIP("255.255.255.255")
+		var arg IP = net.ParseIP("255.255.255.255")
 		err := _IPAssertion.NotGlobalUnicast(arg, "arg")
 		if err != nil {
 			t.Errorf("should not error")
@@ -459,7 +459,7 @@ func TestIPAssertion_NonGlobalUnicast(t *testing.T) {
 
 func TestIPAssertion_NonInterfaceLocalMulticast(t *testing.T) {
 	{
-		var arg net.IP = net.ParseIP("ff01::1")
+		var arg IP = net.ParseIP("ff01::1")
 		err := _IPAssertion.NotInterfaceLocalMulticast(arg, "arg")
 		if err == nil {
 			t.Errorf("should get error")
@@ -470,14 +470,14 @@ func TestIPAssertion_NonInterfaceLocalMulticast(t *testing.T) {
 		}
 	}
 	{
-		var arg net.IP = net.ParseIP("2000::")
+		var arg IP = net.ParseIP("2000::")
 		err := _IPAssertion.NotInterfaceLocalMulticast(arg, "arg")
 		if err != nil {
 			t.Errorf("should not error")
 		}
 	}
 	{
-		var arg net.IP = net.ParseIP("255.0.0.0")
+		var arg IP = net.ParseIP("255.0.0.0")
 		err := _IPAssertion.NotInterfaceLocalMulticast(arg, "arg")
 		if err != nil {
 			t.Errorf("should not error")
@@ -487,7 +487,7 @@ func TestIPAssertion_NonInterfaceLocalMulticast(t *testing.T) {
 
 func TestIPAssertion_NotLinkLocalMulticast(t *testing.T) {
 	{
-		var arg net.IP = net.ParseIP("ff02::2")
+		var arg IP = net.ParseIP("ff02::2")
 		err := _IPAssertion.NotLinkLocalMulticast(arg, "arg")
 		if err == nil {
 			t.Errorf("should get error")
@@ -498,14 +498,14 @@ func TestIPAssertion_NotLinkLocalMulticast(t *testing.T) {
 		}
 	}
 	{
-		var arg net.IP = net.ParseIP("fe80::")
+		var arg IP = net.ParseIP("fe80::")
 		err := _IPAssertion.NotLinkLocalMulticast(arg, "arg")
 		if err != nil {
 			t.Errorf("should not error")
 		}
 	}
 	{
-		var arg net.IP = net.ParseIP("224.0.0.0")
+		var arg IP = net.ParseIP("224.0.0.0")
 		err := _IPAssertion.NotLinkLocalMulticast(arg, "arg")
 		if err == nil {
 			t.Errorf("should get error")
@@ -516,7 +516,7 @@ func TestIPAssertion_NotLinkLocalMulticast(t *testing.T) {
 		}
 	}
 	{
-		var arg net.IP = net.ParseIP("169.254.0.0")
+		var arg IP = net.ParseIP("169.254.0.0")
 		err := _IPAssertion.NotLinkLocalMulticast(arg, "arg")
 		if err != nil {
 			t.Errorf("should not error")
@@ -526,7 +526,7 @@ func TestIPAssertion_NotLinkLocalMulticast(t *testing.T) {
 
 func TestIPAssertion_NotLinkLocalUnicast(t *testing.T) {
 	{
-		var arg net.IP = net.ParseIP("fe80::")
+		var arg IP = net.ParseIP("fe80::")
 		err := _IPAssertion.NotLinkLocalUnicast(arg, "arg")
 		if err == nil {
 			t.Errorf("should get error")
@@ -537,14 +537,14 @@ func TestIPAssertion_NotLinkLocalUnicast(t *testing.T) {
 		}
 	}
 	{
-		var arg net.IP = net.ParseIP("2000::")
+		var arg IP = net.ParseIP("2000::")
 		err := _IPAssertion.NotLinkLocalUnicast(arg, "arg")
 		if err != nil {
 			t.Errorf("should not error")
 		}
 	}
 	{
-		var arg net.IP = net.ParseIP("169.254.0.0")
+		var arg IP = net.ParseIP("169.254.0.0")
 		err := _IPAssertion.NotLinkLocalUnicast(arg, "arg")
 		if err == nil {
 			t.Errorf("should get error")
@@ -555,7 +555,7 @@ func TestIPAssertion_NotLinkLocalUnicast(t *testing.T) {
 		}
 	}
 	{
-		var arg net.IP = net.ParseIP("224.0.0.0")
+		var arg IP = net.ParseIP("224.0.0.0")
 		err := _IPAssertion.NotLinkLocalUnicast(arg, "arg")
 		if err != nil {
 			t.Errorf("should not error")
@@ -565,7 +565,7 @@ func TestIPAssertion_NotLinkLocalUnicast(t *testing.T) {
 
 func TestIPAssertion_NotLoopback(t *testing.T) {
 	{
-		var arg net.IP = net.ParseIP("::1")
+		var arg IP = net.ParseIP("::1")
 		err := _IPAssertion.NotLoopback(arg, "arg")
 		if err == nil {
 			t.Errorf("should get error")
@@ -576,14 +576,14 @@ func TestIPAssertion_NotLoopback(t *testing.T) {
 		}
 	}
 	{
-		var arg net.IP = net.ParseIP("ff02::1")
+		var arg IP = net.ParseIP("ff02::1")
 		err := _IPAssertion.NotLoopback(arg, "arg")
 		if err != nil {
 			t.Errorf("should not error")
 		}
 	}
 	{
-		var arg net.IP = net.ParseIP("127.0.0.0")
+		var arg IP = net.ParseIP("127.0.0.0")
 		err := _IPAssertion.NotLoopback(arg, "arg")
 		if err == nil {
 			t.Errorf("should get error")
@@ -594,7 +594,7 @@ func TestIPAssertion_NotLoopback(t *testing.T) {
 		}
 	}
 	{
-		var arg net.IP = net.ParseIP("128.0.0.0")
+		var arg IP = net.ParseIP("128.0.0.0")
 		err := _IPAssertion.NotLoopback(arg, "arg")
 		if err != nil {
 			t.Errorf("should not error")
@@ -604,7 +604,7 @@ func TestIPAssertion_NotLoopback(t *testing.T) {
 
 func TestIPAssertion_NotMulticast(t *testing.T) {
 	{
-		var arg net.IP = net.ParseIP("FF00::")
+		var arg IP = net.ParseIP("FF00::")
 		err := _IPAssertion.NotMulticast(arg, "arg")
 		if err == nil {
 			t.Errorf("should get error")
@@ -615,7 +615,7 @@ func TestIPAssertion_NotMulticast(t *testing.T) {
 		}
 	}
 	{
-		var arg net.IP = net.ParseIP("ff02::1")
+		var arg IP = net.ParseIP("ff02::1")
 		err := _IPAssertion.NotMulticast(arg, "arg")
 		if err == nil {
 			t.Errorf("should get error")
@@ -626,14 +626,14 @@ func TestIPAssertion_NotMulticast(t *testing.T) {
 		}
 	}
 	{
-		var arg net.IP = net.ParseIP("::1")
+		var arg IP = net.ParseIP("::1")
 		err := _IPAssertion.NotMulticast(arg, "arg")
 		if err != nil {
 			t.Errorf("should not error")
 		}
 	}
 	{
-		var arg net.IP = net.ParseIP("239.0.0.0")
+		var arg IP = net.ParseIP("239.0.0.0")
 		err := _IPAssertion.NotMulticast(arg, "arg")
 		if err == nil {
 			t.Errorf("should get error")
@@ -644,7 +644,7 @@ func TestIPAssertion_NotMulticast(t *testing.T) {
 		}
 	}
 	{
-		var arg net.IP = net.ParseIP("224.0.0.0")
+		var arg IP = net.ParseIP("224.0.0.0")
 		err := _IPAssertion.NotMulticast(arg, "arg")
 		if err == nil {
 			t.Errorf("should get error")
@@ -655,7 +655,7 @@ func TestIPAssertion_NotMulticast(t *testing.T) {
 		}
 	}
 	{
-		var arg net.IP = net.ParseIP("127.0.0.0")
+		var arg IP = net.ParseIP("127.0.0.0")
 		err := _IPAssertion.NotMulticast(arg, "arg")
 		if err != nil {
 			t.Errorf("should not error")
@@ -665,7 +665,7 @@ func TestIPAssertion_NotMulticast(t *testing.T) {
 
 func TestIPAssertion_NotPrivate(t *testing.T) {
 	{
-		var arg net.IP = net.ParseIP("fc00::")
+		var arg IP = net.ParseIP("fc00::")
 		err := _IPAssertion.NotPrivate(arg, "arg")
 		if err == nil {
 			t.Errorf("should get error")
@@ -676,14 +676,14 @@ func TestIPAssertion_NotPrivate(t *testing.T) {
 		}
 	}
 	{
-		var arg net.IP = net.ParseIP("fe00::")
+		var arg IP = net.ParseIP("fe00::")
 		err := _IPAssertion.NotPrivate(arg, "arg")
 		if err != nil {
 			t.Errorf("should not error")
 		}
 	}
 	{
-		var arg net.IP = net.ParseIP("10.255.0.0")
+		var arg IP = net.ParseIP("10.255.0.0")
 		err := _IPAssertion.NotPrivate(arg, "arg")
 		if err == nil {
 			t.Errorf("should get error")
@@ -694,7 +694,7 @@ func TestIPAssertion_NotPrivate(t *testing.T) {
 		}
 	}
 	{
-		var arg net.IP = net.ParseIP("11.0.0.0")
+		var arg IP = net.ParseIP("11.0.0.0")
 		err := _IPAssertion.NotPrivate(arg, "arg")
 		if err != nil {
 			t.Errorf("should not error")
@@ -704,7 +704,7 @@ func TestIPAssertion_NotPrivate(t *testing.T) {
 
 func TestIPAssertion_NotUnspecified(t *testing.T) {
 	{
-		var arg net.IP = net.ParseIP("::")
+		var arg IP = net.ParseIP("::")
 		err := _IPAssertion.NotUnspecified(arg, "arg")
 		if err == nil {
 			t.Errorf("should get error")
@@ -715,14 +715,14 @@ func TestIPAssertion_NotUnspecified(t *testing.T) {
 		}
 	}
 	{
-		var arg net.IP = net.ParseIP("fe00::")
+		var arg IP = net.ParseIP("fe00::")
 		err := _IPAssertion.NotUnspecified(arg, "arg")
 		if err != nil {
 			t.Errorf("should not error")
 		}
 	}
 	{
-		var arg net.IP = net.ParseIP("0.0.0.0")
+		var arg IP = net.ParseIP("0.0.0.0")
 		err := _IPAssertion.NotUnspecified(arg, "arg")
 		if err == nil {
 			t.Errorf("should get error")
@@ -733,7 +733,7 @@ func TestIPAssertion_NotUnspecified(t *testing.T) {
 		}
 	}
 	{
-		var arg net.IP = net.ParseIP("8.8.8.8")
+		var arg IP = net.ParseIP("8.8.8.8")
 		err := _IPAssertion.NotUnspecified(arg, "arg")
 		if err != nil {
 			t.Errorf("should not error")
@@ -743,7 +743,7 @@ func TestIPAssertion_NotUnspecified(t *testing.T) {
 
 func TestIPAssertion_Must(t *testing.T) {
 	var validate IPValidator = _IPAssertion.Must(
-		func(v net.IP) bool {
+		func(v IP) bool {
 			if v.To4() == nil {
 				return false
 			}
@@ -751,14 +751,14 @@ func TestIPAssertion_Must(t *testing.T) {
 		})
 
 	{
-		var arg net.IP = net.ParseIP("127.1.1.1")
+		var arg IP = net.ParseIP("127.1.1.1")
 		err := validate(arg, "arg")
 		if err != nil {
 			t.Errorf("should not error")
 		}
 	}
 	{
-		var arg net.IP = net.ParseIP("10.10.20.5")
+		var arg IP = net.ParseIP("10.10.20.5")
 		err := validate(arg, "arg")
 		if err == nil {
 			t.Errorf("should get error")
@@ -773,7 +773,7 @@ func TestIPAssertion_Must(t *testing.T) {
 func TestIPAssertion_BelongToAny(t *testing.T) {
 	{
 		var validate = _IPAssertion.BelongToAny("10.10.20.0/30")
-		var arg net.IP = net.ParseIP("10.10.20.3")
+		var arg IP = net.ParseIP("10.10.20.3")
 		err := validate(arg, "arg")
 		if err != nil {
 			t.Errorf("should not error")
@@ -781,7 +781,7 @@ func TestIPAssertion_BelongToAny(t *testing.T) {
 	}
 	{
 		var validate = _IPAssertion.BelongToAny("10.10.20.0/30")
-		var arg net.IP = net.ParseIP("10.10.20.5")
+		var arg IP = net.ParseIP("10.10.20.5")
 		err := validate(arg, "arg")
 		if err == nil {
 			t.Errorf("should get error")
@@ -793,7 +793,7 @@ func TestIPAssertion_BelongToAny(t *testing.T) {
 	}
 	{
 		var validate = _IPAssertion.BelongToAny("1::/64")
-		var arg net.IP = net.ParseIP("1::1")
+		var arg IP = net.ParseIP("1::1")
 		err := validate(arg, "arg")
 		if err != nil {
 			t.Errorf("should not error")
@@ -801,7 +801,7 @@ func TestIPAssertion_BelongToAny(t *testing.T) {
 	}
 	{
 		var validate = _IPAssertion.BelongToAny("1::/64")
-		var arg net.IP = net.ParseIP("2::1")
+		var arg IP = net.ParseIP("2::1")
 		err := validate(arg, "arg")
 		if err == nil {
 			t.Errorf("should get error")
@@ -816,7 +816,7 @@ func TestIPAssertion_BelongToAny(t *testing.T) {
 func TestIPAssertion_NotBelongToAny(t *testing.T) {
 	{
 		var validate = _IPAssertion.NotBelongToAny("10.10.20.0/30")
-		var arg net.IP = net.ParseIP("10.10.20.3")
+		var arg IP = net.ParseIP("10.10.20.3")
 		err := validate(arg, "arg")
 		if err == nil {
 			t.Errorf("should get error")
@@ -828,7 +828,7 @@ func TestIPAssertion_NotBelongToAny(t *testing.T) {
 	}
 	{
 		var validate = _IPAssertion.NotBelongToAny("10.10.20.0/30")
-		var arg net.IP = net.ParseIP("10.10.20.5")
+		var arg IP = net.ParseIP("10.10.20.5")
 		err := validate(arg, "arg")
 		if err != nil {
 			t.Errorf("should not error")
@@ -836,7 +836,7 @@ func TestIPAssertion_NotBelongToAny(t *testing.T) {
 	}
 	{
 		var validate = _IPAssertion.NotBelongToAny("1::/64")
-		var arg net.IP = net.ParseIP("1::1")
+		var arg IP = net.ParseIP("1::1")
 		err := validate(arg, "arg")
 		if err == nil {
 			t.Errorf("should get error")
@@ -848,7 +848,7 @@ func TestIPAssertion_NotBelongToAny(t *testing.T) {
 	}
 	{
 		var validate = _IPAssertion.NotBelongToAny("1::/64")
-		var arg net.IP = net.ParseIP("2::1")
+		var arg IP = net.ParseIP("2::1")
 		err := validate(arg, "arg")
 		if err != nil {
 			t.Errorf("should not error")

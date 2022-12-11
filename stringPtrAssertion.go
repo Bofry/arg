@@ -46,18 +46,9 @@ func (StringPtrAssertion) NonEmpty(ptr *string, name string) error {
 		var (
 			v string = *ptr
 		)
-		if len(v) == 0 {
-			return &InvalidArgumentError{
-				Name:   name,
-				Reason: internal.ERR_EMPTY_STRING,
-			}
-		}
+		return _StringAssertion.NonEmpty(v, name)
 	}
 	return nil
-}
-
-func (StringPtrAssertion) In(values ...string) StringPtrValidator {
-	return _StringAssertion.In(values...).AssertPtr
 }
 
 // Must checks if the given string is evaluated to true by specified predicate.
@@ -71,6 +62,10 @@ func (StringPtrAssertion) Must(fn StringPtrPredicate) StringPtrValidator {
 		}
 		return nil
 	}
+}
+
+func (StringPtrAssertion) In(values ...string) StringPtrValidator {
+	return _StringAssertion.In(values...).AssertPtr
 }
 
 func (StringPtrAssertion) MaxLength(size int) StringPtrValidator {

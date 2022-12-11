@@ -1,9 +1,7 @@
 package arg
 
-import "net"
-
 type IPAssertor struct {
-	v    net.IP
+	v    IP
 	name string
 }
 

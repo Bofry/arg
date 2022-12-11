@@ -109,6 +109,7 @@ func TestNumberAssertor(t *testing.T) {
 		}
 	}
 }
+
 func TestNumberAssertion_IsNumber(t *testing.T) {
 	{
 		var arg Number = "0"

@@ -3,19 +3,26 @@ package arg
 import (
 	"encoding/json"
 	"net"
+	"time"
 )
 
 const (
-	Strings = StringAssertion("")
-	Floats  = FloatAssertion("")
 	Ints    = IntAssertion("")
 	UInts   = UIntAssertion("")
+	Floats  = FloatAssertion("")
 	Numbers = NumberAssertion("")
+	Strings = StringAssertion("")
 	Slices  = SliceAssertion("")
 	Values  = ValueAssertion("")
 	IPs     = IPAssertion("")
+	Times   = TimeAssertion("")
 
+	IntPtr    = IntPtrAssertion("")
+	UIntPtr   = UIntPtrAssertion("")
+	FloatPtr  = FloatPtrAssertion("")
+	NumberPtr = NumberPtrAssertion("")
 	StringPtr = StringPtrAssertion("")
+	TimePtr   = TimePtrAssertion("")
 )
 
 type (
@@ -30,9 +37,15 @@ type (
 	StringValidator func(v string, name string) error
 	NumberValidator func(v Number, name string) error
 	ValueValidator  func(v interface{}, name string) error
-	IPValidator     func(v net.IP, name string) error
+	IPValidator     func(v IP, name string) error
+	TimeValidator   func(v time.Time, name string) error
 
+	IntPtrValidator    func(v *int64, name string) error
+	UIntPtrValidator   func(v *uint64, name string) error
+	FloatPtrValidator  func(v *float64, name string) error
 	StringPtrValidator func(v *string, name string) error
+	NumberPtrValidator func(v *Number, name string) error
+	TimePtrValidator   func(v *time.Time, name string) error
 
 	IntPredicate    func(v int64) bool
 	UIntPredicate   func(v uint64) bool
@@ -40,7 +53,13 @@ type (
 	StringPredicate func(v string) bool
 	NumberPredicate func(v Number) bool
 	ValuePredicate  func(v interface{}) bool
-	IPPredicate     func(v net.IP) bool
+	IPPredicate     func(v IP) bool
+	TimePredicate   func(v time.Time) bool
 
+	IntPtrPredicate    func(v *int64) bool
+	UIntPtrPredicate   func(v *uint64) bool
+	FloatPtrPredicate  func(v *float64) bool
 	StringPtrPredicate func(v *string) bool
+	NumberPtrPredicate func(v *Number) bool
+	TimePtrPredicate   func(v *time.Time) bool
 )

@@ -54,6 +54,16 @@ func TestIntAssertion(t *testing.T) {
 			t.Errorf("except: %v\ngot: %v", expectedErrorMsg, err.Error())
 		}
 	}
+	{
+		err := _IntAssertion.Assert(negateOneInt, "negateOneInt",
+			_IntAssertion.NonZero,
+			_IntAssertion.LessOrEqual(3),
+			_IntAssertion.BetweenRange(-2, 4),
+		)
+		if err != nil {
+			t.Errorf("should not error")
+		}
+	}
 }
 
 func TestIntAssertor(t *testing.T) {
