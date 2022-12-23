@@ -116,7 +116,7 @@ func (TimeAssertion) BeforeOrEqual(boundary time.Time) TimeValidator {
 	}
 }
 
-// BetweenRange checks if given integer is between the specified minimum and maximum values (both inclusive).
+// BetweenRange checks if given time.Time is between the specified minimum and maximum values (both inclusive).
 func (TimeAssertion) BetweenRange(min, max time.Time) TimeValidator {
 	return func(v time.Time, name string) error {
 		if !v.After(min) || !v.Before(max) {

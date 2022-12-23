@@ -88,7 +88,7 @@ func (TimePtrAssertion) BeforeOrEqual(boundary time.Time) TimePtrValidator {
 	return _TimeAssertion.BeforeOrEqual(boundary).AssertPtr
 }
 
-// BetweenRange checks if given integer is between the specified minimum and maximum values (both inclusive).
+// BetweenRange checks if given time.TIme is between the specified minimum and maximum values (both inclusive).
 func (TimePtrAssertion) BetweenRange(min, max time.Time) TimePtrValidator {
 	return _TimeAssertion.BetweenRange(min, max).AssertPtr
 }

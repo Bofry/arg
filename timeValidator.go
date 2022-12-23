@@ -5,6 +5,7 @@ import (
 	"time"
 
 	"github.com/Bofry/arg/internal"
+	"github.com/cstockton/go-conv"
 )
 
 var (
@@ -53,6 +54,10 @@ func (fn TimeValidator) AssertValue(v interface{}, name string) error {
 				if err == nil {
 					break
 				}
+			}
+			if err != nil {
+				err = nil
+				ts, err = conv.Time(str)
 			}
 			if err != nil {
 				return &InvalidArgumentError{
