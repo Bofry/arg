@@ -33,7 +33,7 @@ func TestFloatPtrAssertion(t *testing.T) {
 		}
 		expectedErrorMsg := "invalid argument \"nilFloat\"; cannot be nil"
 		if err.Error() != expectedErrorMsg {
-			t.Errorf("except: %v\ngot: %v", expectedErrorMsg, err.Error())
+			t.Errorf("expect: %v\ngot: %v", expectedErrorMsg, err.Error())
 		}
 	}
 	{
@@ -48,7 +48,7 @@ func TestFloatPtrAssertion(t *testing.T) {
 		}
 		expectedErrorMsg := "invalid argument \"nanFloat\"; cannot be -inf, +inf or NaN"
 		if err.Error() != expectedErrorMsg {
-			t.Errorf("except: %v\ngot: %v", expectedErrorMsg, err.Error())
+			t.Errorf("expect: %v\ngot: %v", expectedErrorMsg, err.Error())
 		}
 	}
 	{
@@ -63,7 +63,7 @@ func TestFloatPtrAssertion(t *testing.T) {
 		}
 		expectedErrorMsg := "invalid argument \"infFloat\"; cannot be -inf, +inf or NaN"
 		if err.Error() != expectedErrorMsg {
-			t.Errorf("except: %v\ngot: %v", expectedErrorMsg, err.Error())
+			t.Errorf("expect: %v\ngot: %v", expectedErrorMsg, err.Error())
 		}
 	}
 	{
@@ -78,7 +78,7 @@ func TestFloatPtrAssertion(t *testing.T) {
 		}
 		expectedErrorMsg := "invalid argument \"zeroFloat\"; should not be zero"
 		if err.Error() != expectedErrorMsg {
-			t.Errorf("except: %v\ngot: %v", expectedErrorMsg, err.Error())
+			t.Errorf("expect: %v\ngot: %v", expectedErrorMsg, err.Error())
 		}
 	}
 	{
@@ -93,7 +93,7 @@ func TestFloatPtrAssertion(t *testing.T) {
 		}
 		expectedErrorMsg := "invalid argument \"negateFloat\"; should be a non-negative number"
 		if err.Error() != expectedErrorMsg {
-			t.Errorf("except: %v\ngot: %v", expectedErrorMsg, err.Error())
+			t.Errorf("expect: %v\ngot: %v", expectedErrorMsg, err.Error())
 		}
 	}
 	{
@@ -108,10 +108,10 @@ func TestFloatPtrAssertion(t *testing.T) {
 		}
 		expectedErrorMsg := "invalid argument \"five_sixFloat\"; out of range"
 		if err.Error() != expectedErrorMsg {
-			t.Errorf("except: %v\ngot: %v", expectedErrorMsg, err.Error())
+			t.Errorf("expect: %v\ngot: %v", expectedErrorMsg, err.Error())
 		}
 	}
-	
+
 	{
 		err := _FloatPtrAssertion.Assert(nilFloat, "nilFloat",
 			_FloatPtrAssertion.NonNanNorInf,
@@ -158,7 +158,7 @@ func TestFloatPtrAssertor(t *testing.T) {
 		}
 		expectedErrorMsg := "invalid argument \"nanFloat\"; cannot be -inf, +inf or NaN"
 		if err.Error() != expectedErrorMsg {
-			t.Errorf("except: %v\ngot: %v", expectedErrorMsg, err.Error())
+			t.Errorf("expect: %v\ngot: %v", expectedErrorMsg, err.Error())
 		}
 	}
 }
@@ -183,7 +183,7 @@ func TestFloatPtrAssertion_NotNil(t *testing.T) {
 		}
 		expectedErrorMsg := "invalid argument \"arg\"; cannot be nil"
 		if err.Error() != expectedErrorMsg {
-			t.Errorf("except: %v\ngot: %v", expectedErrorMsg, err.Error())
+			t.Errorf("expect: %v\ngot: %v", expectedErrorMsg, err.Error())
 		}
 	}
 }

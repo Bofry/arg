@@ -20,7 +20,7 @@ func TestUIntAssertion(t *testing.T) {
 		}
 		expectedErrorMsg := "invalid argument \"zeroInt\"; should not be zero"
 		if err.Error() != expectedErrorMsg {
-			t.Errorf("except: %v\ngot: %v", expectedErrorMsg, err.Error())
+			t.Errorf("expect: %v\ngot: %v", expectedErrorMsg, err.Error())
 		}
 	}
 	{
@@ -34,7 +34,7 @@ func TestUIntAssertion(t *testing.T) {
 		}
 		expectedErrorMsg := "invalid argument \"negateOneInt\"; out of range"
 		if err.Error() != expectedErrorMsg {
-			t.Errorf("except: %v\ngot: %v", expectedErrorMsg, err.Error())
+			t.Errorf("expect: %v\ngot: %v", expectedErrorMsg, err.Error())
 		}
 	}
 	{
@@ -48,7 +48,7 @@ func TestUIntAssertion(t *testing.T) {
 		}
 		expectedErrorMsg := "invalid argument \"sixInt\"; out of range"
 		if err.Error() != expectedErrorMsg {
-			t.Errorf("except: %v\ngot: %v", expectedErrorMsg, err.Error())
+			t.Errorf("expect: %v\ngot: %v", expectedErrorMsg, err.Error())
 		}
 	}
 }
@@ -70,7 +70,7 @@ func TestUIntAssertor(t *testing.T) {
 		}
 		expectedErrorMsg := "invalid argument \"zeroInt\"; should not be zero"
 		if err.Error() != expectedErrorMsg {
-			t.Errorf("except: %v\ngot: %v", expectedErrorMsg, err.Error())
+			t.Errorf("expect: %v\ngot: %v", expectedErrorMsg, err.Error())
 		}
 	}
 }
@@ -98,7 +98,7 @@ func TestUIntAssertion_NonZero(t *testing.T) {
 		}
 		expectedErrorMsg := "invalid argument \"arg\"; should not be zero"
 		if err.Error() != expectedErrorMsg {
-			t.Errorf("except: %v\ngot: %v", expectedErrorMsg, err.Error())
+			t.Errorf("expect: %v\ngot: %v", expectedErrorMsg, err.Error())
 		}
 	}
 }
@@ -120,7 +120,7 @@ func TestUIntAssertion_NotIn(t *testing.T) {
 		}
 		expectedErrorMsg := "invalid argument \"arg\"; specified integer 6 is invalid"
 		if err.Error() != expectedErrorMsg {
-			t.Errorf("except: %v\ngot: %v", expectedErrorMsg, err.Error())
+			t.Errorf("expect: %v\ngot: %v", expectedErrorMsg, err.Error())
 		}
 	}
 	{
@@ -131,7 +131,7 @@ func TestUIntAssertion_NotIn(t *testing.T) {
 		}
 		expectedErrorMsg := "invalid argument \"arg\"; specified integer 3 is invalid"
 		if err.Error() != expectedErrorMsg {
-			t.Errorf("except: %v\ngot: %v", expectedErrorMsg, err.Error())
+			t.Errorf("expect: %v\ngot: %v", expectedErrorMsg, err.Error())
 		}
 	}
 }
@@ -146,7 +146,7 @@ func TestUIntAssertion_In(t *testing.T) {
 		}
 		expectedErrorMsg := "invalid argument \"arg\"; specified integer 1 is invalid"
 		if err.Error() != expectedErrorMsg {
-			t.Errorf("except: %v\ngot: %v", expectedErrorMsg, err.Error())
+			t.Errorf("expect: %v\ngot: %v", expectedErrorMsg, err.Error())
 		}
 	}
 	{
@@ -179,7 +179,7 @@ func TestUIntAssertion_Must(t *testing.T) {
 		}
 		expectedErrorMsg := "invalid argument \"arg\"; specified integer 1 is invalid"
 		if err.Error() != expectedErrorMsg {
-			t.Errorf("except: %v\ngot: %v", expectedErrorMsg, err.Error())
+			t.Errorf("expect: %v\ngot: %v", expectedErrorMsg, err.Error())
 		}
 	}
 	{
@@ -197,7 +197,7 @@ func TestUIntAssertion_Must(t *testing.T) {
 		}
 		expectedErrorMsg := "invalid argument \"arg\"; specified integer 3 is invalid"
 		if err.Error() != expectedErrorMsg {
-			t.Errorf("except: %v\ngot: %v", expectedErrorMsg, err.Error())
+			t.Errorf("expect: %v\ngot: %v", expectedErrorMsg, err.Error())
 		}
 	}
 }
@@ -227,7 +227,7 @@ func TestUIntAssertion_LessOrEqual(t *testing.T) {
 		}
 		expectedErrorMsg := "invalid argument \"arg\"; out of range"
 		if err.Error() != expectedErrorMsg {
-			t.Errorf("except: %v\ngot: %v", expectedErrorMsg, err.Error())
+			t.Errorf("expect: %v\ngot: %v", expectedErrorMsg, err.Error())
 		}
 	}
 }
@@ -257,7 +257,7 @@ func TestUIntAssertion_GreaterOrEqual(t *testing.T) {
 		}
 		expectedErrorMsg := "invalid argument \"arg\"; out of range"
 		if err.Error() != expectedErrorMsg {
-			t.Errorf("except: %v\ngot: %v", expectedErrorMsg, err.Error())
+			t.Errorf("expect: %v\ngot: %v", expectedErrorMsg, err.Error())
 		}
 	}
 }
@@ -287,7 +287,7 @@ func TestUIntAssertion_BetweenRange(t *testing.T) {
 		}
 		expectedErrorMsg := "invalid argument \"arg\"; out of range"
 		if err.Error() != expectedErrorMsg {
-			t.Errorf("except: %v\ngot: %v", expectedErrorMsg, err.Error())
+			t.Errorf("expect: %v\ngot: %v", expectedErrorMsg, err.Error())
 		}
 	}
 	{
@@ -298,7 +298,7 @@ func TestUIntAssertion_BetweenRange(t *testing.T) {
 		}
 		expectedErrorMsg := "invalid argument \"arg\"; out of range"
 		if err.Error() != expectedErrorMsg {
-			t.Errorf("except: %v\ngot: %v", expectedErrorMsg, err.Error())
+			t.Errorf("expect: %v\ngot: %v", expectedErrorMsg, err.Error())
 		}
 	}
 }

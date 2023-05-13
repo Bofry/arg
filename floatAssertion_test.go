@@ -27,7 +27,7 @@ func TestFloatAssertion(t *testing.T) {
 		}
 		expectedErrorMsg := "invalid argument \"nanFloat\"; cannot be -inf, +inf or NaN"
 		if err.Error() != expectedErrorMsg {
-			t.Errorf("except: %v\ngot: %v", expectedErrorMsg, err.Error())
+			t.Errorf("expect: %v\ngot: %v", expectedErrorMsg, err.Error())
 		}
 	}
 	{
@@ -42,7 +42,7 @@ func TestFloatAssertion(t *testing.T) {
 		}
 		expectedErrorMsg := "invalid argument \"infFloat\"; cannot be -inf, +inf or NaN"
 		if err.Error() != expectedErrorMsg {
-			t.Errorf("except: %v\ngot: %v", expectedErrorMsg, err.Error())
+			t.Errorf("expect: %v\ngot: %v", expectedErrorMsg, err.Error())
 		}
 	}
 	{
@@ -57,7 +57,7 @@ func TestFloatAssertion(t *testing.T) {
 		}
 		expectedErrorMsg := "invalid argument \"zeroFloat\"; should not be zero"
 		if err.Error() != expectedErrorMsg {
-			t.Errorf("except: %v\ngot: %v", expectedErrorMsg, err.Error())
+			t.Errorf("expect: %v\ngot: %v", expectedErrorMsg, err.Error())
 		}
 	}
 	{
@@ -72,7 +72,7 @@ func TestFloatAssertion(t *testing.T) {
 		}
 		expectedErrorMsg := "invalid argument \"negateFloat\"; should be a non-negative number"
 		if err.Error() != expectedErrorMsg {
-			t.Errorf("except: %v\ngot: %v", expectedErrorMsg, err.Error())
+			t.Errorf("expect: %v\ngot: %v", expectedErrorMsg, err.Error())
 		}
 	}
 	{
@@ -87,7 +87,7 @@ func TestFloatAssertion(t *testing.T) {
 		}
 		expectedErrorMsg := "invalid argument \"five_sixFloat\"; out of range"
 		if err.Error() != expectedErrorMsg {
-			t.Errorf("except: %v\ngot: %v", expectedErrorMsg, err.Error())
+			t.Errorf("expect: %v\ngot: %v", expectedErrorMsg, err.Error())
 		}
 	}
 	{
@@ -121,7 +121,7 @@ func TestFloatAssertor(t *testing.T) {
 		}
 		expectedErrorMsg := "invalid argument \"nanFloat\"; cannot be -inf, +inf or NaN"
 		if err.Error() != expectedErrorMsg {
-			t.Errorf("except: %v\ngot: %v", expectedErrorMsg, err.Error())
+			t.Errorf("expect: %v\ngot: %v", expectedErrorMsg, err.Error())
 		}
 	}
 }
@@ -142,7 +142,7 @@ func TestFloatAssertion_NonNanNorInf(t *testing.T) {
 		}
 		expectedErrorMsg := "invalid argument \"arg\"; cannot be -inf, +inf or NaN"
 		if err.Error() != expectedErrorMsg {
-			t.Errorf("except: %v\ngot: %v", expectedErrorMsg, err.Error())
+			t.Errorf("expect: %v\ngot: %v", expectedErrorMsg, err.Error())
 		}
 	}
 	{
@@ -153,7 +153,7 @@ func TestFloatAssertion_NonNanNorInf(t *testing.T) {
 		}
 		expectedErrorMsg := "invalid argument \"arg\"; cannot be -inf, +inf or NaN"
 		if err.Error() != expectedErrorMsg {
-			t.Errorf("except: %v\ngot: %v", expectedErrorMsg, err.Error())
+			t.Errorf("expect: %v\ngot: %v", expectedErrorMsg, err.Error())
 		}
 	}
 }
@@ -181,7 +181,7 @@ func TestFloatAssertion_NonNegativeNumber(t *testing.T) {
 		}
 		expectedErrorMsg := "invalid argument \"arg\"; should be a non-negative number"
 		if err.Error() != expectedErrorMsg {
-			t.Errorf("except: %v\ngot: %v", expectedErrorMsg, err.Error())
+			t.Errorf("expect: %v\ngot: %v", expectedErrorMsg, err.Error())
 		}
 	}
 }
@@ -209,7 +209,7 @@ func TestFloatAssertion_NonZero(t *testing.T) {
 		}
 		expectedErrorMsg := "invalid argument \"arg\"; should not be zero"
 		if err.Error() != expectedErrorMsg {
-			t.Errorf("except: %v\ngot: %v", expectedErrorMsg, err.Error())
+			t.Errorf("expect: %v\ngot: %v", expectedErrorMsg, err.Error())
 		}
 	}
 }
@@ -228,7 +228,7 @@ func TestFloatAssertion_Must(t *testing.T) {
 		}
 		expectedErrorMsg := "invalid argument \"arg\"; specified number -0.0001 is invalid"
 		if err.Error() != expectedErrorMsg {
-			t.Errorf("except: %v\ngot: %v", expectedErrorMsg, err.Error())
+			t.Errorf("expect: %v\ngot: %v", expectedErrorMsg, err.Error())
 		}
 	}
 	{
@@ -265,7 +265,7 @@ func TestFloatAssertion_Less(t *testing.T) {
 		}
 		expectedErrorMsg := "invalid argument \"arg\"; out of range"
 		if err.Error() != expectedErrorMsg {
-			t.Errorf("except: %v\ngot: %v", expectedErrorMsg, err.Error())
+			t.Errorf("expect: %v\ngot: %v", expectedErrorMsg, err.Error())
 		}
 	}
 	{
@@ -276,7 +276,7 @@ func TestFloatAssertion_Less(t *testing.T) {
 		}
 		expectedErrorMsg := "invalid argument \"arg\"; out of range"
 		if err.Error() != expectedErrorMsg {
-			t.Errorf("except: %v\ngot: %v", expectedErrorMsg, err.Error())
+			t.Errorf("expect: %v\ngot: %v", expectedErrorMsg, err.Error())
 		}
 	}
 }
@@ -306,7 +306,7 @@ func TestFloatAssertion_LessOrEqual(t *testing.T) {
 		}
 		expectedErrorMsg := "invalid argument \"arg\"; out of range"
 		if err.Error() != expectedErrorMsg {
-			t.Errorf("except: %v\ngot: %v", expectedErrorMsg, err.Error())
+			t.Errorf("expect: %v\ngot: %v", expectedErrorMsg, err.Error())
 		}
 	}
 }
@@ -329,7 +329,7 @@ func TestFloatAssertion_Greater(t *testing.T) {
 		}
 		expectedErrorMsg := "invalid argument \"arg\"; out of range"
 		if err.Error() != expectedErrorMsg {
-			t.Errorf("except: %v\ngot: %v", expectedErrorMsg, err.Error())
+			t.Errorf("expect: %v\ngot: %v", expectedErrorMsg, err.Error())
 		}
 	}
 	{
@@ -340,7 +340,7 @@ func TestFloatAssertion_Greater(t *testing.T) {
 		}
 		expectedErrorMsg := "invalid argument \"arg\"; out of range"
 		if err.Error() != expectedErrorMsg {
-			t.Errorf("except: %v\ngot: %v", expectedErrorMsg, err.Error())
+			t.Errorf("expect: %v\ngot: %v", expectedErrorMsg, err.Error())
 		}
 	}
 }
@@ -370,7 +370,7 @@ func TestFloatAssertion_GreaterOrEqual(t *testing.T) {
 		}
 		expectedErrorMsg := "invalid argument \"arg\"; out of range"
 		if err.Error() != expectedErrorMsg {
-			t.Errorf("except: %v\ngot: %v", expectedErrorMsg, err.Error())
+			t.Errorf("expect: %v\ngot: %v", expectedErrorMsg, err.Error())
 		}
 	}
 }
@@ -414,7 +414,7 @@ func TestFloatAssertion_BetweenRange(t *testing.T) {
 		}
 		expectedErrorMsg := "invalid argument \"arg\"; out of range"
 		if err.Error() != expectedErrorMsg {
-			t.Errorf("except: %v\ngot: %v", expectedErrorMsg, err.Error())
+			t.Errorf("expect: %v\ngot: %v", expectedErrorMsg, err.Error())
 		}
 	}
 	{
@@ -425,7 +425,7 @@ func TestFloatAssertion_BetweenRange(t *testing.T) {
 		}
 		expectedErrorMsg := "invalid argument \"arg\"; out of range"
 		if err.Error() != expectedErrorMsg {
-			t.Errorf("except: %v\ngot: %v", expectedErrorMsg, err.Error())
+			t.Errorf("expect: %v\ngot: %v", expectedErrorMsg, err.Error())
 		}
 	}
 	{
@@ -436,7 +436,7 @@ func TestFloatAssertion_BetweenRange(t *testing.T) {
 		}
 		expectedErrorMsg := "invalid argument \"arg\"; out of range"
 		if err.Error() != expectedErrorMsg {
-			t.Errorf("except: %v\ngot: %v", expectedErrorMsg, err.Error())
+			t.Errorf("expect: %v\ngot: %v", expectedErrorMsg, err.Error())
 		}
 	}
 }

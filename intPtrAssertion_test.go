@@ -27,7 +27,7 @@ func TestIntPtrAssertion(t *testing.T) {
 		}
 		expectedErrorMsg := "invalid argument \"nilInt\"; cannot be nil"
 		if err.Error() != expectedErrorMsg {
-			t.Errorf("except: %v\ngot: %v", expectedErrorMsg, err.Error())
+			t.Errorf("expect: %v\ngot: %v", expectedErrorMsg, err.Error())
 		}
 	}
 	{
@@ -42,7 +42,7 @@ func TestIntPtrAssertion(t *testing.T) {
 		}
 		expectedErrorMsg := "invalid argument \"zeroInt\"; should not be zero"
 		if err.Error() != expectedErrorMsg {
-			t.Errorf("except: %v\ngot: %v", expectedErrorMsg, err.Error())
+			t.Errorf("expect: %v\ngot: %v", expectedErrorMsg, err.Error())
 		}
 	}
 	{
@@ -57,7 +57,7 @@ func TestIntPtrAssertion(t *testing.T) {
 		}
 		expectedErrorMsg := "invalid argument \"negateOneInt\"; should be a non-negative integer"
 		if err.Error() != expectedErrorMsg {
-			t.Errorf("except: %v\ngot: %v", expectedErrorMsg, err.Error())
+			t.Errorf("expect: %v\ngot: %v", expectedErrorMsg, err.Error())
 		}
 	}
 	{
@@ -72,7 +72,7 @@ func TestIntPtrAssertion(t *testing.T) {
 		}
 		expectedErrorMsg := "invalid argument \"sixInt\"; out of range"
 		if err.Error() != expectedErrorMsg {
-			t.Errorf("except: %v\ngot: %v", expectedErrorMsg, err.Error())
+			t.Errorf("expect: %v\ngot: %v", expectedErrorMsg, err.Error())
 		}
 	}
 	{
@@ -120,7 +120,7 @@ func TestIntPtrAssertor(t *testing.T) {
 		}
 		expectedErrorMsg := "invalid argument \"zeroInt\"; should not be zero"
 		if err.Error() != expectedErrorMsg {
-			t.Errorf("except: %v\ngot: %v", expectedErrorMsg, err.Error())
+			t.Errorf("expect: %v\ngot: %v", expectedErrorMsg, err.Error())
 		}
 	}
 }
@@ -145,7 +145,7 @@ func TestIntPtrAssertion_NotNil(t *testing.T) {
 		}
 		expectedErrorMsg := "invalid argument \"arg\"; cannot be nil"
 		if err.Error() != expectedErrorMsg {
-			t.Errorf("except: %v\ngot: %v", expectedErrorMsg, err.Error())
+			t.Errorf("expect: %v\ngot: %v", expectedErrorMsg, err.Error())
 		}
 	}
 }

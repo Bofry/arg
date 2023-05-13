@@ -28,7 +28,7 @@ func TestTimePtrAssertion(t *testing.T) {
 		}
 		expectedErrorMsg := "invalid argument \"nilTime\"; cannot be nil"
 		if err.Error() != expectedErrorMsg {
-			t.Errorf("except: %v\ngot: %v", expectedErrorMsg, err.Error())
+			t.Errorf("expect: %v\ngot: %v", expectedErrorMsg, err.Error())
 		}
 	}
 	{
@@ -41,7 +41,7 @@ func TestTimePtrAssertion(t *testing.T) {
 		}
 		expectedErrorMsg := "invalid argument \"zeroTime\"; should not be zero"
 		if err.Error() != expectedErrorMsg {
-			t.Errorf("except: %v\ngot: %v", expectedErrorMsg, err.Error())
+			t.Errorf("expect: %v\ngot: %v", expectedErrorMsg, err.Error())
 		}
 	}
 	{
@@ -57,7 +57,7 @@ func TestTimePtrAssertion(t *testing.T) {
 		}
 		expectedErrorMsg := "invalid argument \"date1205Time\"; out of range"
 		if err.Error() != expectedErrorMsg {
-			t.Errorf("except: %v\ngot: %v", expectedErrorMsg, err.Error())
+			t.Errorf("expect: %v\ngot: %v", expectedErrorMsg, err.Error())
 		}
 	}
 	{
@@ -102,7 +102,7 @@ func TestTimePtrAssertor(t *testing.T) {
 		}
 		expectedErrorMsg := "invalid argument \"zeroTime\"; should not be zero"
 		if err.Error() != expectedErrorMsg {
-			t.Errorf("except: %v\ngot: %v", expectedErrorMsg, err.Error())
+			t.Errorf("expect: %v\ngot: %v", expectedErrorMsg, err.Error())
 		}
 	}
 }
@@ -123,7 +123,7 @@ func TestTimePtrAssertion_NotNil(t *testing.T) {
 		}
 		expectedErrorMsg := "invalid argument \"arg\"; cannot be nil"
 		if err.Error() != expectedErrorMsg {
-			t.Errorf("except: %v\ngot: %v", expectedErrorMsg, err.Error())
+			t.Errorf("expect: %v\ngot: %v", expectedErrorMsg, err.Error())
 		}
 	}
 }

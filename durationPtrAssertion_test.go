@@ -25,7 +25,7 @@ func TestDurationPtrAssertion(t *testing.T) {
 		}
 		expectedErrorMsg := "invalid argument \"zeroDuration\"; should not be zero"
 		if err.Error() != expectedErrorMsg {
-			t.Errorf("except: %v\ngot: %v", expectedErrorMsg, err.Error())
+			t.Errorf("expect: %v\ngot: %v", expectedErrorMsg, err.Error())
 		}
 	}
 	{
@@ -38,7 +38,7 @@ func TestDurationPtrAssertion(t *testing.T) {
 		}
 		expectedErrorMsg := "invalid argument \"negateOneDuration\"; should be a non-negative time.Duation"
 		if err.Error() != expectedErrorMsg {
-			t.Errorf("except: %v\ngot: %v", expectedErrorMsg, err.Error())
+			t.Errorf("expect: %v\ngot: %v", expectedErrorMsg, err.Error())
 		}
 	}
 	{
@@ -71,7 +71,7 @@ func TestDurationPtrAssertor(t *testing.T) {
 		}
 		expectedErrorMsg := "invalid argument \"zeroDuration\"; should not be zero"
 		if err.Error() != expectedErrorMsg {
-			t.Errorf("except: %v\ngot: %v", expectedErrorMsg, err.Error())
+			t.Errorf("expect: %v\ngot: %v", expectedErrorMsg, err.Error())
 		}
 	}
 }
@@ -96,7 +96,7 @@ func TestDurationPtrAssertion_NotNil(t *testing.T) {
 		}
 		expectedErrorMsg := "invalid argument \"arg\"; cannot be nil"
 		if err.Error() != expectedErrorMsg {
-			t.Errorf("except: %v\ngot: %v", expectedErrorMsg, err.Error())
+			t.Errorf("expect: %v\ngot: %v", expectedErrorMsg, err.Error())
 		}
 	}
 }

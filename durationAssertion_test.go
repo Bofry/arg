@@ -21,7 +21,7 @@ func TestDurationAssertion(t *testing.T) {
 		}
 		expectedErrorMsg := "invalid argument \"zeroDuration\"; should not be zero"
 		if err.Error() != expectedErrorMsg {
-			t.Errorf("except: %v\ngot: %v", expectedErrorMsg, err.Error())
+			t.Errorf("expect: %v\ngot: %v", expectedErrorMsg, err.Error())
 		}
 	}
 	{
@@ -34,7 +34,7 @@ func TestDurationAssertion(t *testing.T) {
 		}
 		expectedErrorMsg := "invalid argument \"negateOneDuration\"; should be a non-negative time.Duation"
 		if err.Error() != expectedErrorMsg {
-			t.Errorf("except: %v\ngot: %v", expectedErrorMsg, err.Error())
+			t.Errorf("expect: %v\ngot: %v", expectedErrorMsg, err.Error())
 		}
 	}
 	{
@@ -63,7 +63,7 @@ func TestDurationAssertor(t *testing.T) {
 		}
 		expectedErrorMsg := "invalid argument \"zeroDuration\"; should not be zero"
 		if err.Error() != expectedErrorMsg {
-			t.Errorf("except: %v\ngot: %v", expectedErrorMsg, err.Error())
+			t.Errorf("expect: %v\ngot: %v", expectedErrorMsg, err.Error())
 		}
 	}
 }
@@ -91,7 +91,7 @@ func TestDurationAssertion_NonNegative(t *testing.T) {
 		}
 		expectedErrorMsg := "invalid argument \"arg\"; should be a non-negative time.Duation"
 		if err.Error() != expectedErrorMsg {
-			t.Errorf("except: %v\ngot: %v", expectedErrorMsg, err.Error())
+			t.Errorf("expect: %v\ngot: %v", expectedErrorMsg, err.Error())
 		}
 	}
 }
@@ -119,7 +119,7 @@ func TestDurationAssertion_NonZero(t *testing.T) {
 		}
 		expectedErrorMsg := "invalid argument \"arg\"; should not be zero"
 		if err.Error() != expectedErrorMsg {
-			t.Errorf("except: %v\ngot: %v", expectedErrorMsg, err.Error())
+			t.Errorf("expect: %v\ngot: %v", expectedErrorMsg, err.Error())
 		}
 	}
 }
@@ -138,7 +138,7 @@ func TestDurationAssertion_Must(t *testing.T) {
 		}
 		expectedErrorMsg := "invalid argument \"arg\"; specified time.Duration 1h5m30s is invalid"
 		if err.Error() != expectedErrorMsg {
-			t.Errorf("except: %v\ngot: %v", expectedErrorMsg, err.Error())
+			t.Errorf("expect: %v\ngot: %v", expectedErrorMsg, err.Error())
 		}
 	}
 	{
@@ -156,7 +156,7 @@ func TestDurationAssertion_Must(t *testing.T) {
 		}
 		expectedErrorMsg := "invalid argument \"arg\"; specified time.Duration 1h15m30.918273645s is invalid"
 		if err.Error() != expectedErrorMsg {
-			t.Errorf("except: %v\ngot: %v", expectedErrorMsg, err.Error())
+			t.Errorf("expect: %v\ngot: %v", expectedErrorMsg, err.Error())
 		}
 	}
 }
@@ -186,7 +186,7 @@ func TestDurationAssertion_LessOrEqualByString(t *testing.T) {
 		}
 		expectedErrorMsg := "invalid argument \"arg\"; out of range"
 		if err.Error() != expectedErrorMsg {
-			t.Errorf("except: %v\ngot: %v", expectedErrorMsg, err.Error())
+			t.Errorf("expect: %v\ngot: %v", expectedErrorMsg, err.Error())
 		}
 	}
 }
@@ -216,7 +216,7 @@ func TestDurationAssertion_GreaterOrEqualByString(t *testing.T) {
 		}
 		expectedErrorMsg := "invalid argument \"arg\"; out of range"
 		if err.Error() != expectedErrorMsg {
-			t.Errorf("except: %v\ngot: %v", expectedErrorMsg, err.Error())
+			t.Errorf("expect: %v\ngot: %v", expectedErrorMsg, err.Error())
 		}
 	}
 }
@@ -253,7 +253,7 @@ func TestDurationAssertion_BetweenRange(t *testing.T) {
 		}
 		expectedErrorMsg := "invalid argument \"arg\"; out of range"
 		if err.Error() != expectedErrorMsg {
-			t.Errorf("except: %v\ngot: %v", expectedErrorMsg, err.Error())
+			t.Errorf("expect: %v\ngot: %v", expectedErrorMsg, err.Error())
 		}
 	}
 	{
@@ -264,7 +264,7 @@ func TestDurationAssertion_BetweenRange(t *testing.T) {
 		}
 		expectedErrorMsg := "invalid argument \"arg\"; out of range"
 		if err.Error() != expectedErrorMsg {
-			t.Errorf("except: %v\ngot: %v", expectedErrorMsg, err.Error())
+			t.Errorf("expect: %v\ngot: %v", expectedErrorMsg, err.Error())
 		}
 	}
 }

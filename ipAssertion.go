@@ -58,7 +58,7 @@ func (IPAssertion) IsValid(v IP, name string) error {
 //
 // The identification of global unicast addresses uses address type
 // identification as defined in RFC 1122, RFC 4632 and RFC 4291 with
-// the exception of IPv4 directed broadcast addresses.
+// the expection of IPv4 directed broadcast addresses.
 // It returns true even if ip is in IPv4 private address space or
 // local IPv6 unicast address space.
 func (IPAssertion) GlobalUnicast(v IP, name string) error {

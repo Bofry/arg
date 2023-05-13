@@ -26,7 +26,7 @@ func TestStringPtrAssertion(t *testing.T) {
 		}
 		expectedErrorMsg := "invalid argument \"nilString\"; cannot be nil"
 		if err.Error() != expectedErrorMsg {
-			t.Errorf("except: %v\ngot: %v", expectedErrorMsg, err.Error())
+			t.Errorf("expect: %v\ngot: %v", expectedErrorMsg, err.Error())
 		}
 	}
 	{
@@ -39,7 +39,7 @@ func TestStringPtrAssertion(t *testing.T) {
 		}
 		expectedErrorMsg := "invalid argument \"emprtyString\"; cannot be an empty string"
 		if err.Error() != expectedErrorMsg {
-			t.Errorf("except: %v\ngot: %v", expectedErrorMsg, err.Error())
+			t.Errorf("expect: %v\ngot: %v", expectedErrorMsg, err.Error())
 		}
 	}
 	{
@@ -52,7 +52,7 @@ func TestStringPtrAssertion(t *testing.T) {
 		}
 		expectedErrorMsg := "invalid argument \"emprtyString\"; cannot be an empty string"
 		if err.Error() != expectedErrorMsg {
-			t.Errorf("except: %v\ngot: %v", expectedErrorMsg, err.Error())
+			t.Errorf("expect: %v\ngot: %v", expectedErrorMsg, err.Error())
 		}
 	}
 	{
@@ -92,7 +92,7 @@ func TestStringPtrAssertion(t *testing.T) {
 		}
 		expectedErrorMsg := "invalid argument \"bazString\"; specified string \"baz\" is invalid"
 		if err.Error() != expectedErrorMsg {
-			t.Errorf("except: %v\ngot: %v", expectedErrorMsg, err.Error())
+			t.Errorf("expect: %v\ngot: %v", expectedErrorMsg, err.Error())
 		}
 	}
 }
@@ -122,7 +122,7 @@ func TestStringPtrAssertor(t *testing.T) {
 		}
 		expectedErrorMsg := "invalid argument \"nilString\"; cannot be nil"
 		if err.Error() != expectedErrorMsg {
-			t.Errorf("except: %v\ngot: %v", expectedErrorMsg, err.Error())
+			t.Errorf("expect: %v\ngot: %v", expectedErrorMsg, err.Error())
 		}
 	}
 	{
@@ -136,7 +136,7 @@ func TestStringPtrAssertor(t *testing.T) {
 		}
 		expectedErrorMsg := "invalid argument \"emprtyString\"; cannot be an empty string"
 		if err.Error() != expectedErrorMsg {
-			t.Errorf("except: %v\ngot: %v", expectedErrorMsg, err.Error())
+			t.Errorf("expect: %v\ngot: %v", expectedErrorMsg, err.Error())
 		}
 	}
 	{
@@ -180,7 +180,7 @@ func TestStringPtrAssertor(t *testing.T) {
 		}
 		expectedErrorMsg := "invalid argument \"bazString\"; specified string \"baz\" is invalid"
 		if err.Error() != expectedErrorMsg {
-			t.Errorf("except: %v\ngot: %v", expectedErrorMsg, err.Error())
+			t.Errorf("expect: %v\ngot: %v", expectedErrorMsg, err.Error())
 		}
 	}
 }
@@ -205,7 +205,7 @@ func TestStringPtrAssertion_NotNil(t *testing.T) {
 		}
 		expectedErrorMsg := "invalid argument \"arg\"; cannot be nil"
 		if err.Error() != expectedErrorMsg {
-			t.Errorf("except: %v\ngot: %v", expectedErrorMsg, err.Error())
+			t.Errorf("expect: %v\ngot: %v", expectedErrorMsg, err.Error())
 		}
 	}
 }

@@ -29,7 +29,7 @@ func TestNumberPtrAssertion(t *testing.T) {
 		}
 		expectedErrorMsg := "invalid argument \"nilNumber\"; cannot be nil"
 		if err.Error() != expectedErrorMsg {
-			t.Errorf("except: %v\ngot: %v", expectedErrorMsg, err.Error())
+			t.Errorf("expect: %v\ngot: %v", expectedErrorMsg, err.Error())
 		}
 	}
 	{
@@ -44,7 +44,7 @@ func TestNumberPtrAssertion(t *testing.T) {
 		}
 		expectedErrorMsg := "invalid argument \"nonNumber\"; specified number \"unknown\" is invalid"
 		if err.Error() != expectedErrorMsg {
-			t.Errorf("except: %v\ngot: %v", expectedErrorMsg, err.Error())
+			t.Errorf("expect: %v\ngot: %v", expectedErrorMsg, err.Error())
 		}
 	}
 	{
@@ -59,7 +59,7 @@ func TestNumberPtrAssertion(t *testing.T) {
 		}
 		expectedErrorMsg := "invalid argument \"nanNumber\"; cannot be -inf, +inf or NaN"
 		if err.Error() != expectedErrorMsg {
-			t.Errorf("except: %v\ngot: %v", expectedErrorMsg, err.Error())
+			t.Errorf("expect: %v\ngot: %v", expectedErrorMsg, err.Error())
 		}
 	}
 	{
@@ -74,7 +74,7 @@ func TestNumberPtrAssertion(t *testing.T) {
 		}
 		expectedErrorMsg := "invalid argument \"zeroNumber\"; should not be zero"
 		if err.Error() != expectedErrorMsg {
-			t.Errorf("except: %v\ngot: %v", expectedErrorMsg, err.Error())
+			t.Errorf("expect: %v\ngot: %v", expectedErrorMsg, err.Error())
 		}
 	}
 	{
@@ -89,7 +89,7 @@ func TestNumberPtrAssertion(t *testing.T) {
 		}
 		expectedErrorMsg := "invalid argument \"negateNumber\"; should be a non-negative number"
 		if err.Error() != expectedErrorMsg {
-			t.Errorf("except: %v\ngot: %v", expectedErrorMsg, err.Error())
+			t.Errorf("expect: %v\ngot: %v", expectedErrorMsg, err.Error())
 		}
 	}
 	{
@@ -138,7 +138,7 @@ func TestNumberPtrAssertor(t *testing.T) {
 		}
 		expectedErrorMsg := "invalid argument \"nanNumber\"; cannot be -inf, +inf or NaN"
 		if err.Error() != expectedErrorMsg {
-			t.Errorf("except: %v\ngot: %v", expectedErrorMsg, err.Error())
+			t.Errorf("expect: %v\ngot: %v", expectedErrorMsg, err.Error())
 		}
 	}
 }
@@ -163,7 +163,7 @@ func TestNumberPtrAssertor_NotNil(t *testing.T) {
 		}
 		expectedErrorMsg := "invalid argument \"arg\"; cannot be nil"
 		if err.Error() != expectedErrorMsg {
-			t.Errorf("except: %v\ngot: %v", expectedErrorMsg, err.Error())
+			t.Errorf("expect: %v\ngot: %v", expectedErrorMsg, err.Error())
 		}
 	}
 }

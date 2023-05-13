@@ -22,7 +22,7 @@ func TestTimeAssertion(t *testing.T) {
 		}
 		expectedErrorMsg := "invalid argument \"zeroTime\"; should not be zero"
 		if err.Error() != expectedErrorMsg {
-			t.Errorf("except: %v\ngot: %v", expectedErrorMsg, err.Error())
+			t.Errorf("expect: %v\ngot: %v", expectedErrorMsg, err.Error())
 		}
 	}
 	{
@@ -38,7 +38,7 @@ func TestTimeAssertion(t *testing.T) {
 		}
 		expectedErrorMsg := "invalid argument \"date1205Time\"; out of range"
 		if err.Error() != expectedErrorMsg {
-			t.Errorf("except: %v\ngot: %v", expectedErrorMsg, err.Error())
+			t.Errorf("expect: %v\ngot: %v", expectedErrorMsg, err.Error())
 		}
 	}
 	{
@@ -71,7 +71,7 @@ func TestTimeAssertor(t *testing.T) {
 		}
 		expectedErrorMsg := "invalid argument \"zeroTime\"; should not be zero"
 		if err.Error() != expectedErrorMsg {
-			t.Errorf("except: %v\ngot: %v", expectedErrorMsg, err.Error())
+			t.Errorf("expect: %v\ngot: %v", expectedErrorMsg, err.Error())
 		}
 	}
 }
@@ -92,7 +92,7 @@ func TestTimeAssertor_IsUTC(t *testing.T) {
 		}
 		expectedErrorMsg := "invalid argument \"arg\"; should be a UTC time"
 		if err.Error() != expectedErrorMsg {
-			t.Errorf("except: %v\ngot: %v", expectedErrorMsg, err.Error())
+			t.Errorf("expect: %v\ngot: %v", expectedErrorMsg, err.Error())
 		}
 	}
 }
@@ -113,7 +113,7 @@ func TestTimeAssertor_NonZero(t *testing.T) {
 		}
 		expectedErrorMsg := "invalid argument \"arg\"; should not be zero"
 		if err.Error() != expectedErrorMsg {
-			t.Errorf("except: %v\ngot: %v", expectedErrorMsg, err.Error())
+			t.Errorf("expect: %v\ngot: %v", expectedErrorMsg, err.Error())
 		}
 	}
 }
@@ -139,7 +139,7 @@ func TestTimeAssertor_Must(t *testing.T) {
 		}
 		expectedErrorMsg := "invalid argument \"arg\"; specified time 2022-12-11 10:57:34 +0000 UTC is invalid"
 		if err.Error() != expectedErrorMsg {
-			t.Errorf("except: %v\ngot: %v", expectedErrorMsg, err.Error())
+			t.Errorf("expect: %v\ngot: %v", expectedErrorMsg, err.Error())
 		}
 	}
 }
@@ -164,7 +164,7 @@ func TestTimeAssertor_InWeekday(t *testing.T) {
 		}
 		expectedErrorMsg := "invalid argument \"arg\"; out of range"
 		if err.Error() != expectedErrorMsg {
-			t.Errorf("except: %v\ngot: %v", expectedErrorMsg, err.Error())
+			t.Errorf("expect: %v\ngot: %v", expectedErrorMsg, err.Error())
 		}
 	}
 }
@@ -189,7 +189,7 @@ func TestTimeAssertor_NotInWeekday(t *testing.T) {
 		}
 		expectedErrorMsg := "invalid argument \"arg\"; out of range"
 		if err.Error() != expectedErrorMsg {
-			t.Errorf("except: %v\ngot: %v", expectedErrorMsg, err.Error())
+			t.Errorf("expect: %v\ngot: %v", expectedErrorMsg, err.Error())
 		}
 	}
 }
@@ -214,7 +214,7 @@ func TestTimeAssertor_AfterOrEqual(t *testing.T) {
 		}
 		expectedErrorMsg := "invalid argument \"arg\"; out of range"
 		if err.Error() != expectedErrorMsg {
-			t.Errorf("except: %v\ngot: %v", expectedErrorMsg, err.Error())
+			t.Errorf("expect: %v\ngot: %v", expectedErrorMsg, err.Error())
 		}
 	}
 }
@@ -239,7 +239,7 @@ func TestTimeAssertor_BeforeOrEqual(t *testing.T) {
 		}
 		expectedErrorMsg := "invalid argument \"arg\"; out of range"
 		if err.Error() != expectedErrorMsg {
-			t.Errorf("except: %v\ngot: %v", expectedErrorMsg, err.Error())
+			t.Errorf("expect: %v\ngot: %v", expectedErrorMsg, err.Error())
 		}
 	}
 }
@@ -265,7 +265,7 @@ func TestTimeAssertor_BetweenRange(t *testing.T) {
 		}
 		expectedErrorMsg := "invalid argument \"arg\"; out of range"
 		if err.Error() != expectedErrorMsg {
-			t.Errorf("except: %v\ngot: %v", expectedErrorMsg, err.Error())
+			t.Errorf("expect: %v\ngot: %v", expectedErrorMsg, err.Error())
 		}
 	}
 }

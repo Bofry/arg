@@ -18,7 +18,7 @@ func TestSliceAssertion(t *testing.T) {
 		}
 		expectedErrorMsg := "invalid argument \"emptyStringSlice\"; cannot be an empty array"
 		if err.Error() != expectedErrorMsg {
-			t.Errorf("except: %v\ngot: %v", expectedErrorMsg, err.Error())
+			t.Errorf("expect: %v\ngot: %v", expectedErrorMsg, err.Error())
 		}
 	}
 	{
@@ -30,7 +30,7 @@ func TestSliceAssertion(t *testing.T) {
 		}
 		expectedErrorMsg := "invalid argument \"emptyIntSlice\"; cannot be an empty array"
 		if err.Error() != expectedErrorMsg {
-			t.Errorf("except: %v\ngot: %v", expectedErrorMsg, err.Error())
+			t.Errorf("expect: %v\ngot: %v", expectedErrorMsg, err.Error())
 		}
 	}
 	{
@@ -42,7 +42,7 @@ func TestSliceAssertion(t *testing.T) {
 		}
 		expectedErrorMsg := "invalid argument \"emptyStructSlice\"; cannot be an empty array"
 		if err.Error() != expectedErrorMsg {
-			t.Errorf("except: %v\ngot: %v", expectedErrorMsg, err.Error())
+			t.Errorf("expect: %v\ngot: %v", expectedErrorMsg, err.Error())
 		}
 	}
 }
