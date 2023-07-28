@@ -1,6 +1,9 @@
 package arg
 
 import (
+	"fmt"
+
+	"github.com/Bofry/arg/internal"
 	"github.com/cstockton/go-conv"
 )
 
@@ -26,7 +29,8 @@ func (fn StringValidator) AssertValue(v interface{}, name string) error {
 	if err != nil {
 		return &InvalidArgumentError{
 			Name:   name,
-			Reason: err.Error(),
+			Reason: fmt.Sprintf(internal.ERR_UNSUPPORTED_CAST_STRING, v),
+			Err:    err,
 		}
 	}
 	return fn(str, name)

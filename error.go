@@ -10,6 +10,9 @@ type InvalidArgumentError struct {
 
 func (e *InvalidArgumentError) Error() string {
 	if len(e.Reason) > 0 {
+		if e.Err != nil {
+			return fmt.Sprintf("invalid argument %q; %s. %s", e.Name, e.Reason, e.Err.Error())
+		}
 		return fmt.Sprintf("invalid argument %q; %s", e.Name, e.Reason)
 	}
 	if e.Err != nil {

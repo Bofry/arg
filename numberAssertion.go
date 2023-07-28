@@ -144,8 +144,12 @@ func (NumberAssertion) warpFloatValidator(validator FloatValidator, throwUnderly
 				}
 			case *InvalidArgumentError:
 				if throwUnderlyingError {
-					return _err
+					if _err.Err != nil {
+						return _err.Err
+					}
 				}
+				_err.Reason = fmt.Sprintf(internal.ERR_INVALID_NUMBER, v.String())
+				return _err
 			}
 			return &InvalidArgumentError{
 				Name:   name,
@@ -161,6 +165,7 @@ func (NumberAssertion) warpIntValidator(validator IntValidator, throwUnderlyingE
 	return func(v Number, name string) error {
 		err := validator.AssertNumber(v, name)
 		if err != nil {
+
 			switch _err := err.(type) {
 			case *strconv.NumError:
 				if _, _err := v.Float64(); _err == nil {
@@ -168,8 +173,12 @@ func (NumberAssertion) warpIntValidator(validator IntValidator, throwUnderlyingE
 				}
 			case *InvalidArgumentError:
 				if throwUnderlyingError {
-					return _err
+					if _err.Err != nil {
+						return _err.Err
+					}
 				}
+				_err.Reason = fmt.Sprintf(internal.ERR_INVALID_NUMBER, v.String())
+				return _err
 			}
 			return &InvalidArgumentError{
 				Name:   name,

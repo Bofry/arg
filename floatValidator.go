@@ -1,13 +1,16 @@
 package arg
 
 import (
+	"fmt"
+
+	"github.com/Bofry/arg/internal"
 	"github.com/cstockton/go-conv"
 )
 
 var (
 	_ FloatPtrValidator = new(FloatValidator).AssertPtr
-	_ NumberValidator    = new(FloatValidator).AssertNumber
-	_ ValueValidator     = new(FloatValidator).AssertValue
+	_ NumberValidator   = new(FloatValidator).AssertNumber
+	_ ValueValidator    = new(FloatValidator).AssertValue
 )
 
 func (fn FloatValidator) AssertPtr(v *float64, name string) error {
@@ -40,7 +43,11 @@ func (fn FloatValidator) AssertNumber(v Number, name string) error {
 func (fn FloatValidator) AssertValue(v interface{}, name string) error {
 	float, err := conv.Float64(v)
 	if err != nil {
-		return err
+		return &InvalidArgumentError{
+			Name:   name,
+			Reason: fmt.Sprintf(internal.ERR_UNSUPPORTED_CAST_FLOAT, v),
+			Err:    err,
+		}
 	}
 	// NOTE: normalize the float64. avoid the "-0" be treated as Signbit() carried value
 	if float == 0 {

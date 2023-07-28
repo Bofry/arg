@@ -24,7 +24,7 @@ func TestNumberAssertion(t *testing.T) {
 		if err == nil {
 			t.Errorf("should get error")
 		}
-		expectedErrorMsg := "invalid argument \"nonNumber\"; specified number \"unknown\" is invalid"
+		expectedErrorMsg := "invalid argument \"nonNumber\"; specified number \"unknown\" is invalid. strconv.ParseFloat: parsing \"unknown\": invalid syntax"
 		if err.Error() != expectedErrorMsg {
 			t.Errorf("expect: %v\ngot: %v", expectedErrorMsg, err.Error())
 		}
@@ -159,7 +159,7 @@ func TestNumberAssertion_IsNumber(t *testing.T) {
 		if err == nil {
 			t.Errorf("should get error")
 		}
-		expectedErrorMsg := "invalid argument \"arg\"; specified number \"unknown\" is invalid"
+		expectedErrorMsg := "invalid argument \"arg\"; specified number \"unknown\" is invalid. strconv.ParseInt: parsing \"unknown\": invalid syntax"
 		if err.Error() != expectedErrorMsg {
 			t.Errorf("expect: %v\ngot: %v", expectedErrorMsg, err.Error())
 		}
@@ -240,7 +240,7 @@ func TestNumberAssertion_NonZero(t *testing.T) {
 		if err == nil {
 			t.Errorf("should get error")
 		}
-		expectedErrorMsg := "invalid argument \"arg\"; specified number \"unknown\" is invalid"
+		expectedErrorMsg := "invalid argument \"arg\"; specified number \"unknown\" is invalid. strconv.ParseFloat: parsing \"unknown\": invalid syntax"
 		if err.Error() != expectedErrorMsg {
 			t.Errorf("expect: %v\ngot: %v", expectedErrorMsg, err.Error())
 		}
@@ -280,7 +280,7 @@ func TestNumberAssertion_NonNanNorInf(t *testing.T) {
 		if err == nil {
 			t.Errorf("should get error")
 		}
-		expectedErrorMsg := "invalid argument \"arg\"; specified number \"unknown\" is invalid"
+		expectedErrorMsg := "invalid argument \"arg\"; specified number \"unknown\" is invalid. strconv.ParseFloat: parsing \"unknown\": invalid syntax"
 		if err.Error() != expectedErrorMsg {
 			t.Errorf("expect: %v\ngot: %v", expectedErrorMsg, err.Error())
 		}
@@ -333,6 +333,7 @@ func TestNumberAssertion_NotIn(t *testing.T) {
 		var arg Number = "-1.003"
 		err := validate(arg, "arg")
 		if err != nil {
+			t.Log(err)
 			t.Errorf("should not error")
 		}
 	}

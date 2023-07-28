@@ -42,7 +42,7 @@ func TestNumberPtrAssertion(t *testing.T) {
 		if err == nil {
 			t.Errorf("should get error")
 		}
-		expectedErrorMsg := "invalid argument \"nonNumber\"; specified number \"unknown\" is invalid"
+		expectedErrorMsg := "invalid argument \"nonNumber\"; specified number \"unknown\" is invalid. strconv.ParseFloat: parsing \"unknown\": invalid syntax"
 		if err.Error() != expectedErrorMsg {
 			t.Errorf("expect: %v\ngot: %v", expectedErrorMsg, err.Error())
 		}
@@ -57,7 +57,7 @@ func TestNumberPtrAssertion(t *testing.T) {
 		if err == nil {
 			t.Errorf("should get error")
 		}
-		expectedErrorMsg := "invalid argument \"nanNumber\"; cannot be -inf, +inf or NaN"
+		expectedErrorMsg := "invalid argument \"nanNumber\"; specified number \"nan\" is invalid"
 		if err.Error() != expectedErrorMsg {
 			t.Errorf("expect: %v\ngot: %v", expectedErrorMsg, err.Error())
 		}
@@ -72,7 +72,7 @@ func TestNumberPtrAssertion(t *testing.T) {
 		if err == nil {
 			t.Errorf("should get error")
 		}
-		expectedErrorMsg := "invalid argument \"zeroNumber\"; should not be zero"
+		expectedErrorMsg := "invalid argument \"zeroNumber\"; specified number \"0\" is invalid"
 		if err.Error() != expectedErrorMsg {
 			t.Errorf("expect: %v\ngot: %v", expectedErrorMsg, err.Error())
 		}
@@ -87,7 +87,7 @@ func TestNumberPtrAssertion(t *testing.T) {
 		if err == nil {
 			t.Errorf("should get error")
 		}
-		expectedErrorMsg := "invalid argument \"negateNumber\"; should be a non-negative number"
+		expectedErrorMsg := "invalid argument \"negateNumber\"; specified number \"-0.001\" is invalid"
 		if err.Error() != expectedErrorMsg {
 			t.Errorf("expect: %v\ngot: %v", expectedErrorMsg, err.Error())
 		}
@@ -136,7 +136,7 @@ func TestNumberPtrAssertor(t *testing.T) {
 		if err == nil {
 			t.Errorf("should get error")
 		}
-		expectedErrorMsg := "invalid argument \"nanNumber\"; cannot be -inf, +inf or NaN"
+		expectedErrorMsg := "invalid argument \"nanNumber\"; specified number \"nan\" is invalid"
 		if err.Error() != expectedErrorMsg {
 			t.Errorf("expect: %v\ngot: %v", expectedErrorMsg, err.Error())
 		}

@@ -1,6 +1,9 @@
 package arg
 
 import (
+	"fmt"
+
+	"github.com/Bofry/arg/internal"
 	"github.com/cstockton/go-conv"
 )
 
@@ -28,7 +31,11 @@ func (fn IntValidator) AssertNumber(v Number, name string) error {
 func (fn IntValidator) AssertValue(v interface{}, name string) error {
 	integer, err := conv.Int64(v)
 	if err != nil {
-		return err
+		return &InvalidArgumentError{
+			Name:   name,
+			Reason: fmt.Sprintf(internal.ERR_UNSUPPORTED_CAST_INT, v),
+			Err:    err,
+		}
 	}
 	return fn(integer, name)
 }
