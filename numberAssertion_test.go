@@ -24,7 +24,7 @@ func TestNumberAssertion(t *testing.T) {
 		if err == nil {
 			t.Errorf("should get error")
 		}
-		expectedErrorMsg := "invalid argument \"nonNumber\"; specified number \"unknown\" is invalid. strconv.ParseFloat: parsing \"unknown\": invalid syntax"
+		expectedErrorMsg := "invalid argument \"nonNumber\"; cannot convert to float from \"unknown\". strconv.ParseFloat: parsing \"unknown\": invalid syntax"
 		if err.Error() != expectedErrorMsg {
 			t.Errorf("expect: %v\ngot: %v", expectedErrorMsg, err.Error())
 		}
@@ -240,7 +240,7 @@ func TestNumberAssertion_NonZero(t *testing.T) {
 		if err == nil {
 			t.Errorf("should get error")
 		}
-		expectedErrorMsg := "invalid argument \"arg\"; specified number \"unknown\" is invalid. strconv.ParseFloat: parsing \"unknown\": invalid syntax"
+		expectedErrorMsg := "invalid argument \"arg\"; cannot convert to float from \"unknown\". strconv.ParseFloat: parsing \"unknown\": invalid syntax"
 		if err.Error() != expectedErrorMsg {
 			t.Errorf("expect: %v\ngot: %v", expectedErrorMsg, err.Error())
 		}
@@ -280,7 +280,7 @@ func TestNumberAssertion_NonNanNorInf(t *testing.T) {
 		if err == nil {
 			t.Errorf("should get error")
 		}
-		expectedErrorMsg := "invalid argument \"arg\"; specified number \"unknown\" is invalid. strconv.ParseFloat: parsing \"unknown\": invalid syntax"
+		expectedErrorMsg := "invalid argument \"arg\"; cannot convert to float from \"unknown\". strconv.ParseFloat: parsing \"unknown\": invalid syntax"
 		if err.Error() != expectedErrorMsg {
 			t.Errorf("expect: %v\ngot: %v", expectedErrorMsg, err.Error())
 		}
@@ -414,6 +414,17 @@ func TestNumberAssertion_MustInt(t *testing.T) {
 			return (v & 0x01) == 0
 		})
 
+	{
+		var arg Number = "1.01"
+		err := validate(arg, "arg")
+		if err == nil {
+			t.Errorf("should get error")
+		}
+		expectedErrorMsg := "invalid argument \"arg\"; specified number \"1.01\" is invalid. strconv.ParseInt: parsing \"1.01\": invalid syntax"
+		if err.Error() != expectedErrorMsg {
+			t.Errorf("expect: %v\ngot: %v", expectedErrorMsg, err.Error())
+		}
+	}
 	{
 		var arg Number = "1"
 		err := validate(arg, "arg")

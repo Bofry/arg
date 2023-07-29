@@ -23,7 +23,11 @@ func (fn FloatValidator) AssertPtr(v *float64, name string) error {
 func (fn FloatValidator) AssertNumber(v Number, name string) error {
 	float, err := v.Float64()
 	if err != nil {
-		return err
+		return &InvalidArgumentError{
+			Name:   name,
+			Reason: fmt.Sprintf(internal.ERR_UNSUPPORTED_CAST_FLOAT, v),
+			Err:    err,
+		}
 	}
 	/* NOTE: normalize the float64. avoid the "-0" be treated as Signbit() carried value
 	 * e.g:

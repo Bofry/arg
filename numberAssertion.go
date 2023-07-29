@@ -97,9 +97,35 @@ func (NumberAssertion) MustFloat(fn FloatPredicate) NumberValidator {
 }
 
 func (NumberAssertion) NotIn(values ...int64) NumberValidator {
-	return _NumberAssertion.warpIntValidator(
-		Ints.NotIn(values...), false,
-	)
+	return func(v Number, name string) error {
+		validate := _NumberAssertion.warpIntValidator(
+			Ints.NotIn(values...), false,
+		)
+		err := validate(v, name)
+
+		if err != nil {
+			var _err error = err
+
+			for _err != nil {
+				if knownErr, ok := _err.(*InvalidArgumentError); ok {
+					if knownErr.Err != nil {
+						_err = knownErr.Err
+					} else {
+						break
+					}
+				} else {
+					switch _err.(type) {
+					case *strconv.NumError:
+						if _, _err := v.Float64(); _err == nil {
+							return nil
+						}
+					}
+					break
+				}
+			}
+		}
+		return err
+	}
 }
 
 func (NumberAssertion) Less(comparand float64) NumberValidator {
@@ -137,20 +163,15 @@ func (NumberAssertion) warpFloatValidator(validator FloatValidator, throwUnderly
 	return func(v Number, name string) error {
 		err := validator.AssertNumber(v, name)
 		if err != nil {
-			switch _err := err.(type) {
-			case *strconv.NumError:
-				if _, _err := v.Int64(); _err == nil {
-					return nil
-				}
-			case *InvalidArgumentError:
-				if throwUnderlyingError {
-					if _err.Err != nil {
-						return _err.Err
-					}
-				}
+			if throwUnderlyingError {
+				return err
+			}
+
+			if _err, ok := err.(*InvalidArgumentError); ok {
 				_err.Reason = fmt.Sprintf(internal.ERR_INVALID_NUMBER, v.String())
 				return _err
 			}
+
 			return &InvalidArgumentError{
 				Name:   name,
 				Reason: fmt.Sprintf(internal.ERR_INVALID_NUMBER, v.String()),
@@ -165,21 +186,15 @@ func (NumberAssertion) warpIntValidator(validator IntValidator, throwUnderlyingE
 	return func(v Number, name string) error {
 		err := validator.AssertNumber(v, name)
 		if err != nil {
+			if throwUnderlyingError {
+				return err
+			}
 
-			switch _err := err.(type) {
-			case *strconv.NumError:
-				if _, _err := v.Float64(); _err == nil {
-					return nil
-				}
-			case *InvalidArgumentError:
-				if throwUnderlyingError {
-					if _err.Err != nil {
-						return _err.Err
-					}
-				}
+			if _err, ok := err.(*InvalidArgumentError); ok {
 				_err.Reason = fmt.Sprintf(internal.ERR_INVALID_NUMBER, v.String())
 				return _err
 			}
+
 			return &InvalidArgumentError{
 				Name:   name,
 				Reason: fmt.Sprintf(internal.ERR_INVALID_NUMBER, v.String()),
