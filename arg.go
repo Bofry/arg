@@ -36,6 +36,8 @@
  */
 package arg
 
+import "github.com/Bofry/arg/content"
+
 func Assert(errs ...error) error {
 	for _, err := range errs {
 		if err != nil {
@@ -50,4 +52,8 @@ func ThrowError(name, reason string) error {
 		Name:   name,
 		Reason: reason,
 	}
+}
+
+func Args(target interface{}, opts ...content.ProcessorOption) *content.Processor {
+	return content.NewProcessor(target, opts...)
 }
