@@ -4,6 +4,8 @@ import (
 	"encoding/json"
 	"net"
 	"time"
+
+	"github.com/Bofry/arg/content"
 )
 
 const (
@@ -68,4 +70,8 @@ type (
 	NumberPtrPredicate   func(v *Number) bool
 	TimePtrPredicate     func(v *time.Time) bool
 	DurationPtrPredicate func(v *time.Duration) bool
+)
+
+type (
+	Validatable = content.Validatable
 )
