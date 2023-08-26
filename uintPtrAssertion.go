@@ -49,6 +49,16 @@ func (UIntPtrAssertion) NonZero(ptr *uint64, name string) error {
 
 }
 
+func (UIntPtrAssertion) MustNil(v *uint64, name string) error {
+	if v != nil {
+		return &InvalidArgumentError{
+			Name:   name,
+			Reason: internal.ERR_NON_NIL,
+		}
+	}
+	return nil
+}
+
 func (UIntPtrAssertion) Must(fn UIntPtrPredicate) UIntPtrValidator {
 	return func(v *uint64, name string) error {
 		if !fn(v) {

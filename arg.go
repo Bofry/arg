@@ -47,6 +47,16 @@ func Assert(errs ...error) error {
 	return nil
 }
 
+func AssertFunc(functions ...func() error) error {
+	for _, fn := range functions {
+		err := fn()
+		if err != nil {
+			return err
+		}
+	}
+	return nil
+}
+
 func ThrowError(name, reason string) error {
 	return &InvalidArgumentError{
 		Name:   name,

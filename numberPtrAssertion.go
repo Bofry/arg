@@ -81,6 +81,16 @@ func (NumberPtrAssertion) NonNanNorInf(ptr *Number, name string) error {
 	return nil
 }
 
+func (NumberPtrAssertion) MustNil(v *Number, name string) error {
+	if v != nil {
+		return &InvalidArgumentError{
+			Name:   name,
+			Reason: internal.ERR_NON_NIL,
+		}
+	}
+	return nil
+}
+
 func (NumberPtrAssertion) Must(fn NumberPtrPredicate) NumberPtrValidator {
 	return func(v *Number, name string) error {
 		if !fn(v) {

@@ -51,6 +51,16 @@ func (StringPtrAssertion) NonEmpty(ptr *string, name string) error {
 	return nil
 }
 
+func (StringPtrAssertion) MustNil(v *string, name string) error {
+	if v != nil {
+		return &InvalidArgumentError{
+			Name:   name,
+			Reason: internal.ERR_NON_NIL,
+		}
+	}
+	return nil
+}
+
 // Must checks if the given string is evaluated to true by specified predicate.
 func (StringPtrAssertion) Must(fn StringPtrPredicate) StringPtrValidator {
 	return func(v *string, name string) error {

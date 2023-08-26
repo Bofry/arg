@@ -6,6 +6,7 @@ const (
 	ERR_NON_NEGATIVE_DURATION     = "should be a non-negative time.Duation"
 	ERR_NON_NEGATIVE_INTENGER     = "should be a non-negative integer"
 	ERR_NON_NEGATIVE_NUMBER       = "should be a non-negative number"
+	ERR_NON_NIL                   = "should be nil"
 	ERR_NON_ZERO                  = "should not be zero"
 	ERR_NON_UTC                   = "should be a UTC time"
 	ERR_NAN_OR_INFINITY           = "cannot be -inf, +inf or NaN"

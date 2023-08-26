@@ -38,6 +38,16 @@ func (ValueAssertion) NotNil(v interface{}, name string) error {
 	return nil
 }
 
+func (ValueAssertion) MustNil(v interface{}, name string) error {
+	if v != nil || !reflect.ValueOf(v).IsNil() {
+		return &InvalidArgumentError{
+			Name:   name,
+			Reason: internal.ERR_NON_NIL,
+		}
+	}
+	return nil
+}
+
 func (ValueAssertion) Must(fn ValuePredicate) ValueValidator {
 	return func(v interface{}, name string) error {
 		if !fn(v) {

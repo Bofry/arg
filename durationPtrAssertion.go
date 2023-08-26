@@ -60,6 +60,16 @@ func (DurationPtrAssertion) NonZero(ptr *time.Duration, name string) error {
 	return nil
 }
 
+func (DurationPtrAssertion) MustNil(v *time.Duration, name string) error {
+	if v != nil {
+		return &InvalidArgumentError{
+			Name:   name,
+			Reason: internal.ERR_NON_NIL,
+		}
+	}
+	return nil
+}
+
 func (DurationPtrAssertion) Must(fn DurationPtrPredicate) DurationPtrValidator {
 	return func(v *time.Duration, name string) error {
 		if !fn(v) {

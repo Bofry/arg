@@ -70,6 +70,16 @@ func (FloatPtrAssertion) NonZero(ptr *float64, name string) error {
 	return nil
 }
 
+func (FloatPtrAssertion) MustNil(v *float64, name string) error {
+	if v != nil {
+		return &InvalidArgumentError{
+			Name:   name,
+			Reason: internal.ERR_NON_NIL,
+		}
+	}
+	return nil
+}
+
 func (FloatPtrAssertion) Must(fn FloatPtrPredicate) FloatPtrValidator {
 	return func(v *float64, name string) error {
 		if !fn(v) {
