@@ -1,7 +1,9 @@
 package content
 
 import (
+	"encoding/json"
 	"log"
+	"reflect"
 	"sync"
 	"sync/atomic"
 )
@@ -16,6 +18,8 @@ var (
 	globalErrorHandler = defaultErrorHandler()
 
 	panicErrorHandler = func(err error) { panic(err) }
+
+	typeOfUnmarshaler = reflect.TypeOf((*json.Unmarshaler)(nil)).Elem()
 )
 
 type (

@@ -56,7 +56,7 @@ func (binder JsonContentBinder) bindJsonValue(rv reflect.Value, content interfac
 				case []interface{}:
 					jsonArray = v
 				default:
-					result, err := binder.marshalContent(content)
+					result, err := binder.unmarshalContent(content)
 					if err != nil {
 						return &valuebinder.ValueBindingError{
 							Value: content,
@@ -81,7 +81,7 @@ func (binder JsonContentBinder) bindJsonValue(rv reflect.Value, content interfac
 				case map[string]interface{}:
 					jsonObject = v
 				default:
-					result, err := binder.marshalContent(content)
+					result, err := binder.unmarshalContent(content)
 					if err != nil {
 						return &valuebinder.ValueBindingError{
 							Value: content,
@@ -146,7 +146,7 @@ func (binder JsonContentBinder) bindJsonMap(rv reflect.Value, content map[string
 	return fmt.Errorf("unsupported type map[string]%s", rv.Type().Elem().String())
 }
 
-func (binder JsonContentBinder) marshalContent(content interface{}) (interface{}, error) {
+func (binder JsonContentBinder) unmarshalContent(content interface{}) (interface{}, error) {
 	var (
 		result interface{}
 		err    error
