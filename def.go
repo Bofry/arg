@@ -6,6 +6,7 @@ import (
 	"time"
 
 	"github.com/Bofry/arg/content"
+	"github.com/shopspring/decimal"
 )
 
 const (
@@ -13,6 +14,7 @@ const (
 	UInts     = UIntAssertion("")
 	Floats    = FloatAssertion("")
 	Numbers   = NumberAssertion("")
+	Decimals  = DecimalAssertion("")
 	Strings   = StringAssertion("")
 	Slices    = SliceAssertion("")
 	Values    = ValueAssertion("")
@@ -24,14 +26,16 @@ const (
 	UIntPtr     = UIntPtrAssertion("")
 	FloatPtr    = FloatPtrAssertion("")
 	NumberPtr   = NumberPtrAssertion("")
+	DecimalPtr  = DecimalPtrAssertion("")
 	StringPtr   = StringPtrAssertion("")
 	TimePtr     = TimePtrAssertion("")
 	DurationPtr = DurationPtrAssertion("")
 )
 
 type (
-	Number = json.Number
-	IP     = net.IP
+	Number  = json.Number
+	Decimal = decimal.Decimal
+	IP      = net.IP
 )
 
 type (
@@ -40,6 +44,7 @@ type (
 	FloatValidator    func(v float64, name string) error
 	StringValidator   func(v string, name string) error
 	NumberValidator   func(v Number, name string) error
+	DecimalValidator  func(v Decimal, name string) error
 	ValueValidator    func(v interface{}, name string) error
 	IPValidator       func(v IP, name string) error
 	TimeValidator     func(v time.Time, name string) error
@@ -50,6 +55,7 @@ type (
 	FloatPtrValidator    func(v *float64, name string) error
 	StringPtrValidator   func(v *string, name string) error
 	NumberPtrValidator   func(v *Number, name string) error
+	DecimalPtrValidator  func(v *Decimal, name string) error
 	TimePtrValidator     func(v *time.Time, name string) error
 	DurationPtrValidator func(v *time.Duration, name string) error
 
@@ -58,6 +64,7 @@ type (
 	FloatPredicate    func(v float64) bool
 	StringPredicate   func(v string) bool
 	NumberPredicate   func(v Number) bool
+	DecimalPredicate  func(v Decimal) bool
 	ValuePredicate    func(v interface{}) bool
 	IPPredicate       func(v IP) bool
 	TimePredicate     func(v time.Time) bool
@@ -68,6 +75,7 @@ type (
 	FloatPtrPredicate    func(v *float64) bool
 	StringPtrPredicate   func(v *string) bool
 	NumberPtrPredicate   func(v *Number) bool
+	DecimalPtrPredicate  func(v *Decimal) bool
 	TimePtrPredicate     func(v *time.Time) bool
 	DurationPtrPredicate func(v *time.Duration) bool
 )

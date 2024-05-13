@@ -8,4 +8,7 @@ require (
 	go.openly.dev/pointy v1.3.0
 )
 
-require github.com/Bofry/types v0.1.0 // indirect
+require (
+	github.com/Bofry/types v0.1.0 // indirect
+	github.com/shopspring/decimal v1.4.0 // indirect
+)
